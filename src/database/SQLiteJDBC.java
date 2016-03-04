@@ -10,7 +10,7 @@ import java.sql.Statement;
  * in the game that are added by the user base. This is going to hold the number
  * of times they played a certain type of game and the number of times they won
  * that game. Users are also going to be identified by name -- Primary Key.
- *
+ * Adding to this comment to test
  */
 public class SQLiteJDBC
 {
