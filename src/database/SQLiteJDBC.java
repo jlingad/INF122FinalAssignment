@@ -237,19 +237,19 @@ public class SQLiteJDBC
 		return -1;		
 	}
 	
-	public static void main(String[] args)
-	{
-		SQLiteJDBC my = new SQLiteJDBC();
-		System.out.println(my.insertPlayer("Jefmark"));
-		System.out.println(my.insertPlayer("Nikita"));
-		System.out.println(my.insertPlayer("Cameron"));
-		System.out.println(my.insertPlayer("Emily"));
+//	public static void main(String[] args)
+//	{
+//		SQLiteJDBC my = new SQLiteJDBC();
+//		System.out.println(my.insertPlayer("Jefmark"));
+//		System.out.println(my.insertPlayer("Nikita"));
+//		System.out.println(my.insertPlayer("Cameron"));
+//		System.out.println(my.insertPlayer("Emily"));
 //		my.printPlayerInfo("Cameron");
-		my.updateUserProfile("Jefmark", "Checkers", false);
-		my.printPlayerInfo("Jefmark");
-		System.out.println("Checkers games won: " + my.getGamesWon("Jefmark", "Checkers"));
-		System.out.println("Checkers games played: " + my.getGamesPlayed("Jefmark", "Checkers"));
-		System.out.println(my.getTotalGamesPlayed("Jefmark"));
-		System.out.println(my.getTotalGamesWon("Jefmark"));
-	}
+//		my.updateUserProfile("Jefmark", "Checkers", true);
+//		my.printPlayerInfo("Jefmark");
+//		System.out.println("Checkers games won: " + my.getGamesWon("Jefmark", "Checkers"));
+//		System.out.println("Checkers games played: " + my.getGamesPlayed("Jefmark", "Checkers"));
+//		System.out.println(my.getTotalGamesPlayed("Jefmark"));
+//		System.out.println(my.getTotalGamesWon("Jefmark"));
+//	}
 }
