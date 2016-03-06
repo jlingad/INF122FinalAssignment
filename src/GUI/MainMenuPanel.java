@@ -12,6 +12,8 @@ import java.net.URL;
  * Created by Emily on 3/6/2016.
  * Notes: each game creates its own JPanel component - might be
  * better to use a map of games and their icon/button, rulebook, etc.
+ *
+ * Edits: Images don't work/load
  */
 public class MainMenuPanel extends JPanel implements ActionListener {
 
