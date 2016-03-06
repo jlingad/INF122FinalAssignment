@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 /**
  * Created by Emily on 3/6/2016.
@@ -44,7 +45,7 @@ public class MainMenuPanel extends JPanel implements ActionListener {
         tictactoePanel.setBackground(Color.WHITE);
         tictactoePanel.setLayout(new GridBagLayout());
         tictactoeButton = new JButton(
-                new ImageIcon("tic-tac-toe.png"));
+                new ImageIcon("C:\\Users\\Emily\\OneDrive\\Documents\\IN4MATX 122\\INF122FinalDesignProject\\src\\GUI\\images\\tic-tac-toe.png"));
         tictactoeButton.setBackground(Color.WHITE);
         tictactoeButton.addActionListener(this);
         tictactoePanel.add(tictactoeButton);
@@ -54,7 +55,7 @@ public class MainMenuPanel extends JPanel implements ActionListener {
         checkersPanel.setBackground(Color.WHITE);
         checkersPanel.setLayout(new GridBagLayout());
         checkersButton = new JButton(
-                new ImageIcon("checkers.png"));
+                new ImageIcon("C:\\Users\\Emily\\OneDrive\\Documents\\IN4MATX 122\\INF122FinalDesignProject\\src\\GUI\\images\\checkers.png"));
         checkersButton.setBackground(Color.WHITE);
         checkersButton.addActionListener(this);
         checkersPanel.add(checkersButton);
@@ -64,7 +65,7 @@ public class MainMenuPanel extends JPanel implements ActionListener {
         battleshipPanel.setBackground(Color.WHITE);
         battleshipPanel.setLayout(new GridBagLayout());
         battleshipButton = new JButton(
-                new ImageIcon("battleship.png"));
+                new ImageIcon("C:\\Users\\Emily\\OneDrive\\Documents\\IN4MATX 122\\INF122FinalDesignProject\\src\\GUI\\images\\battleship.png"));
         battleshipButton.setBackground(Color.WHITE);
         battleshipButton.addActionListener(this);
         battleshipPanel.add(battleshipButton);
