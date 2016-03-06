@@ -1,5 +1,16 @@
 package server;
 
+/*
+ * The server itself is multithreaded. Don't worry about the ClientConnection object being multithreaded.
+ * Once a new connection comes into the server, call run() that implements the Runnable interface's run
+ * method. This run method should:
+ * 		1. Allow the server to continue listening by moving the connected client to another thread
+ * 		2. Create a ClientConnection object and place it in the list of connected clients
+ * 	
+ * TODO: add methods for the client-side to use so that it can request information from the server
+ * 			- how many people are online and what are their names? 
+ */
+
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;

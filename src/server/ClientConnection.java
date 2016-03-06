@@ -3,6 +3,7 @@ package server;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+
 public class ClientConnection
 {
 	private static final int USER_POLITNESS = 200;  // TODO: uhh.. What is this supposed to do exactly?
