@@ -44,7 +44,6 @@ public class ArmaGRIDdonServer extends Thread
 	private Socket socket;						  // Accepted client connections are going to be saved into this socket object
 	private List<ClientConnection> clientList; 	  // List of all clients that are currently connected to the server
 	private InetAddress hostAddress;			  // Should be localhost for our purpose
-	private static final int ROOM_THROTTLE = 200; // TODO: Not really sure what to set this as because I don't know how Thread.sleep(ROOM_THROTTLE) is using this
 	
 	/**
 	 * 1. Establishes that we are going to use localhost as the host address
@@ -85,7 +84,6 @@ public class ArmaGRIDdonServer extends Thread
 	 * can sleep the Thread that was being held so that it can continue listening. 
 	 * 
 	 * TODO: need to remove the print statements. They're there to help make sure execution is happening as expected
-	 * TODO: need to figure out what Thread.sleep(ROOM_THROTTLE) really does. 
 	 */
 	public void run()
 	{
@@ -101,17 +99,12 @@ public class ArmaGRIDdonServer extends Thread
 				System.out.println("Client " + socket + " has connected.");
 				
 				clientList.add(new ClientConnection(socket));
-//				Thread.sleep(ROOM_THROTTLE);
 				System.out.println("# of clients connected: " + clientList.size());
 			}
 			catch(IOException e)
 			{
 				System.out.println("Could not get client");
 			}
-//			catch(InterruptedException e)
-//			{
-//				System.out.println("Lobby has been interrupted.");
-//			}
 		}
 	}
 	

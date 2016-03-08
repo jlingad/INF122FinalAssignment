@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Scanner;
 
 /*
  * NOTES:
@@ -24,10 +25,10 @@ import java.net.Socket;
 
 public class ClientConnection
 {
-//	private static final int USER_POLITNESS = 200;  // TODO: uhh.. What is this supposed to do exactly?
 	private Socket socket; 							// Used to save the socket that the user is connected to
 	private boolean connected;						// State of the user if user is currently connected to the server
 	private CommunicationPort commport;				// Nested class that deals with the 
+	// private String clientName; 					// Might be needed later so we know who is who
 	
 	// TODO: create input and output buffers so that communication can happen
 	// private inputstream private outputstream
@@ -89,7 +90,7 @@ public class ClientConnection
 				
 				System.out.println("Using thread #" + Thread.currentThread().getId());	// Tests to see if it's using threads
 				System.out.println(socket + " has established input and output communication ports.");
-				
+				Scanner returnMessage = new Scanner(System.in);
 				String clientMessage = "";
 				while( (clientMessage = input.readLine()) != null )
 				{
@@ -97,29 +98,19 @@ public class ClientConnection
 					// TODO: the server will reply after reading it. Right now, it's just echoing what the Client says
 					// output.write(socket.toString());
 					// output.flush(); // Sends message
+					System.out.print("Response to client message: ");
+					clientMessage = returnMessage.nextLine();
+					output.println(clientMessage);
+					output.flush();
+					System.out.println("Message sent.");
 				}
+				returnMessage.close();
 			}
 			catch(Exception e)
 			{
 				System.out.println("Cient could not establish I/O with server.");
 				return;
 			}
-			
-			
-			
-			// Is this while loop supposed to be for listening to the server?
-			// Taken from a Java tutorial
-//			while(true)
-//			{
-//				try
-//				{
-//					Thread.sleep(USER_POLITNESS);
-//				}
-//				catch(Exception e)
-//				{
-//					System.out.println(toString() + " has been interrupted.");
-//				}
-//			}
 		}
 	}
 }

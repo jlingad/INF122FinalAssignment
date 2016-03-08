@@ -30,9 +30,12 @@ public class TestClient
 //		t1.join();
 		try
 		{
-			// TODO: need to figure out where the client is sending its information to. Obviously it's communication
-			// through the socket, but we need to figure out how it's listening. What makes it display that it received
-			// a message. Need to read through socket communication. Make it work with one client first.
+			// TODO: need to figure out how to establish communiation between clients. The ClientCommunication
+			// objects are currently independent, so they don't know of each other. Do we need to create a 
+			// GameInstance object that simply holds the two objects? So first the client will be placed in the
+			// queue of clients that aren't in a game. Then, after communicating with the server what exactly
+			// it wants to play and who to play it with, it will move the clients from the server's queue of
+			// users to a queue of GameInstance objects that have both sockets ready for communication. 
 			Socket socket = new Socket("192.168.2.12", 60101);
 			
 			BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -48,13 +51,14 @@ public class TestClient
 			{
 				System.out.print("Message to server: ");
 				serverMessage = userMessage.nextLine();
-				System.out.println();
 				
 				output.println(serverMessage);
 				output.flush();
 				
 				System.out.println("Message sent.");
 				
+				serverMessage = input.readLine();
+				System.out.println("Message from server: " + serverMessage);
 				
 			}
 			userMessage.close();
