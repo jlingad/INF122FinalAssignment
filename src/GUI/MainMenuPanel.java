@@ -86,6 +86,7 @@ public class MainMenuPanel extends JPanel implements ActionListener {
         gameOptionsPanel.add(selectedGame, gbc);
 
         add(gameOptionsPanel);
+        setVisible(false);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package GUI;
 
 import state.State;
-import database.*;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -80,6 +79,7 @@ public class LoginPanel extends JPanel {
         welcomePanel.add(loginPanel);
 
         add(welcomePanel);
+        setVisible(false);
     }
 
 }

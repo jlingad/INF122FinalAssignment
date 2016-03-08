@@ -43,5 +43,7 @@ public class GamePlayPanel extends JPanel {
         gamePanel.add(scorePanel, gbc);
 
         add(gamePanel);
+        setVisible(false);
     }
+
 }
