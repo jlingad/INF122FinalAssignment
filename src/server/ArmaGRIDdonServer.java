@@ -33,6 +33,8 @@ import java.util.List;
  * TODO: maybe add the functionality so that if the server has to close all of a
  * 			sudden, go through the list of users that are still connected and
  * 			send them a server disconnect message.
+ * TODO: to close connection, the server should be given a message from the client? 
+ * 			Not really sure what is going to trigger shutting down the server.
  * @author jefmark
  */
 public class ArmaGRIDdonServer extends Thread
@@ -52,12 +54,13 @@ public class ArmaGRIDdonServer extends Thread
 	 */
 	public ArmaGRIDdonServer()
 	{
+		clientList = new ArrayList<ClientConnection>();
 		try
 		{
 			this.hostAddress = InetAddress.getLocalHost(); 
 			System.out.println("Server host address: " + this.hostAddress);
 			
-			this.serverSocket = new ServerSocket(this.SERVER_PORT, 0, hostAddress);
+			this.serverSocket = new ServerSocket(SERVER_PORT, 0, hostAddress);
 			System.out.println("Socket " + serverSocket + " created.");
 		}
 		catch(UnknownHostException e)
@@ -90,7 +93,7 @@ public class ArmaGRIDdonServer extends Thread
 		
 		while(true)
 		{
-			flushDisconnectedUsers();
+			flushDisconnectedUsers(); // TODO: fix this in the ClientConnection object, the disconnect isn't happening.
 			
 			try
 			{
@@ -98,17 +101,17 @@ public class ArmaGRIDdonServer extends Thread
 				System.out.println("Client " + socket + " has connected.");
 				
 				clientList.add(new ClientConnection(socket));
-				
-				Thread.sleep(ROOM_THROTTLE);
+//				Thread.sleep(ROOM_THROTTLE);
+				System.out.println("# of clients connected: " + clientList.size());
 			}
 			catch(IOException e)
 			{
 				System.out.println("Could not get client");
 			}
-			catch(InterruptedException e)
-			{
-				System.out.println("Lobby has been interrupted.");
-			}
+//			catch(InterruptedException e)
+//			{
+//				System.out.println("Lobby has been interrupted.");
+//			}
 		}
 	}
 	
@@ -145,5 +148,11 @@ public class ArmaGRIDdonServer extends Thread
 	public void shutdownServer()
 	{
 		// TODO: still need to implement this
+	}
+	
+	public static void main(String[] args)
+	{
+		ArmaGRIDdonServer server = new ArmaGRIDdonServer();
+		server.run();
 	}
 }
