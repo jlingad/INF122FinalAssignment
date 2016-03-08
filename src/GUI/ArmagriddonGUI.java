@@ -41,10 +41,12 @@ public class ArmagriddonGUI extends JFrame implements ActionListener{
         JPanel mainPane = new JPanel(new BorderLayout());
         mainPane.setPreferredSize(new Dimension(1024, 710));
 
-        // Add panels
-//        mainPane.add(loginPanel, BorderLayout.CENTER);
+        // Add panels - visibility initially set to false
+        // visibility will be set to true depending on
+        // which "screen" is stored in the State object
+        mainPane.add(loginPanel, BorderLayout.CENTER);
         mainPane.add(mainMenuPanel, BorderLayout.NORTH);
-//        mainPane.add(gamePlayPanel, BorderLayout.NORTH);
+        mainPane.add(gamePlayPanel, BorderLayout.NORTH);
 
         // Set main window frame properties
         mainPane.setBackground(Color.white);
