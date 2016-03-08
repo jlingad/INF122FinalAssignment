@@ -79,7 +79,7 @@ public class LoginPanel extends JPanel {
         welcomePanel.add(loginPanel);
 
         add(welcomePanel);
-        setVisible(false);
+        setVisible(false); // initially set to false
     }
 
 }
