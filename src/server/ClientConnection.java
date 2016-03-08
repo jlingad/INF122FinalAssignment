@@ -95,13 +95,16 @@ public class ClientConnection
 				while( (clientMessage = input.readLine()) != null )
 				{
 					System.out.println(socket + ": " + clientMessage);
-					// TODO: the server will reply after reading it. Right now, it's just echoing what the Client says
-					// output.write(socket.toString());
-					// output.flush(); // Sends message
+					
+					// TODO: need to not create messages by hand, have to create a repository of 
+					// server responses based on the information being sent up from the client.
+					// TODO: 
 					System.out.print("Response to client message: ");
 					clientMessage = returnMessage.nextLine();
+					
 					output.println(clientMessage);
 					output.flush();
+					
 					System.out.println("Message sent.");
 				}
 				returnMessage.close();

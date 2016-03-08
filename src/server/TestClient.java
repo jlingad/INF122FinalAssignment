@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
@@ -36,8 +37,13 @@ public class TestClient
 			// queue of clients that aren't in a game. Then, after communicating with the server what exactly
 			// it wants to play and who to play it with, it will move the clients from the server's queue of
 			// users to a queue of GameInstance objects that have both sockets ready for communication. 
-			Socket socket = new Socket("192.168.2.12", 60101);
+//			Socket socket = new Socket("192.168.2.12", 60101);
 			
+			
+			InetAddress hostName = InetAddress.getLocalHost();
+						
+			Socket socket = new Socket(hostName, 60101);
+
 			BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			PrintWriter output = new PrintWriter(socket.getOutputStream());
 			
