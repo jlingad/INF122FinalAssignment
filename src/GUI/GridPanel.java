@@ -9,22 +9,26 @@ import java.awt.event.MouseListener;
 
 /**
  * Created by Emily on 3/5/2016.
- * Notes: move grid member variable and create function that returns the grid
+ * Notes: pass rows and cols as a pair object
  */
 public class GridPanel extends JPanel implements MouseListener {
     private State state;
 
     private JPanel gridPanel;
+    private int rows;
+    private int cols;
+    private JLabel numPanels[] = new JLabel[rows*cols];
 
     public GridPanel(State s, int rows, int cols) {
         state = s;
+        this.rows = rows;
+        this.cols = cols;
 
         gridPanel = new JPanel(new GridBagLayout());
         gridPanel.setPreferredSize(new Dimension(500,500));
         gridPanel.setBackground(Color.DARK_GRAY);
         gridPanel.setLayout(new GridLayout(rows, cols));
 
-        JLabel numPanels[] = new JLabel[rows*cols];
         for (int i=0; i<numPanels.length; i++) {
             numPanels[i] = new JLabel("");
             numPanels[i].setOpaque(true);
@@ -46,6 +50,10 @@ public class GridPanel extends JPanel implements MouseListener {
 
     public void update() {
 
+    }
+
+    public JLabel[] getGrid() {
+        return numPanels;
     }
 
     public void mouseClicked(MouseEvent e) {
