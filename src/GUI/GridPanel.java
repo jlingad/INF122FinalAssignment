@@ -36,6 +36,7 @@ public class GridPanel extends JPanel implements MouseListener {
             numPanels[i].setBackground(Color.WHITE);
             numPanels[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
             numPanels[i].addMouseListener(this);
+            numPanels[i].setToolTipText(Integer.toString(i));
         }
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -59,6 +60,7 @@ public class GridPanel extends JPanel implements MouseListener {
 
     public void mouseClicked(MouseEvent e) {
         JLabel clickedPanel = (JLabel) e.getSource();
+        System.out.println(clickedPanel.getToolTipText());
         if (clickedPanel.getBackground() == Color.WHITE)
             clickedPanel.setBackground(Color.BLACK);
         else
