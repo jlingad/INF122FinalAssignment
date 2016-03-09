@@ -9,6 +9,7 @@ import java.awt.event.MouseListener;
 
 /**
  * Created by Emily on 3/5/2016.
+ * Notes: move grid member variable and create function that returns the grid
  */
 public class GridPanel extends JPanel implements MouseListener {
     private State state;
