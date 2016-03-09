@@ -1,6 +1,7 @@
 package GUI;
 
-import state.State;
+import javafx.util.Pair;
+import state.GameState;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -12,7 +13,7 @@ import java.awt.*;
  */
 public class GamePlayPanel extends JPanel {
 
-    private State state;
+    private GameState state;
 
     private TurnPanel turnPanel;
     private ScorePanel scorePanel;
@@ -20,11 +21,11 @@ public class GamePlayPanel extends JPanel {
 
     private JPanel gamePanel;
 
-    public GamePlayPanel(State s, int rows, int cols) {
+    public GamePlayPanel(ArmagriddonGUI gui, GameState s) {
         state = s;
 
         turnPanel = new TurnPanel(state);
-        gridPanel = new GridPanel(state, 8, 8);
+        gridPanel = new GridPanel(state);
         scorePanel = new ScorePanel(state);
 
         gamePanel = new JPanel(new GridBagLayout());
@@ -43,7 +44,7 @@ public class GamePlayPanel extends JPanel {
         gamePanel.add(scorePanel, gbc);
 
         add(gamePanel);
-        setVisible(false); // initially set to false
+        setVisible(false);
     }
 
 }

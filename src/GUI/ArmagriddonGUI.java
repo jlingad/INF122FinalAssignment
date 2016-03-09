@@ -4,49 +4,45 @@ package GUI;
  * Created by Emily on 3/5/2016.
  */
 
-// import armagriddon.Armagriddon, state, logic, engine, etc.
-
+import shared.ExecutionState;
 import state.*;
 
 import javax.swing.*;
-import java.awt.event.*;
 import java.awt.*;
 import java.awt.Dimension;
 import java.awt.Color;
 
 
-public class ArmagriddonGUI extends JFrame implements ActionListener{
+public class ArmagriddonGUI extends JFrame{
 
+    private ServerState serverState;
+    private GameState gameState;
+
+    private JPanel mainPane;
     private LoginPanel loginPanel;
     private MainMenuPanel mainMenuPanel;
     private GamePlayPanel gamePlayPanel;
 
-    private State state;
-
-    public ArmagriddonGUI(State s) {
-        reset(s);
+    public ArmagriddonGUI(ServerState s) {
+        serverState = s;
+        reset();
     }
 
-    public void reset(State s) {
-        state = s;
-
-        loginPanel = new LoginPanel(state);
-        mainMenuPanel = new MainMenuPanel(state);
-        gamePlayPanel = new GamePlayPanel(state, 8, 8); // state, gridRows, gridCols
-
+    public void reset() {
         String title = "Armagriddon";
         setTitle(title);
 
-        // Create main panel
-        JPanel mainPane = new JPanel(new BorderLayout());
+        // Create main panel to put in frame
+        mainPane = new JPanel(new BorderLayout());
         mainPane.setPreferredSize(new Dimension(1024, 710));
 
-        // Add panels - visibility initially set to false
-        // visibility will be set to true depending on
-        // which "screen" is stored in the State object
-        mainPane.add(loginPanel, BorderLayout.CENTER);
-        mainPane.add(mainMenuPanel, BorderLayout.NORTH);
-        mainPane.add(gamePlayPanel, BorderLayout.NORTH);
+        // the program is just started, the ExecutionState
+        // should be at LOGIN, so create the LoginPanel
+        if (serverState.execState == ExecutionState.LOGIN) {
+            loginPanel = new LoginPanel(this);
+            mainPane.add(loginPanel, BorderLayout.CENTER);
+            loginPanel.setVisible(true);
+        }
 
         // Set main window frame properties
         mainPane.setBackground(Color.white);
@@ -61,18 +57,31 @@ public class ArmagriddonGUI extends JFrame implements ActionListener{
     }
 
     public void update() {
+        if (serverState.execState == ExecutionState.MAIN_MENU) {
+            mainMenuPanel = new MainMenuPanel(this, loginPanel.getUserInfo().getKey());
+            mainPane.add(mainMenuPanel, BorderLayout.CENTER);
+            loginPanel.setVisible(false);
+            mainMenuPanel.setVisible(true);
+            gamePlayPanel.setVisible(false);
+        } else if (serverState.execState == ExecutionState.GAMEPLAY) {
+            gameState = mainMenuPanel.getCreatedGameState();
+            gamePlayPanel = new GamePlayPanel(this, gameState);
+            mainPane.add(gamePlayPanel, BorderLayout.CENTER);
+            loginPanel.setVisible(false);
+            mainMenuPanel.setVisible(false);
+            gamePlayPanel.setVisible(true);
+        } else {
+            System.out.println("***ERROR*** Invalid ExecutionState");
+        }
         repaint();
     }
 
-    public void actionPerformed(ActionEvent evt) {
-        Object source = evt.getSource();
+    public void setServerState(ExecutionState execState) {
+        serverState.execState = execState;
     }
 
     public static void main(String[] args) {
-        State s = new State();
-        ArmagriddonGUI gui = new ArmagriddonGUI(s);
-        gui.update();
+        ServerState serverState = new ServerState();
+        ArmagriddonGUI gui = new ArmagriddonGUI(serverState);
     }
 }
-
-

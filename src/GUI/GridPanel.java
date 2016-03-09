@@ -1,6 +1,7 @@
 package GUI;
 
-import state.State;
+import javafx.util.Pair;
+import state.GameState;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,20 +10,20 @@ import java.awt.event.MouseListener;
 
 /**
  * Created by Emily on 3/5/2016.
- * Notes: pass rows and cols as a pair object
  */
 public class GridPanel extends JPanel implements MouseListener {
-    private State state;
 
+    private GameState state;
     private JPanel gridPanel;
     private int rows;
     private int cols;
-    private JLabel numPanels[] = new JLabel[rows*cols];
+    private JLabel numPanels[];
 
-    public GridPanel(State s, int rows, int cols) {
+    public GridPanel(GameState s) {
         state = s;
-        this.rows = rows;
-        this.cols = cols;
+        rows = state.getGridDimensions().getKey();
+        cols = state.getGridDimensions().getValue();
+        numPanels = new JLabel[rows*cols];
 
         gridPanel = new JPanel(new GridBagLayout());
         gridPanel.setPreferredSize(new Dimension(500,500));

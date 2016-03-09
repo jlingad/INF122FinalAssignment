@@ -1,6 +1,6 @@
 package GUI;
 
-import state.State;
+import state.GameState;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -14,14 +14,14 @@ import java.awt.*;
  */
 public class TurnPanel extends JPanel {
 
-    private State state;
+    private GameState state;
 
     private JPanel turnPanel;
     private JLabel turnLabel;
 
     private Integer currentPlayer;
 
-    public TurnPanel(State s) {
+    public TurnPanel(GameState s) {
         state = s;
         currentPlayer = state.getCurrentPlayer();
 

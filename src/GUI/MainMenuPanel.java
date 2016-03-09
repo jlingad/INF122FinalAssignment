@@ -1,5 +1,6 @@
 package GUI;
 
+import shared.ExecutionState;
 import state.*;
 
 import javax.swing.*;
@@ -12,10 +13,16 @@ import java.nio.file.Paths;
  * Created by Emily on 3/6/2016.
  * Notes: each game creates its own JPanel component - might be
  * better to use a map of games and their icon/button, rulebook, etc.
+ *
+ * After one of the button is pressed, it creates a new GameState, instead
+ * it should send a signal to the server telling it which game was selected
+ * then the server signals back to the GUI to show the GamePlayPanel with
+ * the correct game information (e.g. grid size)
  */
 public class MainMenuPanel extends JPanel implements ActionListener {
 
-    private State state;
+    private GameState state;
+    ArmagriddonGUI gui;
 
     private JPanel gameOptionsPanel;
     private JPanel checkersPanel;
@@ -29,10 +36,11 @@ public class MainMenuPanel extends JPanel implements ActionListener {
     JLabel selectGame;
     JLabel selectedGame;
 
-    public MainMenuPanel(State s) {
-        state = s;
+    public MainMenuPanel(ArmagriddonGUI gui, String username) {
+        this.gui = gui;
+
         setBackground(Color.WHITE);
-        selectGame = new JLabel("Please select a game.");
+        selectGame = new JLabel("Hi, " + username + "! Please select a game.");
         selectedGame = new JLabel();
 
         String pathString = Paths.get("").toAbsolutePath().toString();
@@ -86,18 +94,28 @@ public class MainMenuPanel extends JPanel implements ActionListener {
         gameOptionsPanel.add(selectedGame, gbc);
 
         add(gameOptionsPanel);
-        setVisible(false); // initially set to false
+        setVisible(false);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
-        if (source == tictactoeButton)
+        if (source == tictactoeButton) {
             selectedGame.setText("You have selected to play Tic_Tac-Toe");
-        else if (source == checkersButton)
+            state = new GameState(3,3);
+        }
+        else if (source == checkersButton) {
             selectedGame.setText("You have selected to play Checkers");
+            state = new GameState(8, 8);
+        }
         else if (source == battleshipButton)
             selectedGame.setText("You have selected to play Battleship");
+        gui.setServerState(ExecutionState.GAMEPLAY); // game selected, so move onto GamePlayPanel
+        gui.update(); // show the GamePlayPanel
+    }
+
+    public GameState getCreatedGameState() {
+        return state;
     }
 
 }

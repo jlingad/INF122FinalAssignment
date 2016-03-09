@@ -15,7 +15,7 @@ import javax.swing.border.TitledBorder;
 import java.awt.Color;
 
 public class ScorePanel extends JPanel{
-    private State state;
+    private GameState state;
 
     private JPanel scoresPanel;
     private JLabel player1Label;
@@ -24,7 +24,7 @@ public class ScorePanel extends JPanel{
     private HashMap<Integer, Integer> scoresMap;
     private Integer player;
 
-    public ScorePanel(State s) {
+    public ScorePanel(GameState s) {
         state = s;
         player = state.getCurrentPlayer();
 

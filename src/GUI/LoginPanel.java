@@ -1,6 +1,7 @@
 package GUI;
 
-import state.State;
+import javafx.util.Pair;
+import shared.ExecutionState;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -10,13 +11,14 @@ import java.awt.event.ActionListener;
 
 /**
  * Created by Emily on 3/5/2016.
- * Notes: User provides username and password, the ActionListener
+ * User provides username and password, the ActionListener
  * saves the input in the username and password variables, respectively
- *  Currently does not save into the database
+ *
+ * After the login button is pressed, it sends the username and password
+ * to the server (not yet, but it should), sets the ExecutionState for the
+ * server to MAINMENU so the MainMenuPanel will show, and calls for the gui to be updated
  */
 public class LoginPanel extends JPanel {
-
-    private State state;
 
     private JPanel welcomePanel;
     private JPanel loginPanel;
@@ -26,8 +28,7 @@ public class LoginPanel extends JPanel {
     private String password;
     private JButton loginButton;
 
-    public LoginPanel(State s) {
-        state = s;
+    public LoginPanel(ArmagriddonGUI gui) {
         usernameTextField = new JTextField(25);
         passwordTextField = new JTextField(25);
         loginButton = new JButton("Login");
@@ -36,6 +37,9 @@ public class LoginPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 username = usernameTextField.getText();
                 password = passwordTextField.getText();
+                sendUserInfo(); // create a new user in the server
+                gui.setServerState(ExecutionState.MAIN_MENU); // now logged in, so move on to MainMenuPanel
+                gui.update(); // show the MainMenuPanel
             }
         });
 
@@ -79,7 +83,16 @@ public class LoginPanel extends JPanel {
         welcomePanel.add(loginPanel);
 
         add(welcomePanel);
-        setVisible(false); // initially set to false
+        setVisible(false);
+    }
+
+    public Pair<String, String> getUserInfo() {
+        Pair<String, String> userInfo = new Pair<String, String>(username, password);
+        return userInfo;
+    }
+
+    public void sendUserInfo() {
+        // send user info to server
     }
 
 }
