@@ -2,6 +2,8 @@ package server;
 
 public interface Playable
 {
+
+	void run();
 	/*
 	 * What does each game need to do?
 	 * *keep state of game objects

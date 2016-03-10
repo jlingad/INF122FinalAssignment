@@ -54,14 +54,19 @@ public class Protocol implements Serializable {
 	 */
 	private static final long serialVersionUID = -6906502335325300956L;
 	
+	private ExecutionState executionState;
 	private String theMessage;
 	
-	public Protocol(String theMessage){
+	public Protocol(String theMessage, ExecutionState executionState){
 		this.theMessage = theMessage;
 	}
 	
 	public String getTheMessage() {
 		return theMessage;
+	}
+	
+	public ExecutionState getExectionState() {
+		return executionState;
 	}
 	
 }
