@@ -54,10 +54,10 @@ public class ArmaGRIDdonServer extends Thread
 	 */
 	public ArmaGRIDdonServer()
 	{
-		engine = new ServerEngine();
-		engine.start(); // Puts the engine on a new thread
-		
 		clientList = new ArrayList<ClientConnection>();
+		
+		engine = new ServerEngine(this);
+		engine.start(); // Puts the engine on a new thread
 		try
 		{
 			this.hostAddress = InetAddress.getLocalHost(); 
@@ -75,6 +75,19 @@ public class ArmaGRIDdonServer extends Thread
 			System.out.println("Could not open server socket.");
 			return;
 		}
+	}
+	
+	public List<ClientConnection> getConnectedClients()
+	{
+		return clientList;
+//		flushDisconnectedUsers();
+//		List<ClientConnection> toReturn = new ArrayList<ClientConnection>();
+//		for(ClientConnection c : clientList)
+//		{
+//			if(!c.isInGame())
+//				toReturn.add(c);
+//		}
+//		return toReturn;
 	}
 	
 	/**
@@ -95,7 +108,7 @@ public class ArmaGRIDdonServer extends Thread
 		
 		while(true)
 		{
-			flushDisconnectedUsers(); // TODO: fix this in the ClientConnection object, the disconnect isn't happening.
+//			flushDisconnectedUsers(); // TODO: fix this in the ClientConnection object, the disconnect isn't happening.
 			
 			try
 			{
@@ -104,6 +117,13 @@ public class ArmaGRIDdonServer extends Thread
 				
 				clientList.add(new ClientConnection(socket));
 				System.out.println("# of clients connected: " + clientList.size());
+				
+				if(clientList.size() == 2)
+				{
+					System.out.println("Enough clients connected.");
+					synchronized(engine) { engine.notify(); }
+					System.out.println("Engine has been notified of enough users");
+				}
 			}
 			catch(IOException e)
 			{

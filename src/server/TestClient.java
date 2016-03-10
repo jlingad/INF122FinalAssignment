@@ -53,10 +53,13 @@ public class TestClient
 			Scanner userMessage = new Scanner(System.in);
 			
 //			while((serverMessage = input.readLine()) != null)
-			while( !serverMessage.equals("exit") )
+//			while( !serverMessage.equals("exit") )
+			while( (serverMessage = input.readLine()) != null)
 			{
-				System.out.print("Message to server: ");
-				serverMessage = userMessage.nextLine();
+				System.out.println("Message from server: " + serverMessage);
+
+//				System.out.print("Message to server: ");
+//				serverMessage = userMessage.nextLine();
 				
 				output.println(serverMessage);
 				output.flush();
@@ -64,7 +67,6 @@ public class TestClient
 				System.out.println("Message sent.");
 				
 				serverMessage = input.readLine();
-				System.out.println("Message from server: " + serverMessage);
 				
 			}
 			userMessage.close();
