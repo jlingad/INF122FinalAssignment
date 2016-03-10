@@ -5,6 +5,7 @@ package GUI;
  * Notes: Panels do not update
  */
 
+import server.GameState;
 import state.*;
 
 import java.util.*;

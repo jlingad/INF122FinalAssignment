@@ -1,7 +1,6 @@
 package GUI;
 
-import javafx.util.Pair;
-import state.GameState;
+import server.GameState;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,6 +29,7 @@ public class GridPanel extends JPanel implements MouseListener {
         gridPanel.setBackground(Color.DARK_GRAY);
         gridPanel.setLayout(new GridLayout(rows, cols));
 
+        // create grid/board
         for (int i=0; i<numPanels.length; i++) {
             numPanels[i] = new JLabel("", JLabel.CENTER);
             numPanels[i].setOpaque(true);
@@ -38,6 +38,9 @@ public class GridPanel extends JPanel implements MouseListener {
             numPanels[i].addMouseListener(this);
             numPanels[i].setToolTipText(Integer.toString(i));
         }
+
+        // add grid to GameState object
+        state.setGrid(numPanels);
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -59,18 +62,18 @@ public class GridPanel extends JPanel implements MouseListener {
     }
 
     public void mouseClicked(MouseEvent e) {
-        // instead of specifying the type of game piece (e.g. "black_checker" below),
-        // this should read from the GameState the game that is being played and
-        // the game piece associated with the current player. Perhaps the GameState
-        // can store a pair or list of ImageIcons/game pieces for the players
-        GamePieceGenerator gamePiece = new GamePieceGenerator("black_checker");
+        // read which button label was clicked on
         JLabel clickedPanel = (JLabel) e.getSource();
-        System.out.println(clickedPanel.getToolTipText()); // prints out the square that was selected
+        // print to the console which was label was selected
+        System.out.println(clickedPanel.getToolTipText());
         // check to see if the move is valid. if it is, add the game piece to the grid
         // then send the grid to the server. Once the server receives the updated grid,
         // it should change the player turn
         if (clickedPanel.getBackground() == Color.WHITE) {
-            clickedPanel.setIcon(gamePiece.getGamePiece());
+            // add to the grid the appropriate game piece (the one associated with the
+            // current player - pieces are stored in the GameState object
+            clickedPanel.setIcon(state.getGamePiece(state.getCurrentPlayer()));
+            state.changePlayerTurn();
         }
     }
 

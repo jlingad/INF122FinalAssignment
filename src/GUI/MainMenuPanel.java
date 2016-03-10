@@ -1,5 +1,9 @@
 package GUI;
 
+import server.BattleshipState;
+import server.CheckersState;
+import server.GameState;
+import server.TicTacToeState;
 import shared.ExecutionState;
 import state.*;
 
@@ -21,7 +25,6 @@ import java.nio.file.Paths;
  */
 public class MainMenuPanel extends JPanel implements ActionListener {
 
-    private GameState state;
     ArmagriddonGUI gui;
 
     private JPanel gameOptionsPanel;
@@ -101,21 +104,19 @@ public class MainMenuPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source == tictactoeButton) {
-            selectedGame.setText("You have selected to play Tic_Tac-Toe");
-            state = new GameState(3,3);
+            GameState state = new TicTacToeState();
+            gui.setGameState(state);
         }
         else if (source == checkersButton) {
-            selectedGame.setText("You have selected to play Checkers");
-            state = new GameState(8, 8);
+            GameState state = new CheckersState();
+            gui.setGameState(state);
         }
-        else if (source == battleshipButton)
-            selectedGame.setText("You have selected to play Battleship");
-        gui.setServerState(ExecutionState.GAMEPLAY); // game selected, so move onto GamePlayPanel
+        else if (source == battleshipButton) {
+            GameState state = new BattleshipState();
+            gui.setGameState(state);
+        }
+        gui.setExecutionState(ExecutionState.GAMEPLAY); // game selected, so move onto GamePlayPanel
         gui.update(); // show the GamePlayPanel
-    }
-
-    public GameState getCreatedGameState() {
-        return state;
     }
 
 }

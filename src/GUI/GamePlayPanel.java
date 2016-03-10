@@ -1,7 +1,6 @@
 package GUI;
 
-import javafx.util.Pair;
-import state.GameState;
+import server.GameState;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;

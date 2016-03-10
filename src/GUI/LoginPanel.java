@@ -38,7 +38,7 @@ public class LoginPanel extends JPanel {
                 username = usernameTextField.getText();
                 password = passwordTextField.getText();
                 sendUserInfo(); // create a new user in the server
-                gui.setServerState(ExecutionState.MAIN_MENU); // now logged in, so move on to MainMenuPanel
+                gui.setExecutionState(ExecutionState.MAIN_MENU); // now logged in, so move on to MainMenuPanel
                 gui.update(); // show the MainMenuPanel
             }
         });

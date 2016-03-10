@@ -1,6 +1,6 @@
 package GUI;
 
-import state.GameState;
+import server.GameState;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -19,11 +19,9 @@ public class TurnPanel extends JPanel {
     private JPanel turnPanel;
     private JLabel turnLabel;
 
-    private Integer currentPlayer;
 
     public TurnPanel(GameState s) {
         state = s;
-        currentPlayer = state.getCurrentPlayer();
 
         turnLabel = new JLabel();
         setTurnLabel();
@@ -43,13 +41,13 @@ public class TurnPanel extends JPanel {
     }
 
     public void update() {
-        setTurnLabel();
     }
 
     private void setTurnLabel() {
-        if (currentPlayer == 1)
-            turnLabel.setText("It is Player 2's turn.");
-        else if (currentPlayer == 2)
+        if (state.getCurrentPlayer() == 1)
             turnLabel.setText("It is Player 1's turn.");
+        else if (state.getCurrentPlayer() == 2)
+            turnLabel.setText("It is Player 2's turn.");
     }
+
 }

@@ -4,6 +4,7 @@ package GUI;
  * Created by Emily on 3/5/2016.
  */
 
+import server.*;
 import shared.ExecutionState;
 import state.*;
 
@@ -64,7 +65,6 @@ public class ArmagriddonGUI extends JFrame{
             mainMenuPanel.setVisible(true);
 //            gamePlayPanel.setVisible(false);
         } else if (serverState.execState == ExecutionState.GAMEPLAY) {
-            gameState = mainMenuPanel.getCreatedGameState();
             gamePlayPanel = new GamePlayPanel(this, gameState);
             mainPane.add(gamePlayPanel, BorderLayout.CENTER);
             loginPanel.setVisible(false);
@@ -76,8 +76,13 @@ public class ArmagriddonGUI extends JFrame{
         repaint();
     }
 
-    public void setServerState(ExecutionState execState) {
+    public void setExecutionState(ExecutionState execState) {
         serverState.execState = execState;
+    }
+
+    public void setGameState(GameState gameState) {
+        serverState.gameState = gameState;
+        this.gameState = serverState.gameState;
     }
 
     public static void main(String[] args) {
@@ -85,5 +90,3 @@ public class ArmagriddonGUI extends JFrame{
         ArmagriddonGUI gui = new ArmagriddonGUI(serverState);
     }
 }
-
-
