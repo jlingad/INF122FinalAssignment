@@ -5,6 +5,7 @@ package GUI;
  */
 
 import server.*;
+import server.GameState;
 import shared.ExecutionState;
 import state.*;
 
