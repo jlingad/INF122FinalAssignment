@@ -24,7 +24,7 @@ public class GamePlayPanel extends JPanel {
         state = s;
 
         turnPanel = new TurnPanel(state);
-        gridPanel = new GridPanel(state);
+        gridPanel = new GridPanel(state, this);
         scorePanel = new ScorePanel(state);
 
         gamePanel = new JPanel(new GridBagLayout());
@@ -49,7 +49,8 @@ public class GamePlayPanel extends JPanel {
     // updates the turn label in the turnPanel to indicate
     // the correct current player
     public void updateTurnLabel() {
-        turnPanel.setTurnLabel();
+        JLabel turnLabel = turnPanel.getTurnLabel();
+        turnPanel.setTurnLabel(turnLabel);
     }
 
 }
