@@ -1,5 +1,7 @@
 package shared;
 
+import java.io.Serializable;
+
 /* MESSAGE BUILDING STRUCTURE IS MIRRORED ON BOTH CONNECTORS
  * IN THE SENSE THAT A FACTORY IS USED.
  * 
@@ -44,6 +46,22 @@ Dialogue-> Client: messages server when dialogue clear, waiting room starts agai
 need another realization for connection check, server sends it and client replies.
 
 */
-public interface Protocol {
 
+public class Protocol implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6906502335325300956L;
+	
+	private String theMessage;
+	
+	public Protocol(String theMessage){
+		this.theMessage = theMessage;
+	}
+	
+	public String getTheMessage() {
+		return theMessage;
+	}
+	
 }
