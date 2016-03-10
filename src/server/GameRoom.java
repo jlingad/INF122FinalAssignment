@@ -1,7 +1,6 @@
 package server;
 
-public class GameRoom extends Playable
+public class GameRoom implements Playable
 {
-
 
 }

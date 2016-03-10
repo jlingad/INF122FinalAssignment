@@ -1,6 +1,6 @@
 package server;
 
-public abstract class Playable
+public interface Playable
 {
 	/*
 	 * What does each game need to do?
