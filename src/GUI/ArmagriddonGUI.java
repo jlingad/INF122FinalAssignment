@@ -34,7 +34,7 @@ public class ArmagriddonGUI extends JFrame{
 
         // Create main panel to put in frame
         mainPane = new JPanel(new BorderLayout());
-        mainPane.setPreferredSize(new Dimension(1024, 710));
+        mainPane.setPreferredSize(new Dimension(710, 710));
 
         // the program is just started, the ExecutionState
         // should be at LOGIN, so create the LoginPanel
@@ -45,7 +45,7 @@ public class ArmagriddonGUI extends JFrame{
         }
 
         // Set main window frame properties
-        mainPane.setBackground(Color.white);
+        mainPane.setBackground(new Color(54, 67, 68));
         setContentPane(mainPane);
         setVisible(true);
         setSize(getLayout().preferredLayoutSize(this));
@@ -62,7 +62,7 @@ public class ArmagriddonGUI extends JFrame{
             mainPane.add(mainMenuPanel, BorderLayout.CENTER);
             loginPanel.setVisible(false);
             mainMenuPanel.setVisible(true);
-            gamePlayPanel.setVisible(false);
+//            gamePlayPanel.setVisible(false);
         } else if (serverState.execState == ExecutionState.GAMEPLAY) {
             gameState = mainMenuPanel.getCreatedGameState();
             gamePlayPanel = new GamePlayPanel(this, gameState);
@@ -85,3 +85,5 @@ public class ArmagriddonGUI extends JFrame{
         ArmagriddonGUI gui = new ArmagriddonGUI(serverState);
     }
 }
+
+

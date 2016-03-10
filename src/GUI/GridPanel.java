@@ -31,7 +31,7 @@ public class GridPanel extends JPanel implements MouseListener {
         gridPanel.setLayout(new GridLayout(rows, cols));
 
         for (int i=0; i<numPanels.length; i++) {
-            numPanels[i] = new JLabel("");
+            numPanels[i] = new JLabel("", JLabel.CENTER);
             numPanels[i].setOpaque(true);
             numPanels[i].setBackground(Color.WHITE);
             numPanels[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -59,12 +59,19 @@ public class GridPanel extends JPanel implements MouseListener {
     }
 
     public void mouseClicked(MouseEvent e) {
+        // instead of specifying the type of game piece (e.g. "black_checker" below),
+        // this should read from the GameState the game that is being played and
+        // the game piece associated with the current player. Perhaps the GameState
+        // can store a pair or list of ImageIcons/game pieces for the players
+        GamePieceGenerator gamePiece = new GamePieceGenerator("black_checker");
         JLabel clickedPanel = (JLabel) e.getSource();
-        System.out.println(clickedPanel.getToolTipText());
-        if (clickedPanel.getBackground() == Color.WHITE)
-            clickedPanel.setBackground(Color.BLACK);
-        else
-            clickedPanel.setBackground(Color.WHITE);
+        System.out.println(clickedPanel.getToolTipText()); // prints out the square that was selected
+        // check to see if the move is valid. if it is, add the game piece to the grid
+        // then send the grid to the server. Once the server receives the updated grid,
+        // it should change the player turn
+        if (clickedPanel.getBackground() == Color.WHITE) {
+            clickedPanel.setIcon(gamePiece.getGamePiece());
+        }
     }
 
     public void mouseExited(MouseEvent e) {
