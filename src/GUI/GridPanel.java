@@ -13,13 +13,15 @@ import java.awt.event.MouseListener;
 public class GridPanel extends JPanel implements MouseListener {
 
     private GameState state;
+    private GamePlayPanel gamePlayPanel;
     private JPanel gridPanel;
     private int rows;
     private int cols;
     private JLabel numPanels[];
 
-    public GridPanel(GameState s) {
+    public GridPanel(GameState s, GamePlayPanel gamePlayPanel) {
         state = s;
+        this.gamePlayPanel = gamePlayPanel;
         rows = state.getGridDimensions().getKey();
         cols = state.getGridDimensions().getValue();
         numPanels = new JLabel[rows*cols];
@@ -69,11 +71,12 @@ public class GridPanel extends JPanel implements MouseListener {
         // check to see if the move is valid. if it is, add the game piece to the grid
         // then send the grid to the server. Once the server receives the updated grid,
         // it should change the player turn
-        if (clickedPanel.getBackground() == Color.WHITE) {
+        if (clickedPanel.getBackground() == Color.WHITE && clickedPanel.getIcon() == null) {
             // add to the grid the appropriate game piece (the one associated with the
             // current player - pieces are stored in the GameState object
             clickedPanel.setIcon(state.getGamePiece(state.getCurrentPlayer()));
             state.changePlayerTurn();
+            gamePlayPanel.updateTurnLabel();
         }
     }
 
