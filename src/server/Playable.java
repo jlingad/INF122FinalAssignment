@@ -1,6 +1,7 @@
 package server;
 
-public interface Playable extends Runnable {
+public abstract class Playable
+{
 	/*
 	 * What does each game need to do?
 	 * *keep state of game objects

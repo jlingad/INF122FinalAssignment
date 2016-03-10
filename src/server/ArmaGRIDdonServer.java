@@ -44,6 +44,7 @@ public class ArmaGRIDdonServer extends Thread
 	private Socket socket;						  // Accepted client connections are going to be saved into this socket object
 	private List<ClientConnection> clientList; 	  // List of all clients that are currently connected to the server
 	private InetAddress hostAddress;			  // Should be localhost for our purpose
+	private ServerEngine engine;
 	
 	/**
 	 * 1. Establishes that we are going to use localhost as the host address
@@ -53,6 +54,9 @@ public class ArmaGRIDdonServer extends Thread
 	 */
 	public ArmaGRIDdonServer()
 	{
+		engine = new ServerEngine();
+		engine.start(); // Puts the engine on a new thread
+		
 		clientList = new ArrayList<ClientConnection>();
 		try
 		{

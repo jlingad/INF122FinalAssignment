@@ -85,6 +85,9 @@ public class ClientConnection
 		{
 			try
 			{
+				// TODO: check to see if there's a benefit to initializing all member varibles in the run() method
+				// 	instead of the constructor? Will putting it in the constructor hold the server up since it has 
+				//  to create this first and then uses a new thread?
 				input  = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 				output = new PrintWriter(socket.getOutputStream(), true);
 				
