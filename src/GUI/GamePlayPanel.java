@@ -46,4 +46,10 @@ public class GamePlayPanel extends JPanel {
         setVisible(false);
     }
 
+    // updates the turn label in the turnPanel to indicate
+    // the correct current player
+    public void updateTurnLabel() {
+        turnPanel.setTurnLabel();
+    }
+
 }

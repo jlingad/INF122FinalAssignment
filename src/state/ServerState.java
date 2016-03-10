@@ -1,5 +1,6 @@
 package state;
 
+import server.*;
 import shared.*;
 
 /**
@@ -8,6 +9,7 @@ import shared.*;
 public class ServerState {
 
     public ExecutionState execState;
+    public GameState gameState;
 
     public ServerState() {
         execState = ExecutionState.LOGIN;

@@ -43,7 +43,7 @@ public class TurnPanel extends JPanel {
     public void update() {
     }
 
-    private void setTurnLabel() {
+    public void setTurnLabel() {
         if (state.getCurrentPlayer() == 1)
             turnLabel.setText("It is Player 1's turn.");
         else if (state.getCurrentPlayer() == 2)
