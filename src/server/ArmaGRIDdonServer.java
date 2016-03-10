@@ -44,7 +44,7 @@ public class ArmaGRIDdonServer extends Thread
 	private Socket socket;						  // Accepted client connections are going to be saved into this socket object
 	private List<ClientConnection> clientList; 	  // List of all clients that are currently connected to the server
 	private InetAddress hostAddress;			  // Should be localhost for our purpose
-	private ServerEngine engine;
+	private ServerEngine engine;				  // Responsible for running and continuing execution flow
 	
 	/**
 	 * 1. Establishes that we are going to use localhost as the host address
@@ -118,7 +118,7 @@ public class ArmaGRIDdonServer extends Thread
 				clientList.add(new ClientConnection(socket));
 				System.out.println("# of clients connected: " + clientList.size());
 				
-				if(clientList.size() == 2)
+				if(clientList.size() % 2 == 0)
 				{
 					System.out.println("Enough clients connected.");
 					synchronized(engine) { engine.notify(); }

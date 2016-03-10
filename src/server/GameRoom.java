@@ -13,6 +13,7 @@ public class GameRoom extends Thread implements Playable
 		this.guestClient = guestClient;
 		hostClient.setAsInGame();
 		guestClient.setAsInGame();
+		
 		System.out.println("Game room has been established.");
 		System.out.println("Host Client: " + this.hostClient.socket.getPort());
 		System.out.println("Guest Client: " + this.guestClient.socket.getPort());

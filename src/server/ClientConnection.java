@@ -143,6 +143,9 @@ public class ClientConnection
 //					System.out.println("Message sent.");
 //				}
 //				returnMessage.close();
+				System.out.println("Thread: " + this.getId() + " " + this.isAlive());
+				this.join();
+				System.out.println("Thread: " + this.getId() + " " + this.isAlive());
 			}
 			catch(Exception e)
 			{

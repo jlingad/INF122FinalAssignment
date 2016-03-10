@@ -58,16 +58,13 @@ public class TestClient
 			{
 				System.out.println("Message from server: " + serverMessage);
 
-//				System.out.print("Message to server: ");
-//				serverMessage = userMessage.nextLine();
+				System.out.print("Message to server: ");
+				serverMessage = userMessage.nextLine();
 				
 				output.println(serverMessage);
 				output.flush();
 				
-				System.out.println("Message sent.");
-				
-				serverMessage = input.readLine();
-				
+				System.out.println("Message sent.");				
 			}
 			userMessage.close();
 		}
