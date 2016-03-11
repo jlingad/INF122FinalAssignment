@@ -26,9 +26,10 @@ public class GridPanel extends JPanel implements MouseListener {
         cols = state.getGridDimensions().getValue();
         numPanels = new JLabel[rows*cols];
 
+        setBackground(Color.WHITE);
         gridPanel = new JPanel(new GridBagLayout());
         gridPanel.setPreferredSize(new Dimension(500,500));
-        gridPanel.setBackground(Color.DARK_GRAY);
+        gridPanel.setBackground(Color.WHITE);
         gridPanel.setLayout(new GridLayout(rows, cols));
 
         // create grid/board

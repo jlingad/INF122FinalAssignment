@@ -35,6 +35,7 @@ public class ScorePanel extends JPanel{
         player1Label = new JLabel("Player 1: " + scoresMap.get(1));
         player2Label = new JLabel("Player 2: " + scoresMap.get(2));
 
+        setBackground(Color.WHITE);
         scoresPanel = new JPanel(new GridBagLayout());
         scoresPanel.setPreferredSize(new Dimension(300,50));
         scoresPanel.setBorder(new TitledBorder("Scoreboard"));

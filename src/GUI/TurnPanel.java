@@ -26,6 +26,7 @@ public class TurnPanel extends JPanel {
         turnLabel = new JLabel();
         setTurnLabel(turnLabel);
 
+        setBackground(Color.WHITE);
         turnPanel = new JPanel(new GridBagLayout());
         turnPanel.setPreferredSize(new Dimension(300,50));
         turnPanel.setBorder(new TitledBorder("Player Turn"));
