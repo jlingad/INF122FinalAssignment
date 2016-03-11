@@ -50,7 +50,7 @@ public class TestClient
 			System.out.println("Established connection with the server: " + socket.toString());
 			
 			String serverMessage = "";
-			Scanner userMessage = new Scanner(System.in);
+//			Scanner userMessage = new Scanner(System.in);
 			
 //			while((serverMessage = input.readLine()) != null)
 //			while( !serverMessage.equals("exit") )
@@ -58,15 +58,15 @@ public class TestClient
 			{
 				System.out.println("Message from server: " + serverMessage);
 
-				System.out.print("Message to server: ");
-				serverMessage = userMessage.nextLine();
+//				System.out.print("Message to server: ");
+//				serverMessage = userMessage.nextLine();
 				
-				output.println(serverMessage);
-				output.flush();
+//				output.println(serverMessage);
+//				output.flush();
 				
-				System.out.println("Message sent.");				
+//				System.out.println("Message sent.");				
 			}
-			userMessage.close();
+//			userMessage.close();
 		}
 		catch(Exception e)
 		{

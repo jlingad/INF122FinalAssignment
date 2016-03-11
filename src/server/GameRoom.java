@@ -1,5 +1,7 @@
 package server;
 
+import java.util.Scanner;
+
 public class GameRoom extends Thread implements Playable
 {
 	private ClientConnection hostClient;
@@ -29,17 +31,21 @@ public class GameRoom extends Thread implements Playable
 			guestClient.getOutputPort().flush();
 			
 			String messageToForward = "";
-			while(true)
+			Scanner message = new Scanner(System.in);
+			while( !(messageToForward = message.nextLine()).equals("quit"))
 			{
-				messageToForward = hostClient.getInputPort().readLine();
+//				messageToForward = message.nextLine();
+//				messageToForward = hostClient.getInputPort().readLine();
 				guestClient.getOutputPort().println(messageToForward);
 				guestClient.getOutputPort().flush();
 				System.out.println("HostClient: " + messageToForward);
-				messageToForward = guestClient.getInputPort().readLine();
+//				messageToForward = guestClient.getInputPort().readLine();
 				hostClient.getOutputPort().println(messageToForward);
 				hostClient.getOutputPort().flush();
 				System.out.println("GuestClient: " + messageToForward);
+				// TODO: when to break out of loop
 			}
+			message.close();
 		}
 		catch(Exception e)
 		{

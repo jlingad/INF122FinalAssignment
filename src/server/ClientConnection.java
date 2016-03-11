@@ -112,6 +112,7 @@ public class ClientConnection
 		
 		public void run()
 		{
+			// TODO ------------ HAVE TO IMPLEMENT A HANDSHAKE HERE TO NORMALIZE COMMUNICATION
 			try
 			{
 				// TODO: check to see if there's a benefit to initializing all member varibles in the run() method
