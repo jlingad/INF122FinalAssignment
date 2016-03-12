@@ -1,7 +1,6 @@
 package GUI;
 
-import server.GameState;
-import server.TicTacToeLogic;
+import server.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +12,7 @@ import java.awt.event.MouseListener;
  */
 public class GridPanel extends JPanel implements MouseListener {
 
-    private TicTacToeLogic logic;
+    private GameLogic logic;
     private GameState state;
     private GamePlayPanel gamePlayPanel;
     private JPanel gridPanel;
@@ -21,8 +20,9 @@ public class GridPanel extends JPanel implements MouseListener {
     private int cols;
     private JLabel numPanels[];
 
-    public GridPanel(GameState s, GamePlayPanel gamePlayPanel) {
+    public GridPanel(GameState s, GameLogic l, GamePlayPanel gamePlayPanel) {
         state = s;
+        logic = l;
         this.gamePlayPanel = gamePlayPanel;
         rows = state.getGridDimensions().getKey();
         cols = state.getGridDimensions().getValue();
@@ -71,17 +71,13 @@ public class GridPanel extends JPanel implements MouseListener {
         JLabel clickedPanel = (JLabel) e.getSource();
         // print to the console which was label was selected
         System.out.println(clickedPanel.getToolTipText());
-        // check to see if the move is valid. if it is, add the game piece to the grid
-        // then send the grid to the server. Once the server receives the updated grid,
-        // it should change the player turn
-        if (clickedPanel.getIcon() == null) {
-            // add to the grid the appropriate game piece (the one associated with the
-            // current player - pieces are stored in the GameState object
-            clickedPanel.setIcon(state.getGamePiece(state.getCurrentPlayer()));
-            state.changePlayerTurn();
-            logic = new TicTacToeLogic();
-            logic.hasWinner(state);
-            gamePlayPanel.updateTurnLabel();
+        // change - GridPanel should somehow have access to Logic
+        if (logic.isValidClick(state, clickedPanel))
+            state.addClickedPanel(clickedPanel);
+        if (state.getClickedPanels().size() == logic.getMaxClicks()) {
+            // makeMove checks to see if there is a winner, if the move
+            // is valid, then adds the piece to the board
+            logic.makeMove(state, gamePlayPanel);
         }
     }
 

@@ -10,6 +10,7 @@ public class ServerState {
 
     public ExecutionState execState;
     public GameState gameState;
+    public GameLogic gameLogic;
 
     public ServerState() {
         execState = ExecutionState.LOGIN;

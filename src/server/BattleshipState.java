@@ -11,6 +11,7 @@ import java.util.HashMap;
 
 public class BattleshipState extends GameState{
 
+    private String gameName = "Battleship";
     private Integer currentPlayer = 1;
     private HashMap<Integer, Integer> scoresMap;
     private JLabel grid[];
@@ -30,6 +31,7 @@ public class BattleshipState extends GameState{
         gamePieces = new ArrayList<ImageIcon>();
     }
 
+    public String getGameName() { return gameName; }
     public Integer getCurrentPlayer() { return currentPlayer;}
     public HashMap<Integer,Integer> getScores() { return scoresMap; }
     public JLabel[] getGrid() {

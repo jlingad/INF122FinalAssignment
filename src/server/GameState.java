@@ -11,13 +11,16 @@ import java.util.HashMap;
  */
 public abstract class GameState {
 
+    private String gameName;
     private Integer currentPlayer = 1;
     private HashMap<Integer, Integer> scoresMap;
     private JLabel grid[];
     // Game object information... (gridDimensions, rulebook, etc.)
     private Pair<Integer, Integer> gridDimensions;
     private ArrayList<ImageIcon> gamePieces;
+    private ArrayList<JLabel> clickedPanels;
 
+    public String getGameName() { return gameName; }
     public Integer getCurrentPlayer() { return currentPlayer;}
     public HashMap<Integer,Integer> getScores() { return scoresMap; }
     public JLabel[] getGrid() {
@@ -30,6 +33,7 @@ public abstract class GameState {
     public ImageIcon getGamePiece(int playerNum) {
         return gamePieces.get(playerNum-1);
     }
+    public ArrayList<JLabel> getClickedPanels() { return clickedPanels; }
 
     public void setGrid(JLabel[] startingBoard) {
         grid = startingBoard;
@@ -40,5 +44,14 @@ public abstract class GameState {
             currentPlayer = 2;
         else if (currentPlayer == 2)
             currentPlayer = 1;
+        clearClickedPanels();
+    }
+
+    public void addClickedPanel(JLabel clickedPanel) {
+        clickedPanels.add(clickedPanel);
+    }
+
+    public void clearClickedPanels() {
+        clickedPanels.clear();
     }
 }
