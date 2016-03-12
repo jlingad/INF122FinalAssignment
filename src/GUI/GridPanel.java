@@ -39,6 +39,7 @@ public class GridPanel extends JPanel implements MouseListener {
             numPanels[i] = new JLabel("", JLabel.CENTER);
             numPanels[i].setOpaque(true);
             numPanels[i].setBackground(Color.WHITE);
+            numPanels[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
             numPanels[i].addMouseListener(this);
             numPanels[i].setToolTipText(Integer.toString(i));
         }

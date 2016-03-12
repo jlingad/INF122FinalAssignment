@@ -48,6 +48,7 @@ public class CheckersState extends GameState{
 
     public void setGrid(JLabel[] startingBoard) {
         grid = startingBoard;
+        // set checkerboard
         for (int i = 0; i < grid.length; i++) {
             if (i % 16 == 0) {
                 for (int j = i + 1; j < i + 8; j += 2)
@@ -58,6 +59,14 @@ public class CheckersState extends GameState{
             if (i%2 == 0)
                 grid[i].setBackground(Color.DARK_GRAY);
         }
+
+        // add pieces
+        for (int i=0; i<24; i++)
+            if (grid[i].getBackground() == Color.DARK_GRAY)
+                grid[i].setIcon(gamePieces.get(0));
+        for (int i=40; i<grid.length; i++)
+            if (grid[i].getBackground() == Color.DARK_GRAY)
+                grid[i].setIcon(gamePieces.get(1));
     }
 
     public void changePlayerTurn() {
