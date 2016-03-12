@@ -53,5 +53,4 @@ public class TicTacToeState extends GameState{
         else if (currentPlayer == 2)
             currentPlayer = 1;
     }
-
 }

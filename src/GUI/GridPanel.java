@@ -1,6 +1,7 @@
 package GUI;
 
 import server.GameState;
+import server.TicTacToeLogic;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +13,7 @@ import java.awt.event.MouseListener;
  */
 public class GridPanel extends JPanel implements MouseListener {
 
+    private TicTacToeLogic logic;
     private GameState state;
     private GamePlayPanel gamePlayPanel;
     private JPanel gridPanel;
@@ -77,6 +79,8 @@ public class GridPanel extends JPanel implements MouseListener {
             // current player - pieces are stored in the GameState object
             clickedPanel.setIcon(state.getGamePiece(state.getCurrentPlayer()));
             state.changePlayerTurn();
+            logic = new TicTacToeLogic();
+            logic.hasWinner(state);
             gamePlayPanel.updateTurnLabel();
         }
     }
