@@ -3,6 +3,7 @@ package server;
 import javafx.util.Pair;
 
 import javax.swing.*;
+import java.awt.*;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,6 +48,16 @@ public class CheckersState extends GameState{
 
     public void setGrid(JLabel[] startingBoard) {
         grid = startingBoard;
+        for (int i = 0; i < grid.length; i++) {
+            if (i % 16 == 0) {
+                for (int j = i + 1; j < i + 8; j += 2)
+                    grid[j].setBackground(Color.DARK_GRAY);
+                i += 7;
+            }
+            else
+            if (i%2 == 0)
+                grid[i].setBackground(Color.DARK_GRAY);
+        }
     }
 
     public void changePlayerTurn() {

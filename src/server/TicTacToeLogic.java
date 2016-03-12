@@ -8,8 +8,8 @@ public class TicTacToeLogic {
     public TicTacToeLogic() {
     }
 
-    // only checks if all the game pieces in a row are the same
-    // does not diagonal or vertical wins
+    // only checks if there is a row filled with game pieces
+    // does not check for particular players' game pieces
     public boolean hasWinner(GameState state) {
         boolean win = false;
         JLabel[] grid = state.getGrid();

@@ -39,7 +39,6 @@ public class GridPanel extends JPanel implements MouseListener {
             numPanels[i] = new JLabel("", JLabel.CENTER);
             numPanels[i].setOpaque(true);
             numPanels[i].setBackground(Color.WHITE);
-            numPanels[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
             numPanels[i].addMouseListener(this);
             numPanels[i].setToolTipText(Integer.toString(i));
         }
@@ -74,7 +73,7 @@ public class GridPanel extends JPanel implements MouseListener {
         // check to see if the move is valid. if it is, add the game piece to the grid
         // then send the grid to the server. Once the server receives the updated grid,
         // it should change the player turn
-        if (clickedPanel.getBackground() == Color.WHITE && clickedPanel.getIcon() == null) {
+        if (clickedPanel.getIcon() == null) {
             // add to the grid the appropriate game piece (the one associated with the
             // current player - pieces are stored in the GameState object
             clickedPanel.setIcon(state.getGamePiece(state.getCurrentPlayer()));
