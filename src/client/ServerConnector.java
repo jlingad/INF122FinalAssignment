@@ -26,4 +26,17 @@ public class ServerConnector  {
 	private boolean connected;
 	private shared.Protocol protocol;
 	
+	
+	public static void main(String[] args)
+	{
+//	    try {
+//	        /** Obtain an address object of the server */
+//	        InetAddress address = InetAddress.getByName(host);
+//	        /** Establish a socket connetion */
+//	        Socket connection = new Socket(address, port);
+//	        /** Instantiate a BufferedOutputStream object */
+//	    }
+//	    catch ( ne)
+//	    {}
+	}
 }

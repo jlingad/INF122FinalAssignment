@@ -91,6 +91,11 @@ public class ArmagriddonGUI extends JFrame{
         serverState.gameLogic = gameLogic;
         this.gameLogic = serverState.gameLogic;
     }
+    
+    public GUI.LoginPanel getLoginPanel()
+    {
+    	return loginPanel;
+    }
 
     public static void main(String[] args) {
         ServerState serverState = new ServerState();
