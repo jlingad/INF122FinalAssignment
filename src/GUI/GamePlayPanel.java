@@ -1,6 +1,6 @@
 package GUI;
 
-import server.GameState;
+import server.*;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -13,23 +13,24 @@ import java.awt.*;
 public class GamePlayPanel extends JPanel {
 
     private GameState state;
-
+    private GameLogic logic;
     private TurnPanel turnPanel;
     private ScorePanel scorePanel;
     private GridPanel gridPanel;
 
     private JPanel gamePanel;
 
-    public GamePlayPanel(ArmagriddonGUI gui, GameState s) {
+    public GamePlayPanel(ArmagriddonGUI gui, GameState s, GameLogic l) {
         state = s;
+        logic = l;
 
         turnPanel = new TurnPanel(state);
-        gridPanel = new GridPanel(state);
+        gridPanel = new GridPanel(state, logic, this);
         scorePanel = new ScorePanel(state);
 
         gamePanel = new JPanel(new GridBagLayout());
-        gamePanel.setPreferredSize(new Dimension(1000, 680));
-        gamePanel.setBorder(new TitledBorder("Checkers")); // edit to show name of game
+        gamePanel.setPreferredSize(new Dimension(710, 710));
+        gamePanel.setBorder(new TitledBorder(state.getGameName())); // edit to show name of game
         gamePanel.setBackground(Color.WHITE);
         gamePanel.setLayout(new GridBagLayout());
 
@@ -49,7 +50,8 @@ public class GamePlayPanel extends JPanel {
     // updates the turn label in the turnPanel to indicate
     // the correct current player
     public void updateTurnLabel() {
-        turnPanel.setTurnLabel();
+        JLabel turnLabel = turnPanel.getTurnLabel();
+        turnPanel.setTurnLabel(turnLabel);
     }
 
 }

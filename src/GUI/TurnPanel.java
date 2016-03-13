@@ -24,8 +24,9 @@ public class TurnPanel extends JPanel {
         state = s;
 
         turnLabel = new JLabel();
-        setTurnLabel();
+        setTurnLabel(turnLabel);
 
+        setBackground(Color.WHITE);
         turnPanel = new JPanel(new GridBagLayout());
         turnPanel.setPreferredSize(new Dimension(300,50));
         turnPanel.setBorder(new TitledBorder("Player Turn"));
@@ -43,11 +44,16 @@ public class TurnPanel extends JPanel {
     public void update() {
     }
 
-    public void setTurnLabel() {
+    public JLabel getTurnLabel() {
+        return turnLabel;
+    }
+
+    public void setTurnLabel(JLabel label) {
         if (state.getCurrentPlayer() == 1)
-            turnLabel.setText("It is Player 1's turn.");
+            label.setText("It is Player 1's turn.");
         else if (state.getCurrentPlayer() == 2)
-            turnLabel.setText("It is Player 2's turn.");
+            label.setText("It is Player 2's turn.");
+        repaint();
     }
 
 }

@@ -3,15 +3,13 @@ package server;
 import javafx.util.Pair;
 
 import javax.swing.*;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * Created by Emily on 3/10/2016.
- */
-public abstract class GameState {
+public class MatchState extends GameState{
 
-    private String gameName;
+    private String gameName = "Tic-Tac-Toe";
     private Integer currentPlayer = 1;
     private HashMap<Integer, Integer> scoresMap;
     private JLabel grid[];
@@ -19,6 +17,21 @@ public abstract class GameState {
     private Pair<Integer, Integer> gridDimensions;
     private ArrayList<ImageIcon> gamePieces;
     private ArrayList<JLabel> clickedPanels;
+
+    public MatchState() {
+        scoresMap = new HashMap<Integer, Integer>();
+        scoresMap.put(1,0);
+        scoresMap.put(2,0);
+        // set grid/gameboard
+        gridDimensions = new Pair<Integer, Integer> (8,8);
+        clickedPanels = new ArrayList<JLabel>();
+
+        // import image files for game pieces
+        String pathString = Paths.get("").toAbsolutePath().toString();
+        gamePieces = new ArrayList<ImageIcon>();
+        gamePieces.add(new ImageIcon(pathString+"/src/GUI/images/x.png"));
+        gamePieces.add(new ImageIcon(pathString+"/src/GUI/images/o.png"));
+    }
 
     public String getGameName() { return gameName; }
     public Integer getCurrentPlayer() { return currentPlayer;}

@@ -44,7 +44,7 @@ public class ArmaGRIDdonServer extends Thread
 	private Socket socket;						  // Accepted client connections are going to be saved into this socket object
 	private List<ClientConnection> clientList; 	  // List of all clients that are currently connected to the server
 	private InetAddress hostAddress;			  // Should be localhost for our purpose
-	private ServerEngine engine;
+	private ServerEngine engine;				  // Responsible for running and continuing execution flow
 	
 	/**
 	 * 1. Establishes that we are going to use localhost as the host address
@@ -54,10 +54,11 @@ public class ArmaGRIDdonServer extends Thread
 	 */
 	public ArmaGRIDdonServer()
 	{
+		clientList = new ArrayList<ClientConnection>();
+		
+//		engine = new ServerEngine(this);
 		engine = new ServerEngine();
 		engine.start(); // Puts the engine on a new thread
-		
-		clientList = new ArrayList<ClientConnection>();
 		try
 		{
 			this.hostAddress = InetAddress.getLocalHost(); 
@@ -75,6 +76,23 @@ public class ArmaGRIDdonServer extends Thread
 			System.out.println("Could not open server socket.");
 			return;
 		}
+		catch(Exception e)
+		{
+			System.err.println(e.getClass() + ": " + e.getMessage());
+		}
+	}
+	
+	public List<ClientConnection> getConnectedClients()
+	{
+		return clientList;
+//		flushDisconnectedUsers();
+//		List<ClientConnection> toReturn = new ArrayList<ClientConnection>();
+//		for(ClientConnection c : clientList)
+//		{
+//			if(!c.isInGame())
+//				toReturn.add(c);
+//		}
+//		return toReturn;
 	}
 	
 	/**
@@ -95,15 +113,22 @@ public class ArmaGRIDdonServer extends Thread
 		
 		while(true)
 		{
-			flushDisconnectedUsers(); // TODO: fix this in the ClientConnection object, the disconnect isn't happening.
+//			flushDisconnectedUsers(); // TODO: fix this in the ClientConnection object, the disconnect isn't happening.
 			
 			try
 			{
 				socket = serverSocket.accept();
 				System.out.println("Client " + socket + " has connected.");
 				
-				clientList.add(new ClientConnection(socket));
+				clientList.add(new ClientConnection(socket, engine));
 				System.out.println("# of clients connected: " + clientList.size());
+				
+				if(clientList.size() % 2 == 0)
+				{
+					System.out.println("Enough clients connected.");
+					synchronized(engine) { engine.notify(); }
+					System.out.println("Engine has been notified of enough users");
+				}
 			}
 			catch(IOException e)
 			{

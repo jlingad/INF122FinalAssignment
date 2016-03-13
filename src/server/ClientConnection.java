@@ -25,10 +25,14 @@ import java.util.Scanner;
 
 public class ClientConnection
 {
-	private Socket socket; 							// Used to save the socket that the user is connected to
+//	private Socket socket; 							// Used to save the socket that the user is connected to
+	public Socket socket; // TODO: change back to private, used for testing
 	private boolean connected;						// State of the user if user is currently connected to the server
 	private CommunicationPort commport;				// Nested class that deals with the 
-	// private String clientName; 					// Might be needed later so we know who is who
+	private boolean inGameRoom;
+	private String clientName; 					    // Client name that is going to be logged into the database
+	private ServerEngine engine;
+	private GameNames nameOfGame;
 	
 	// TODO: create input and output buffers so that communication can happen
 	// private inputstream private outputstream
@@ -36,13 +40,15 @@ public class ClientConnection
 	// client to server and server to client.
 	
 	
-	public ClientConnection(Socket newSocket)
+	public ClientConnection(Socket newSocket, ServerEngine engine)
 	{
 		System.out.println("ClientConnection object established.");
 		socket = newSocket;
 		connected = true;
-		commport = new CommunicationPort();
+		inGameRoom = false;
+		commport = new CommunicationPort(this);
 		commport.start(); // This calls run() in the nested class below. -- Starts the thread
+		this.engine = engine;
 		System.out.println("After run in ClientConnection::ClientConnection");
 	}
 	
@@ -64,9 +70,35 @@ public class ClientConnection
 		}
 	}
 	
+	public void setAsInGame()
+	{
+		this.inGameRoom = true;
+	}
+	
+	public boolean isInGame()
+	{
+		return this.inGameRoom;
+	}
+	
 	public boolean isConnected()
 	{
 		return connected;
+	}
+	
+	public void sendMessage()
+	{
+		commport.output.println("Client: " + socket.getLocalPort() + " thread: " + commport.getId());
+		commport.output.flush();
+	}
+	
+	public PrintWriter getOutputPort()
+	{
+		return commport.output;
+	}
+	
+	public BufferedReader getInputPort()
+	{
+		return commport.input;
 	}
 	
 	/**
@@ -77,12 +109,20 @@ public class ClientConnection
 	private class CommunicationPort extends Thread
 	{
 		// TODO: need to add methods to allow for communication
-		private BufferedReader input;
-		private PrintWriter output;
+		public BufferedReader input;
+		public PrintWriter   output;
 //		private OutputObjectReader out;
+		private ClientConnection client;
+		
+		public CommunicationPort(ClientConnection host)
+		{
+			this.client = host;
+		}
+		
 		
 		public void run()
 		{
+			// TODO ------------ HAVE TO IMPLEMENT A HANDSHAKE HERE TO NORMALIZE COMMUNICATION
 			try
 			{
 				// TODO: check to see if there's a benefit to initializing all member varibles in the run() method
@@ -91,26 +131,53 @@ public class ClientConnection
 				input  = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 				output = new PrintWriter(socket.getOutputStream(), true);
 				
-				System.out.println("Using thread #" + Thread.currentThread().getId());	// Tests to see if it's using threads
+				System.out.println("ClientConnection: Using thread #" + Thread.currentThread().getId());	// Tests to see if it's using threads
 				System.out.println(socket + " has established input and output communication ports.");
-				Scanner returnMessage = new Scanner(System.in);
-				String clientMessage = "";
-				while( (clientMessage = input.readLine()) != null )
-				{
-					System.out.println(socket + ": " + clientMessage);
-					
-					// TODO: need to not create messages by hand, have to create a repository of 
-					// server responses based on the information being sent up from the client.
-					// TODO: 
-					System.out.print("Response to client message: ");
-					clientMessage = returnMessage.nextLine();
-					
-					output.println(clientMessage);
-					output.flush();
-					
-					System.out.println("Message sent.");
-				}
-				returnMessage.close();
+				
+				// Client connected successfully
+				output.println(true);
+				output.flush();
+				
+				// Get client name
+				clientName = input.readLine();
+
+				// Query database for the name 
+				engine.logUserIn(clientName);
+
+				output.println(true); // user has logged in, queue the client for next piece of info
+				output.flush();
+				
+				// Get name of game they want to play
+				nameOfGame = GameNames.valueOf(input.readLine());
+				
+				
+				// ---------- SERVERENGINE SIDE ---------- //
+				// Add to [specific game] queue or to a new game
+				engine.addUser(client, nameOfGame);
+				
+//				Scanner returnMessage = new Scanner(System.in);
+//				String clientMessage = "";
+//				
+//				// TODO: In the next iteration, should not be a while loop, should be a sequence
+//				// of commands that should be executed to 'set up' the game. 
+//				while( (clientMessage = input.readLine()) != null )
+//				{
+//					System.out.println(socket + ": " + clientMessage);
+//					
+//					// TODO: need to not create messages by hand, have to create a repository of 
+//					// server responses based on the information being sent up from the client.
+//					System.out.print("Response to client message: ");
+//					clientMessage = returnMessage.nextLine();
+//					
+//					output.println(clientMessage);
+//					output.flush();
+//					
+//					System.out.println("Message sent.");
+//				}
+//				returnMessage.close();
+				System.out.println("Thread: " + this.getId() + " " + this.isAlive());
+				this.join();
+				System.out.println("Thread: " + this.getId() + " " + this.isAlive());
 			}
 			catch(Exception e)
 			{

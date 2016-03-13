@@ -68,5 +68,4 @@ public class Protocol implements Serializable {
 	public ExecutionState getExectionState() {
 		return executionState;
 	}
-	
 }

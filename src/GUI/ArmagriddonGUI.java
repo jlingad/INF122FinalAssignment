@@ -19,6 +19,7 @@ public class ArmagriddonGUI extends JFrame{
 
     private ServerState serverState;
     private GameState gameState;
+    private GameLogic gameLogic;
 
     private JPanel mainPane;
     private LoginPanel loginPanel;
@@ -47,7 +48,6 @@ public class ArmagriddonGUI extends JFrame{
         }
 
         // Set main window frame properties
-        mainPane.setBackground(new Color(54, 67, 68));
         setContentPane(mainPane);
         setVisible(true);
         setSize(getLayout().preferredLayoutSize(this));
@@ -60,13 +60,13 @@ public class ArmagriddonGUI extends JFrame{
 
     public void update() {
         if (serverState.execState == ExecutionState.MAIN_MENU) {
-            mainMenuPanel = new MainMenuPanel(this, loginPanel.getUserInfo().getKey());
+            mainMenuPanel = new MainMenuPanel(this, loginPanel.getUsername());
             mainPane.add(mainMenuPanel, BorderLayout.CENTER);
             loginPanel.setVisible(false);
             mainMenuPanel.setVisible(true);
 //            gamePlayPanel.setVisible(false);
         } else if (serverState.execState == ExecutionState.GAMEPLAY) {
-            gamePlayPanel = new GamePlayPanel(this, gameState);
+            gamePlayPanel = new GamePlayPanel(this, gameState, gameLogic);
             mainPane.add(gamePlayPanel, BorderLayout.CENTER);
             loginPanel.setVisible(false);
             mainMenuPanel.setVisible(false);
@@ -84,6 +84,11 @@ public class ArmagriddonGUI extends JFrame{
     public void setGameState(GameState gameState) {
         serverState.gameState = gameState;
         this.gameState = serverState.gameState;
+    }
+
+    public void setGameLogic(GameLogic gameLogic) {
+        serverState.gameLogic = gameLogic;
+        this.gameLogic = serverState.gameLogic;
     }
 
     public static void main(String[] args) {

@@ -1,10 +1,7 @@
 package GUI;
 
-import server.BattleshipState;
-import server.CheckersState;
-import server.GameState;
-import server.TicTacToeState;
-import shared.ExecutionState;
+import server.*;
+import shared.*;
 import state.*;
 
 import javax.swing.*;
@@ -49,7 +46,7 @@ public class MainMenuPanel extends JPanel implements ActionListener {
         String pathString = Paths.get("").toAbsolutePath().toString();
 
         gameOptionsPanel = new JPanel(new GridBagLayout());
-        gameOptionsPanel.setPreferredSize(new Dimension(1000, 700));
+        gameOptionsPanel.setPreferredSize(new Dimension(710, 710));
         gameOptionsPanel.setBackground(Color.WHITE);
         gameOptionsPanel.setLayout(new GridBagLayout());
 
@@ -105,15 +102,21 @@ public class MainMenuPanel extends JPanel implements ActionListener {
         Object source = e.getSource();
         if (source == tictactoeButton) {
             GameState state = new TicTacToeState();
+            GameLogic logic = new TicTacToeLogic();
             gui.setGameState(state);
+            gui.setGameLogic(logic);
         }
         else if (source == checkersButton) {
             GameState state = new CheckersState();
+            GameLogic logic = new CheckersLogic();
             gui.setGameState(state);
+            gui.setGameLogic(logic);
         }
         else if (source == battleshipButton) {
-            GameState state = new BattleshipState();
+            GameState state = new MatchState();
+            GameLogic logic = new MatchLogic();
             gui.setGameState(state);
+            gui.setGameLogic(logic);
         }
         gui.setExecutionState(ExecutionState.GAMEPLAY); // game selected, so move onto GamePlayPanel
         gui.update(); // show the GamePlayPanel
