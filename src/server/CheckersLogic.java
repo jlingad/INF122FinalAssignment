@@ -1,8 +1,10 @@
 package server;
 
 import GUI.GamePlayPanel;
+import shared.ExecutionState;
 
 import javax.swing.*;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class CheckersLogic extends GameLogic {
@@ -18,9 +20,10 @@ public class CheckersLogic extends GameLogic {
 
     // only checks if there is a row filled with game pieces
     // does not check for particular players' game pieces
-    public void hasWinner(GameState state) {
+    public void hasWinner(GameState state, GamePlayPanel gamePlayPanel) {
         JLabel[] grid = state.getGrid();
         Icon piece = state.getGamePiece(1);
+        boolean win = true;
         // get any piece that can be found on the board
         // if there is a winner, the grid will only contain
         // this piece type
@@ -28,11 +31,17 @@ public class CheckersLogic extends GameLogic {
             if (grid[i].getIcon() != null)
                 piece = grid[i].getIcon();
         // if there is a piece of a different type, there is no winner
-//        for (int i=0; i<grid.length; i++)
-//            if (grid[i].getIcon() != piece)
-//                return false;
-        System.out.println("winner");
-        //return true;
+        for (int i=0; i<grid.length; i++)
+            if (grid[i].getIcon() != piece)
+                win = false;
+        if (win == true) {
+            String pathString = Paths.get("").toAbsolutePath().toString();
+            JOptionPane.showMessageDialog(gamePlayPanel, "WINNER is player " + state.getCurrentPlayer(),
+                    "END OF GAME", JOptionPane.PLAIN_MESSAGE,
+                    new ImageIcon(pathString+"/src/GUI/images/partyparrot.gif"));
+            gamePlayPanel.getGUI().setExecutionState(ExecutionState.MAIN_MENU);
+            gamePlayPanel.getGUI().update();
+        }
     }
 
     public void makeMove(GameState state, GamePlayPanel gamePlayPanel) {
@@ -40,7 +49,7 @@ public class CheckersLogic extends GameLogic {
         int currentPlayer = state.getCurrentPlayer();
         clickedPanels.get(0).setIcon(null);
         clickedPanels.get(1).setIcon(state.getGamePiece(state.getCurrentPlayer()));
-        hasWinner(state);
+        hasWinner(state, gamePlayPanel);
         state.changePlayerTurn();
         gamePlayPanel.updateTurnLabel();
     }

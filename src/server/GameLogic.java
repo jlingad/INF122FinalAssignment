@@ -11,7 +11,7 @@ public abstract class GameLogic {
 
     public int getMaxClicks() { return maxClicksPerTurn; }
 
-    public abstract void hasWinner(GameState state);
+    public abstract void hasWinner(GameState state, GamePlayPanel gamePlayPanel);
 
     public abstract void makeMove(GameState state, GamePlayPanel gamePlayPanel);
 

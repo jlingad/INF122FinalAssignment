@@ -1,38 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f9ded735-77c7-46b3-8e29-60fe136b0d84" name="Default" comment="Changed return type hasWinner() to void and completed move logic">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/images/match/145.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/images/match/2.33.23_pm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/images/match/a-slave-obeys.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/images/match/age-of-ultron.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/images/match/apocalypse.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/images/match/asteroid.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/images/match/cnnstyle-future.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/images/match/dagobah.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/images/match/doomsday.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/images/match/fallout.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/images/match/findumonde.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/images/match/first-hope.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/images/match/guardians-of-the-galaxy.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/images/match/incoming.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/images/match/pm.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.db" afterPath="$PROJECT_DIR$/test.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/GridPanel.java" afterPath="$PROJECT_DIR$/src/GUI/GridPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/LoginPanel.java" afterPath="$PROJECT_DIR$/src/GUI/LoginPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/ArmaGRIDdonServer.java" afterPath="$PROJECT_DIR$/src/server/ArmaGRIDdonServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/ClientConnection.java" afterPath="$PROJECT_DIR$/src/server/ClientConnection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/GameNames.java" afterPath="$PROJECT_DIR$/src/server/GameNames.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/GameRoom.java" afterPath="$PROJECT_DIR$/src/server/GameRoom.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/GameState.java" afterPath="$PROJECT_DIR$/src/server/GameState.java" />
+    <list default="true" id="c1f72c3b-8011-4678-918b-9955f8d7aec9" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/ArmagriddonGUI.java" afterPath="$PROJECT_DIR$/src/GUI/ArmagriddonGUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/GamePlayPanel.java" afterPath="$PROJECT_DIR$/src/GUI/GamePlayPanel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/CheckersLogic.java" afterPath="$PROJECT_DIR$/src/server/CheckersLogic.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/GameLogic.java" afterPath="$PROJECT_DIR$/src/server/GameLogic.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/MatchLogic.java" afterPath="$PROJECT_DIR$/src/server/MatchLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/MatchState.java" afterPath="$PROJECT_DIR$/src/server/MatchState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/ServerEngine.java" afterPath="$PROJECT_DIR$/src/server/ServerEngine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/TestClient.java" afterPath="$PROJECT_DIR$/src/server/TestClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/TicTacToeLogic.java" afterPath="$PROJECT_DIR$/src/server/TicTacToeLogic.java" />
     </list>
     <ignored path="INF122FinalAssignment.iws" />
     <ignored path=".idea/workspace.xml" />
-    <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,44 +28,25 @@
     <favorites_list name="INF122FinalAssignment" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="ArmagriddonGUI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GUI/ArmagriddonGUI.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="GridPanel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUI/GridPanel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="40" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TicTacToeState.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/TicTacToeState.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="58" column="30" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TicTacToeLogic.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/TicTacToeLogic.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+              <caret line="97" column="1" selection-start-line="97" selection-start-column="1" selection-end-line="97" selection-end-column="1" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1855#1856#0" expanded="false" />
+                <element signature="e#1887#1888#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MatchLogic.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/server/MatchLogic.java">
+      <file leaf-file-name="ServerEngine.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/server/ServerEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.71428573">
-              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -96,48 +56,22 @@
         <entry file="file://$PROJECT_DIR$/src/server/GameState.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CheckersState.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/CheckersState.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CheckersLogic.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/CheckersLogic.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="55" column="28" selection-start-line="55" selection-start-column="28" selection-end-line="55" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GamePlayPanel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GUI/GamePlayPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="53" column="42" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TicTacToeEngine.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/TicTacToeEngine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-              <folding />
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#699#700#0" expanded="false" />
+                <element signature="e#726#727#0" expanded="false" />
+                <element signature="e#782#783#0" expanded="false" />
+                <element signature="e#819#820#0" expanded="false" />
+                <element signature="e#871#872#0" expanded="false" />
+                <element signature="e#921#922#0" expanded="false" />
+                <element signature="e#1046#1047#0" expanded="false" />
+                <element signature="e#1082#1083#0" expanded="false" />
+                <element signature="e#1343#1344#0" expanded="false" />
+                <element signature="e#1390#1391#0" expanded="false" />
+                <element signature="e#1430#1431#0" expanded="false" />
+                <element signature="e#1467#1468#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -146,8 +80,59 @@
         <entry file="file://$PROJECT_DIR$/src/server/GameLogic.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding />
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MatchLogic.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/server/MatchLogic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="47" column="30" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CheckersState.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/server/CheckersState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="24" column="52" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TicTacToeLogic.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/server/TicTacToeLogic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.3344538">
+              <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+              <folding>
+                <element signature="e#307#308#0" expanded="true" />
+                <element signature="e#346#347#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArmagriddonGUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUI/ArmagriddonGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="82" column="5" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -155,6 +140,7 @@
     </leaf>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
@@ -165,18 +151,29 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/server/GameLogic.java" />
-        <option value="$PROJECT_DIR$/src/server/CheckersLogic.java" />
+        <option value="$PROJECT_DIR$/src/GUI/ScorePanel.java" />
+        <option value="$PROJECT_DIR$/src/GUI/LoginPanel.java" />
+        <option value="$PROJECT_DIR$/src/GUI/MainMenuPanel.java" />
+        <option value="$PROJECT_DIR$/src/shared/ExecutionState.java" />
+        <option value="$PROJECT_DIR$/src/GUI/ArmagriddonGUI.java" />
+        <option value="$PROJECT_DIR$/src/server/Playable.java" />
+        <option value="$PROJECT_DIR$/src/GUI/TurnPanel.java" />
+        <option value="$PROJECT_DIR$/src/GUI/GamePlayPanel.java" />
         <option value="$PROJECT_DIR$/src/server/GameState.java" />
         <option value="$PROJECT_DIR$/src/server/TicTacToeState.java" />
+        <option value="$PROJECT_DIR$/src/server/CheckersState.java" />
+        <option value="$PROJECT_DIR$/src/GUI/GridPanel.java" />
+        <option value="$PROJECT_DIR$/src/server/ServerEngine.java" />
+        <option value="$PROJECT_DIR$/src/server/GameLogic.java" />
         <option value="$PROJECT_DIR$/src/server/TicTacToeLogic.java" />
-        <option value="$PROJECT_DIR$/src/server/MatchLogic.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1280" />
-    <option name="height" value="800" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -279,32 +276,162 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="FullScreen" value="true" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="Application.ArmagriddonGUI">
-    <configuration default="false" name="ArmagriddonGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="GUI.ArmagriddonGUI" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="INF122FinalAssignment" />
-      <envs />
-      <method />
-    </configuration>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/ArmagriddonGUI.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/GamePlayPanel.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/GridPanel.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/LoginPanel$1.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/LoginPanel.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/MainMenuPanel.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/ScorePanel.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/TurnPanel.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/images/armagriddon-background.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/images/battleship.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/images/black-checker.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/images/checkers.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/images/o.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/images/red-checker.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/images/tic-tac-toe.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/images/x.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/client/Client.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/client/ServerConnector.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/database/SQLiteJDBC.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/server/ArmaGRIDdonServer.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/server/BattleshipLogic.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/server/BattleshipState.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/server/CheckersEngine.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/server/CheckersLogic.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/server/CheckersState.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/server/ClientConnection$CommunicationPort.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/server/ClientConnection.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/server/GameLogic.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/server/GameNames.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/server/GameRoom.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/server/GameState.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/server/MatchLogic.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/server/MatchState.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/server/Playable.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/server/ServerEngine$1.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/server/ServerEngine.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/server/TestClient.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/server/TicTacToeEngine.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/server/TicTacToeLogic.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/server/TicTacToeState.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/shared/ExecutionState.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/shared/Protocol.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/INF122FinalAssignment/state/ServerState.class</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
+  </component>
+  <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -485,6 +612,18 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -549,14 +688,6 @@
       <listeners />
       <method />
     </configuration>
-    <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Application.ArmagriddonGUI" />
-    </list>
-    <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Application.ArmagriddonGUI" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
@@ -564,46 +695,180 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f9ded735-77c7-46b3-8e29-60fe136b0d84" name="Default" comment="" />
-      <created>1457895956923</created>
+      <changelist id="c1f72c3b-8011-4678-918b-9955f8d7aec9" name="Default" comment="" />
+      <created>1457307725303</created>
       <option name="number" value="Default" />
-      <updated>1457895956923</updated>
+      <updated>1457307725303</updated>
     </task>
-    <task id="LOCAL-00001" summary="Changed return type hasWinner() to void and completed move logic">
-      <created>1457903044956</created>
+    <task id="LOCAL-00001" summary="fixed image paths for main menu buttons">
+      <created>1457460321856</created>
       <option name="number" value="00001" />
       <option name="project" value="LOCAL" />
-      <updated>1457903044956</updated>
+      <updated>1457460321856</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="set visibility for 3 main panels to false - useful to indicate which &quot;screen&quot; to show">
+      <created>1457475685253</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1457475685253</updated>
+    </task>
+    <task id="LOCAL-00003" summary="set visibility for 3 main panels to false - useful to indicate which &quot;screen&quot; to show">
+      <created>1457475890321</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1457475890321</updated>
+    </task>
+    <task id="LOCAL-00004" summary="set visibility for 3 main panels to false - useful to indicate which &quot;screen&quot; to show">
+      <created>1457479320777</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1457479320777</updated>
+    </task>
+    <task id="LOCAL-00005" summary="set visibility for 3 main panels to false - useful to indicate which &quot;screen&quot; to show">
+      <created>1457479343862</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1457479343862</updated>
+    </task>
+    <task id="LOCAL-00006" summary="added note to GridPanel">
+      <created>1457483022578</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1457483022578</updated>
+    </task>
+    <task id="LOCAL-00007" summary="edited GridPanel so the grid cdan be retrieved">
+      <created>1457483737297</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1457483737297</updated>
+    </task>
+    <task id="LOCAL-00008" summary="edited GUI package to work with ExecutionState">
+      <created>1457498806551</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1457498806551</updated>
+    </task>
+    <task id="LOCAL-00009" summary="added ToolTipText to grid to help with finding the location of clicked labels">
+      <created>1457503428832</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1457503428832</updated>
+    </task>
+    <task id="LOCAL-00010" summary="created a GamePieceGenerator and adds the resulting game piece to the grid">
+      <created>1457589218675</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1457589218675</updated>
+    </task>
+    <task id="LOCAL-00011" summary="created abstract GameState class - used it to update GUI game pieces and turns based on the selected game">
+      <created>1457635003266</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1457635003266</updated>
+    </task>
+    <task id="LOCAL-00012" summary="created abstract GameState class - used it to update GUI game pieces and turns based on the selected game">
+      <created>1457645882924</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1457645882924</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fixed GameState issue">
+      <created>1457646309190</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1457646309190</updated>
+    </task>
+    <task id="LOCAL-00014" summary="edited grid clicking">
+      <created>1457648598014</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1457648598014</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fixed TurnPanel">
+      <created>1457650260383</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1457650260383</updated>
+    </task>
+    <task id="LOCAL-00016" summary="changed backgrounds">
+      <created>1457656011385</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1457656011385</updated>
+    </task>
+    <task id="LOCAL-00017" summary="added hasWinner but it isn't logically correct">
+      <created>1457741357479</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1457741357479</updated>
+    </task>
+    <task id="LOCAL-00018" summary="modified hasWinner">
+      <created>1457741806040</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1457741806040</updated>
+    </task>
+    <task id="LOCAL-00019" summary="set up checkerboard">
+      <created>1457746101301</created>
+      <option name="number" value="00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1457746101301</updated>
+    </task>
+    <task id="LOCAL-00020" summary="placed checker pieces">
+      <created>1457746927447</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1457746927447</updated>
+    </task>
+    <task id="LOCAL-00021" summary="some more stuff">
+      <created>1457824728064</created>
+      <option name="number" value="00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1457824728064</updated>
+    </task>
+    <task id="LOCAL-00022" summary="some more stuff">
+      <created>1457889538640</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1457889538640</updated>
+    </task>
+    <task id="LOCAL-00023" summary="added stuff for match game">
+      <created>1457902736619</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1457902736619</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14794521" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13327949" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26635513" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973205" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -618,32 +883,202 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed return type hasWinner() to void and completed move logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed return type hasWinner() to void and completed move logic" />
+    <MESSAGE value="fixed image paths for main menu buttons" />
+    <MESSAGE value="set visibility for 3 main panels to false - useful to indicate which &quot;screen&quot; to show" />
+    <MESSAGE value="added note to GridPanel" />
+    <MESSAGE value="edited GridPanel so the grid cdan be retrieved" />
+    <MESSAGE value="edited GUI package to work with ExecutionState" />
+    <MESSAGE value="added ToolTipText to grid to help with finding the location of clicked labels" />
+    <MESSAGE value="created a GamePieceGenerator and adds the resulting game piece to the grid" />
+    <MESSAGE value="created abstract GameState class - used it to update GUI game pieces and turns based on the selected game" />
+    <MESSAGE value="fixed GameState issue" />
+    <MESSAGE value="edited grid clicking" />
+    <MESSAGE value="fixed TurnPanel" />
+    <MESSAGE value="changed backgrounds" />
+    <MESSAGE value="added hasWinner but it isn't logically correct" />
+    <MESSAGE value="modified hasWinner" />
+    <MESSAGE value="set up checkerboard" />
+    <MESSAGE value="placed checker pieces" />
+    <MESSAGE value="some more stuff" />
+    <MESSAGE value="added stuff for match game" />
+    <option name="LAST_COMMIT_MESSAGE" value="added stuff for match game" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/GUI/ArmagriddonGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/GridPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="40" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
-          <folding />
+          <caret line="39" column="37" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
+          <folding>
+            <element signature="e#1855#1856#0" expanded="false" />
+            <element signature="e#1887#1888#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/BattleshipEngine.java">
+    <entry file="file://$PROJECT_DIR$/src/server/CheckersState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#561#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/TicTacToeLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="e#307#308#0" expanded="true" />
+            <element signature="e#346#347#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/ArmagriddonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="76" column="9" selection-start-line="76" selection-start-column="9" selection-end-line="76" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/ExecutionState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/GridPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#1855#1856#0" expanded="false" />
+            <element signature="e#1887#1888#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/ArmagriddonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="86" column="1" selection-start-line="86" selection-start-column="1" selection-end-line="86" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/GamePlayPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/LoginPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="97" column="1" selection-start-line="97" selection-start-column="1" selection-end-line="97" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/MainMenuPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="120" column="1" selection-start-line="120" selection-start-column="1" selection-end-line="120" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/ArmagriddonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/Protocol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/ScorePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.061329">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/LoginPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="97" column="1" selection-start-line="97" selection-start-column="1" selection-end-line="97" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/MainMenuPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="121" column="1" selection-start-line="121" selection-start-column="1" selection-end-line="121" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/ExecutionState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/state/ServerState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/ArmagriddonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="82" column="5" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -651,7 +1086,15 @@
     <entry file="file://$PROJECT_DIR$/src/server/TicTacToeEngine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/Playable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -659,31 +1102,61 @@
     <entry file="file://$PROJECT_DIR$/src/GUI/GamePlayPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="42" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
-          <folding />
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/GameLogic.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/TurnPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
+          <caret line="48" column="5" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
+          <folding>
+            <element signature="e#1083#1084#0" expanded="false" />
+            <element signature="e#1115#1116#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/TicTacToeState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="29" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1217#1218#0" expanded="false" />
+            <element signature="e#1362#1363#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/CheckersState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
+          <caret line="24" column="52" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/CheckersLogic.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/GridPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="55" column="28" selection-start-line="55" selection-start-column="28" selection-end-line="55" selection-end-column="28" />
+          <caret line="97" column="1" selection-start-line="97" selection-start-column="1" selection-end-line="97" selection-end-column="1" />
+          <folding>
+            <element signature="e#1855#1856#0" expanded="false" />
+            <element signature="e#1887#1888#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/ServerEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -691,36 +1164,106 @@
     <entry file="file://$PROJECT_DIR$/src/server/GameState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/TicTacToeState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="58" column="30" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/TicTacToeLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#699#700#0" expanded="false" />
+            <element signature="e#726#727#0" expanded="false" />
+            <element signature="e#782#783#0" expanded="false" />
+            <element signature="e#819#820#0" expanded="false" />
+            <element signature="e#871#872#0" expanded="false" />
+            <element signature="e#921#922#0" expanded="false" />
+            <element signature="e#1046#1047#0" expanded="false" />
+            <element signature="e#1082#1083#0" expanded="false" />
+            <element signature="e#1343#1344#0" expanded="false" />
+            <element signature="e#1390#1391#0" expanded="false" />
+            <element signature="e#1430#1431#0" expanded="false" />
+            <element signature="e#1467#1468#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/GameLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/MatchLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71428573">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="30" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/TicTacToeLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3344538">
+          <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+          <folding>
+            <element signature="e#307#308#0" expanded="true" />
+            <element signature="e#346#347#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="simpleUML.UMLToolWindowPlugin">
+    <General>
+      <option name="birdViewUpdateDelay" value="2000" />
+      <option name="knownFile0" value="file://$PROJECT_DIR$/../simse.suml" />
+      <option name="defaultFileLocation" value="file://$PROJECT_DIR$/.." />
+    </General>
+    <Classdiagram>
+      <option name="diagramTitleFont" value="SansSerif,1,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="defaultFieldsExpanded" value="false" />
+      <option name="defaultContructorsExpanded" value="false" />
+      <option name="defaultMethodsExpanded" value="false" />
+      <option name="showParameters" value="true" />
+      <option name="showTooltip" value="true" />
+      <option name="showReturnValues" value="true" />
+      <option name="longModifier" value="true" />
+      <option name="implementsBehaviour" value="1" />
+      <option name="extendsBehaviour" value="1" />
+      <option name="compartmentBehaviour" value="1" />
+      <option name="interfaceBackgroundColor" value="-6494306" />
+      <option name="abstractClassBackgroundColor" value="-1580132" />
+      <option name="classBackgroundColor" value="-6508057" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="quickSourceLinkColor" value="-16776961" />
+      <option name="quickDiagramLinkColor" value="-8454144" />
+      <option name="drawDecorations" value="false" />
+      <option name="hideFieldList" value="" />
+      <option name="showFieldList" value="" />
+      <option name="hideConstructorList" value="" />
+      <option name="showConstructorList" value="" />
+      <option name="hideMethodList" value="" />
+      <option name="showMethodList" value="" />
+      <option name="minimumFigureSize" value="0,0" />
+    </Classdiagram>
+    <Dependencydiagram>
+      <option name="diagramTitleFont" value="SansSerif,1,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="packageNameCompressionLevel" value="0" />
+    </Dependencydiagram>
+    <Packagediagram>
+      <option name="diagramTitleFont" value="SansSerif,0,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="packageBackgroundColor" value="-4144960" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="packageNameCompressionLevel" value="2" />
+    </Packagediagram>
   </component>
 </project>

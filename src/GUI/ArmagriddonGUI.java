@@ -64,7 +64,8 @@ public class ArmagriddonGUI extends JFrame{
             mainPane.add(mainMenuPanel, BorderLayout.CENTER);
             loginPanel.setVisible(false);
             mainMenuPanel.setVisible(true);
-//            gamePlayPanel.setVisible(false);
+            if (gamePlayPanel != null)
+                gamePlayPanel.setVisible(false);
         } else if (serverState.execState == ExecutionState.GAMEPLAY) {
             gamePlayPanel = new GamePlayPanel(this, gameState, gameLogic);
             mainPane.add(gamePlayPanel, BorderLayout.CENTER);
