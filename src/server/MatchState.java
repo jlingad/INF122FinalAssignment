@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public class MatchState extends GameState{
 
-    private String gameName = "Tic-Tac-Toe";
+    private String gameName = "Memory Match";
     private Integer currentPlayer = 1;
     private HashMap<Integer, Integer> scoresMap;
     private JLabel grid[];
