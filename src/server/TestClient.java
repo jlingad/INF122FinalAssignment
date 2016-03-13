@@ -31,17 +31,7 @@ public class TestClient
 //		t1.join();
 		try
 		{
-			// TODO: need to figure out how to establish communication between clients. The ClientCommunication
-			// objects are currently independent, so they don't know of each other. Do we need to create a 
-			// GameInstance object that simply holds the two objects? So first the client will be placed in the
-			// queue of clients that aren't in a game. Then, after communicating with the server what exactly
-			// it wants to play and who to play it with, it will move the clients from the server's queue of
-			// users to a queue of GameInstance objects that have both sockets ready for communication. 
-//			Socket socket = new Socket("192.168.2.12", 60101);
-			
-			
-			InetAddress hostName = InetAddress.getLocalHost();
-						
+			InetAddress hostName = InetAddress.getLocalHost();	
 			Socket socket = new Socket(hostName, 60101);
 
 			BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -50,22 +40,50 @@ public class TestClient
 			System.out.println("Established connection with the server: " + socket.toString());
 			
 			String serverMessage = "";
-//			Scanner userMessage = new Scanner(System.in);
+			Scanner userMessage = new Scanner(System.in);
+			
+			serverMessage = input.readLine();
+			System.out.println("Message from server: " + serverMessage + ". Successfully connected to server.");
+			
+			System.out.print("User name to use: ");
+			output.println(userMessage.nextLine());
+			output.flush();
+			
+			serverMessage = input.readLine();
+			System.out.println("Attempt to log user in: " + serverMessage);
+			
+			System.out.print("Game to play: [0]-TicTacToe, [1]-Checkers, [2]-Match ");
+			serverMessage = userMessage.next();
+			switch(serverMessage)
+			{
+				case "0":
+					output.println(GameNames.TIC_TAC_TOE);
+					output.flush();
+					break;
+				case "1":
+					output.println(GameNames.CHECKERS);
+					output.flush();
+					break;
+				case "2":
+					output.println(GameNames.MATCH);
+					output.flush();
+					break;
+			}
+			
+			userMessage.close();
 			
 //			while((serverMessage = input.readLine()) != null)
 //			while( !serverMessage.equals("exit") )
-			while( (serverMessage = input.readLine()) != null)
-			{
-				System.out.println("Message from server: " + serverMessage);
-
+//			while( (serverMessage = input.readLine()) != null)
+//			{
 //				System.out.print("Message to server: ");
 //				serverMessage = userMessage.nextLine();
-				
+//				
 //				output.println(serverMessage);
 //				output.flush();
-				
+//				
 //				System.out.println("Message sent.");				
-			}
+//			}
 //			userMessage.close();
 		}
 		catch(Exception e)

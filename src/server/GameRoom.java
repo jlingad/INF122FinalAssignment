@@ -40,6 +40,7 @@ public class GameRoom extends Thread implements Playable
 	{
 		try
 		{
+			System.out.println("Thread started! ID: " + this.getId());
 //			hostClient.getOutputPort().println("You are the host client, you are connected to a game room.");
 //			hostClient.getOutputPort().flush();
 //			guestClient.getOutputPort().println("You are the guest client, you are connected to a game room.");

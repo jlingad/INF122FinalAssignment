@@ -146,20 +146,19 @@ public class ClientConnection
 				
 				// Get name of game they want to play
 				nameOfGame = GameNames.valueOf(input.readLine());
-				
-				
-				// ---------- SERVERENGINE SIDE ---------- //
+
 				// Add to [specific game] queue or to a new game
 				engine.addUser(client, nameOfGame);
 				
 				// TODO: check if this is relevant. Do I need to join?
 				System.out.println("Thread: " + this.getId() + " " + this.isAlive());
-				this.join();
+//				this.join();
 			}
 			catch(Exception e)
 			{
 				System.out.println("Cient could not establish I/O with server.");
-				return;
+				System.err.println(e.getClass() + ": " + e.getMessage());
+//				return;
 			}
 		}
 	}
