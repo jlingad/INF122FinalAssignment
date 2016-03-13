@@ -11,8 +11,9 @@ public abstract class GameLogic {
 
     public int getMaxClicks() { return maxClicksPerTurn; }
 
-    public abstract boolean hasWinner(GameState state);
+    public abstract void hasWinner(GameState state);
 
     public abstract void makeMove(GameState state, GamePlayPanel gamePlayPanel);
+
     public abstract boolean isValidClick(GameState state, JLabel clickedPanel);
 }

@@ -17,15 +17,16 @@ public class MatchLogic extends GameLogic {
         return maxClicksPerTurn;
     }
 
-    public boolean hasWinner(GameState state) {
+    public void hasWinner(GameState state) {
         boolean win = false;
-        JLabel[] grid = state.getGrid();
-        for (int i=0; i<grid.length; i++)
-            if (grid[i].getIcon() != null) {
-                win = true;
-                System.out.println("winner");
-            }
-        return win;
+//        JLabel[] grid = state.getGrid();
+//        for (int i=0; i<grid.length; i++)
+//            if (grid[i].) {
+//                win = true;
+//                System.out.println("winner");
+//            }
+        //return win;
+
     }
 
     public void makeMove(GameState state, GamePlayPanel gamePlayPanel) {

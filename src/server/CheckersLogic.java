@@ -18,7 +18,7 @@ public class CheckersLogic extends GameLogic {
 
     // only checks if there is a row filled with game pieces
     // does not check for particular players' game pieces
-    public boolean hasWinner(GameState state) {
+    public void hasWinner(GameState state) {
         JLabel[] grid = state.getGrid();
         Icon piece = state.getGamePiece(1);
         // get any piece that can be found on the board
@@ -28,11 +28,11 @@ public class CheckersLogic extends GameLogic {
             if (grid[i].getIcon() != null)
                 piece = grid[i].getIcon();
         // if there is a piece of a different type, there is no winner
-        for (int i=0; i<grid.length; i++)
-            if (grid[i].getIcon() != piece)
-                return false;
+//        for (int i=0; i<grid.length; i++)
+//            if (grid[i].getIcon() != piece)
+//                return false;
         System.out.println("winner");
-        return true;
+        //return true;
     }
 
     public void makeMove(GameState state, GamePlayPanel gamePlayPanel) {
