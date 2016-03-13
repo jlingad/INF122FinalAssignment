@@ -30,7 +30,9 @@ public class ClientConnection
 	private boolean connected;						// State of the user if user is currently connected to the server
 	private CommunicationPort commport;				// Nested class that deals with the 
 	private boolean inGameRoom;
-	// private String clientName; 					// Might be needed later so we know who is who
+	private String clientName; 					    // Client name that is going to be logged into the database
+	private ServerEngine engine;
+	private GameNames nameOfGame;
 	
 	// TODO: create input and output buffers so that communication can happen
 	// private inputstream private outputstream
@@ -38,14 +40,15 @@ public class ClientConnection
 	// client to server and server to client.
 	
 	
-	public ClientConnection(Socket newSocket)
+	public ClientConnection(Socket newSocket, ServerEngine engine)
 	{
 		System.out.println("ClientConnection object established.");
 		socket = newSocket;
 		connected = true;
 		inGameRoom = false;
-		commport = new CommunicationPort();
+		commport = new CommunicationPort(this);
 		commport.start(); // This calls run() in the nested class below. -- Starts the thread
+		this.engine = engine;
 		System.out.println("After run in ClientConnection::ClientConnection");
 	}
 	
@@ -109,6 +112,13 @@ public class ClientConnection
 		public BufferedReader input;
 		public PrintWriter   output;
 //		private OutputObjectReader out;
+		private ClientConnection client;
+		
+		public CommunicationPort(ClientConnection host)
+		{
+			this.client = host;
+		}
+		
 		
 		public void run()
 		{
@@ -129,15 +139,21 @@ public class ClientConnection
 				output.flush();
 				
 				// Get client name
-				
+				clientName = input.readLine();
+
 				// Query database for the name 
+				engine.logUserIn(clientName);
+
+				output.println(true); // user has logged in, queue the client for next piece of info
+				output.flush();
 				
 				// Get name of game they want to play
+				nameOfGame = GameNames.valueOf(input.readLine());
+				
 				
 				// ---------- SERVERENGINE SIDE ---------- //
-				// Add to [specific game] queue
-				
-				// If no open waiting rooms, then create a new GameRoom
+				// Add to [specific game] queue or to a new game
+				engine.addUser(client, nameOfGame);
 				
 //				Scanner returnMessage = new Scanner(System.in);
 //				String clientMessage = "";

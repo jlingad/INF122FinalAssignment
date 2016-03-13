@@ -56,7 +56,8 @@ public class ArmaGRIDdonServer extends Thread
 	{
 		clientList = new ArrayList<ClientConnection>();
 		
-		engine = new ServerEngine(this);
+//		engine = new ServerEngine(this);
+		engine = new ServerEngine();
 		engine.start(); // Puts the engine on a new thread
 		try
 		{
@@ -74,6 +75,10 @@ public class ArmaGRIDdonServer extends Thread
 		{
 			System.out.println("Could not open server socket.");
 			return;
+		}
+		catch(Exception e)
+		{
+			System.err.println(e.getClass() + ": " + e.getMessage());
 		}
 	}
 	
@@ -115,7 +120,7 @@ public class ArmaGRIDdonServer extends Thread
 				socket = serverSocket.accept();
 				System.out.println("Client " + socket + " has connected.");
 				
-				clientList.add(new ClientConnection(socket));
+				clientList.add(new ClientConnection(socket, engine));
 				System.out.println("# of clients connected: " + clientList.size());
 				
 				if(clientList.size() % 2 == 0)

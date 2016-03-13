@@ -1,7 +1,5 @@
 package server;
 
-import java.util.Scanner;
-
 public class GameRoom extends Thread implements Playable
 {
 	private ClientConnection hostClient;
@@ -21,35 +19,56 @@ public class GameRoom extends Thread implements Playable
 		System.out.println("Guest Client: " + this.guestClient.socket.getPort());
 	}
 	
+	public GameRoom(ClientConnection hostClient)
+	{
+		this.hostClient = hostClient;
+		this.guestClient = null;
+		hostClient.setAsInGame();
+		System.out.println("Game room has been established. Waiting for second client to match.");
+	}
+	
+	/**
+	 * Will probably be run as a while loop, taking and sending information from the client
+	 * How do I not set is so that the GameRoom is just waiting on the client the entire time? 
+	 * What if the other client sends a command? We need to check the current state against the
+	 * state that is being sent up to make sure that the correct playing is making a move in game
+	 */
 	public void run()
 	{
 		try
 		{
-			hostClient.getOutputPort().println("You are the host client, you are connected to a game room.");
-			hostClient.getOutputPort().flush();
-			guestClient.getOutputPort().println("You are the guest client, you are connected to a game room.");
-			guestClient.getOutputPort().flush();
-			
-			String messageToForward = "";
-			Scanner message = new Scanner(System.in);
-			while( !(messageToForward = message.nextLine()).equals("quit"))
-			{
-//				messageToForward = message.nextLine();
-//				messageToForward = hostClient.getInputPort().readLine();
-				guestClient.getOutputPort().println(messageToForward);
-				guestClient.getOutputPort().flush();
-				System.out.println("HostClient: " + messageToForward);
-//				messageToForward = guestClient.getInputPort().readLine();
-				hostClient.getOutputPort().println(messageToForward);
-				hostClient.getOutputPort().flush();
-				System.out.println("GuestClient: " + messageToForward);
-				// TODO: when to break out of loop
-			}
-			message.close();
+//			hostClient.getOutputPort().println("You are the host client, you are connected to a game room.");
+//			hostClient.getOutputPort().flush();
+//			guestClient.getOutputPort().println("You are the guest client, you are connected to a game room.");
+//			guestClient.getOutputPort().flush();
+//			
+//			String messageToForward = "";
+//			Scanner message = new Scanner(System.in);
+//			while( !(messageToForward = message.nextLine()).equals("quit"))
+//			{
+////				messageToForward = message.nextLine();
+////				messageToForward = hostClient.getInputPort().readLine();
+//				guestClient.getOutputPort().println(messageToForward);
+//				guestClient.getOutputPort().flush();
+//				System.out.println("HostClient: " + messageToForward);
+////				messageToForward = guestClient.getInputPort().readLine();
+//				hostClient.getOutputPort().println(messageToForward);
+//				hostClient.getOutputPort().flush();
+//				System.out.println("GuestClient: " + messageToForward);
+//				// TODO: when to break out of loop
+//			}
+//			message.close();
 		}
 		catch(Exception e)
 		{
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	public void addOpponent(ClientConnection guest)
+	{
+		this.guestClient = guest;
+		guestClient.setAsInGame();
+		System.out.println("Client has been matched with opponent. Update views now.");
 	}
 }
