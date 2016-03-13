@@ -124,6 +124,21 @@ public class ClientConnection
 				System.out.println("ClientConnection: Using thread #" + Thread.currentThread().getId());	// Tests to see if it's using threads
 				System.out.println(socket + " has established input and output communication ports.");
 				
+				// Client connected successfully
+				output.println(true);
+				output.flush();
+				
+				// Get client name
+				
+				// Query database for the name 
+				
+				// Get name of game they want to play
+				
+				// ---------- SERVERENGINE SIDE ---------- //
+				// Add to [specific game] queue
+				
+				// If no open waiting rooms, then create a new GameRoom
+				
 //				Scanner returnMessage = new Scanner(System.in);
 //				String clientMessage = "";
 //				

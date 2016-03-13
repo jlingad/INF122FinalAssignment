@@ -1,7 +1,10 @@
 package server;
 
+import database.SQLiteJDBC;
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Class that is going to be responsible for handling client connections by
@@ -20,13 +23,16 @@ public class ServerEngine extends Thread
 	ArmaGRIDdonServer server;
 	List<GameRoom> gamesInProgress;
 	List<ClientConnection> connectedClients;
+	SQLiteJDBC db;
 	// TODO: needs to add a game factory object instance here
 	
 	public ServerEngine(ArmaGRIDdonServer server)
 	{
+		
 		System.out.println("ServerEngine::ServerEngine");
 		this.server = server;
 		gamesInProgress = new ArrayList<GameRoom>();
+		db = new SQLiteJDBC();
 	}
 	
 	/**
