@@ -58,9 +58,17 @@ public class CheckersLogic extends GameLogic {
 
         // check to see if valid move
         else if (state.getClickedPanels().size() > 0) {
-            //if(isValidMove(state.getClickedPanels().get(0), clickedPanel.getDisplayedMnemonic()
-            //    currentPlayer, false)) {
-            //}
+            int oldP = Integer.parseInt(state.getClickedPanels().get(0).getToolTipText());
+            int newP = Integer.parseInt(clickedPanel.getToolTipText());
+            if(isValidMove(oldP, newP, currentPlayer, false)) {  // false until we implement kings
+                System.out.println("Move is legal.");
+                isValid = true;
+            }
+            else {
+                System.out.println("Move is not legal.");
+                state.getClickedPanels().clear();
+                isValid = false;
+            }
         }
 
 
