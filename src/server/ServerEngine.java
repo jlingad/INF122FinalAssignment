@@ -20,7 +20,6 @@ import java.util.List;
  */
 public class ServerEngine extends Thread
 {
-//	private ArmaGRIDdonServer server;
 	private List<GameRoom> tictactoeInProgress;
 	private List<GameRoom> checkersInProgress;
 	private List<GameRoom> matchInProgress;
@@ -28,16 +27,14 @@ public class ServerEngine extends Thread
 	private SQLiteJDBC db;
 	// TODO: needs to add a game factory object instance here
 	
-//	public ServerEngine(ArmaGRIDdonServer server)
 	public ServerEngine()
 	{
-		
 		System.out.println("ServerEngine::ServerEngine");
-//		this.server = server;
-//		connectedClients = new ArrayList<ClientConnection>();
+		
+		connectedClients    = new ArrayList<ClientConnection>();
 		tictactoeInProgress = new ArrayList<GameRoom>();
-		checkersInProgress = new ArrayList<GameRoom>();
-		matchInProgress = new ArrayList<GameRoom>();
+		checkersInProgress  = new ArrayList<GameRoom>();
+		matchInProgress     = new ArrayList<GameRoom>();
 		db = new SQLiteJDBC();
 	}
 	
@@ -51,20 +48,19 @@ public class ServerEngine extends Thread
 	{
 		while(true)
 		{
-//				System.out.println("ServerEngine::run()");		
 			try
 			{
 //				connectedClients = server.getConnectedClients();
-				synchronized(this) { this.wait(); }
-				if(connectedClients.size() > 1) // If we have at least 2 people connected ...
-				{
-					System.out.println("ServerEngine::run(), connectedClients.size() = " + connectedClients.size());
-					GameRoom gameInstance = new GameRoom(connectedClients.get(0), connectedClients.get(1));
-					System.out.println("ServerEngine Message:::Added clients to the server.");
-					gameInstance.start();
-					System.out.println("ServerEngine Message:::gameInstance now on new thread: " + gameInstance.getId());
+//				synchronized(this) { this.wait(); }
+//				if(connectedClients.size() > 1) // If we have at least 2 people connected ...
+//				{
+//					System.out.println("ServerEngine::run(), connectedClients.size() = " + connectedClients.size());
+//					GameRoom gameInstance = new GameRoom(connectedClients.get(0), connectedClients.get(1));
+//					System.out.println("ServerEngine Message:::Added clients to the server.");
+//					gameInstance.start();
+//					System.out.println("ServerEngine Message:::gameInstance now on new thread: " + gameInstance.getId());
 //					break; // TODO: take out once testing with more than two clients. Should continue to add clients to a room
-				}
+//				}
 			}
 			catch(Exception e)
 			{
@@ -83,6 +79,7 @@ public class ServerEngine extends Thread
 	
 	public void addUser(ClientConnection client, GameNames game)
 	{
+		System.out.println("Adding user to " + game + " queue.");
 		switch(game)
 		{
 			case TIC_TAC_TOE:
@@ -90,7 +87,10 @@ public class ServerEngine extends Thread
 				if(tictactoeInProgress.size() % 2 == 0) // No game rooms available
 					tictactoeInProgress.add(new GameRoom(client));
 				else
+				{
 					tictactoeInProgress.get(tictactoeInProgress.size()-1).addOpponent(client);
+					tictactoeInProgress.get(tictactoeInProgress.size()-1).start();
+				}
 				break;
 			case CHECKERS:
 				// Add to checkers waiting room or game
@@ -107,5 +107,10 @@ public class ServerEngine extends Thread
 					matchInProgress.get(matchInProgress.size()-1).addOpponent(client);
 				break;
 		}
+	}
+	
+	public void handleClient(Socket socket)
+	{
+		connectedClients.add(new ClientConnection(socket, this));
 	}
 }
