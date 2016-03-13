@@ -76,21 +76,32 @@ public class CheckersLogic extends GameLogic {
     }
 
     // Take legal clickedPanels[0] and compare to clickedPanels[1], determine legality
-    public boolean isValidMove(int oldPos, int newPos, Integer player, boolean king) {
+    public boolean isValidMove(int oldPos, int newPos, int player, boolean king) {
         // Assume failure before anything else- lots of illegal moves
         boolean isValid = false;
-        int orow = oldPos/8;
-        int ocol = oldPos%8;
-        int nrow = newPos/8;
-        int ncol = newPos%8;
+        int orow = oldPos / 8;
+        int ocol = oldPos % 8;
+        int nrow = newPos / 8;
+        int ncol = newPos % 8;
         System.out.println("oldPos = (" + ocol + ", " + orow + ")");
         System.out.println("newPos = (" + ncol + ", " + nrow + ")");
 
 
+        if (ocol == ncol+1 || ocol == ncol-1) {
+            if(player == 1) {
+                if(orow == nrow-1 || (king && orow == nrow+1)) {
+                    isValid = true;
+                }
+            }
+            else {
+                if(orow == nrow+1 || (king && orow == nrow-1)) {
+                    isValid = true;
+                }
+            }
+        }
 
         return isValid;
     }
-
 
 
 
