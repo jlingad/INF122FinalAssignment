@@ -15,7 +15,7 @@ public class CheckersState extends GameState{
     private String gameName = "Checkers";
     private Integer currentPlayer = 1;
     private HashMap<Integer, Integer> scoresMap;
-    private JLabel grid[];
+    private JLabel grid[]; // straight array, i%8 for column, i/8 for row
     // Game object information... (gridDimensions, rulebook, etc.)
     private Pair<Integer, Integer> gridDimensions;
     private ArrayList<ImageIcon> gamePieces;

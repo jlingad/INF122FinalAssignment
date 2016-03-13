@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class CheckersLogic extends GameLogic {
 
-    private int maxClicksPerTurn = 2;
+    private int maxClicksPerTurn = 2; /// Will have to take into account jumping over pieces
 
     public CheckersLogic() {
     }
@@ -55,9 +55,32 @@ public class CheckersLogic extends GameLogic {
             System.out.println("Incorrect piece selected. You tried moving your opponent's game piece");
             isValid = false;
         }
-//        else if (state.getClickedPanels().size() > 0)
-            // check to see if valid move
+
+        // check to see if valid move
+        else if (state.getClickedPanels().size() > 0) {
+            /// use isValidMove
+        }
+
 
         return isValid;
     }
+
+    // Take legal clickedPanels[0] and compare to clickedPanels[1], determine legality
+    public boolean isValidMove(int oldPos, int newPos, Integer player, boolean king) {
+        // Assume failure before anything else- lots of illegal moves
+        boolean isValid = false;
+        int orow = oldPos/8;
+        int ocol = oldPos%8;
+        int nrow = newPos/8;
+        int ncol = newPos%8;
+        System.out.println("oldPos = (" + ocol + ", " + orow + ")");
+
+
+        return isValid;
+    }
+
+
+
+
+
 }
