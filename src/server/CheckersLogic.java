@@ -58,7 +58,9 @@ public class CheckersLogic extends GameLogic {
 
         // check to see if valid move
         else if (state.getClickedPanels().size() > 0) {
-            /// use isValidMove
+            //if(isValidMove(state.getClickedPanels().get(0), clickedPanel.getDisplayedMnemonic()
+            //    currentPlayer, false)) {
+            //}
         }
 
 
@@ -74,6 +76,8 @@ public class CheckersLogic extends GameLogic {
         int nrow = newPos/8;
         int ncol = newPos%8;
         System.out.println("oldPos = (" + ocol + ", " + orow + ")");
+        System.out.println("newPos = (" + ncol + ", " + nrow + ")");
+
 
 
         return isValid;
