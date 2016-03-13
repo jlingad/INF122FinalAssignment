@@ -31,7 +31,7 @@ public class TestClient
 //		t1.join();
 		try
 		{
-			// TODO: need to figure out how to establish communiation between clients. The ClientCommunication
+			// TODO: need to figure out how to establish communication between clients. The ClientCommunication
 			// objects are currently independent, so they don't know of each other. Do we need to create a 
 			// GameInstance object that simply holds the two objects? So first the client will be placed in the
 			// queue of clients that aren't in a game. Then, after communicating with the server what exactly
