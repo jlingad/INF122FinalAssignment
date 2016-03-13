@@ -25,7 +25,6 @@ public class ServerEngine extends Thread
 	private List<GameRoom> matchInProgress;
 	private List<ClientConnection> connectedClients;
 	private SQLiteJDBC db;
-	// TODO: needs to add a game factory object instance here that is going to create a factory and pass it into the GameRoom as a rulebook
 	
 	public ServerEngine()
 	{
@@ -108,5 +107,12 @@ public class ServerEngine extends Thread
 	public void handleClient(Socket socket)
 	{
 		connectedClients.add(new ClientConnection(socket, this));
+	}
+	
+	public void shutdown()
+	{
+		for(ClientConnection client : connectedClients)
+			client.disconnect();
+		
 	}
 }
