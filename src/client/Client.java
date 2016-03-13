@@ -12,5 +12,12 @@ public class Client {
 	
 	private String name;
 	private ServerConnector serverConnector;
+	private shared.ExecutionState executionState;
+	private GUI.ArmagriddonGUI armagriddonGUI;
+	private state.ServerState serverState;
+	
+	 public static void main(String[] args) {
+	 
+	 }
 	
 }
