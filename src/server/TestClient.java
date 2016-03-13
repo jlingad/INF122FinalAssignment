@@ -17,7 +17,7 @@ import java.util.Scanner;
  * two different instances of the TestClient class. 
  * 
  * Even though this is just to test the connection to the server and to make sure that the
- * server is capable of handling multiple clients, it can ultimately become skelton code
+ * server is capable of handling multiple clients, it can ultimately become skeleton code
  * for what needs to be implement client-side to allow for a connection to a server. 
  * @author jefmark
  *
