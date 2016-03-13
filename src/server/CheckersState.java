@@ -15,7 +15,7 @@ public class CheckersState extends GameState{
     private String gameName = "Checkers";
     private Integer currentPlayer = 1;
     private HashMap<Integer, Integer> scoresMap;
-    private JLabel grid[]; // straight array, i%8 for column, i/8 for row
+    private JLabel grid[];
     // Game object information... (gridDimensions, rulebook, etc.)
     private Pair<Integer, Integer> gridDimensions;
     private ArrayList<ImageIcon> gamePieces;
@@ -61,8 +61,8 @@ public class CheckersState extends GameState{
                 i += 7;
             }
             else
-                if (i%2 == 0)
-                        grid[i].setBackground(Color.DARK_GRAY);
+            if (i%2 == 0)
+                grid[i].setBackground(Color.DARK_GRAY);
         }
 
         // add pieces
@@ -80,6 +80,12 @@ public class CheckersState extends GameState{
         else if (currentPlayer == 2)
             currentPlayer = 1;
         clearClickedPanels();
+    }
+
+    public void addPoint(int playerNum) {
+        int newScore = scoresMap.get(playerNum)+1;
+        scoresMap.remove(playerNum);
+        scoresMap.put(playerNum, newScore);
     }
 
     public void addClickedPanel(JLabel clickedPanel) {

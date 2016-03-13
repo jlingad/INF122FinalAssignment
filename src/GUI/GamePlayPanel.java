@@ -56,6 +56,10 @@ public class GamePlayPanel extends JPanel {
         turnPanel.setTurnLabel(turnLabel);
     }
 
+    public void updateScorePanel() {
+        scorePanel.update();
+    }
+
     public ArmagriddonGUI getGUI() {
         return gui;
     }

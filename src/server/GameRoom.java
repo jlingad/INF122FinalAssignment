@@ -1,6 +1,6 @@
 package server;
 
-public class GameRoom extends Thread implements Playable
+public class GameRoom extends Thread 
 {
 	private ClientConnection hostClient;
 	private ClientConnection guestClient;
@@ -40,28 +40,13 @@ public class GameRoom extends Thread implements Playable
 	{
 		try
 		{
-			System.out.println("Thread started! ID: " + this.getId());
-//			hostClient.getOutputPort().println("You are the host client, you are connected to a game room.");
-//			hostClient.getOutputPort().flush();
-//			guestClient.getOutputPort().println("You are the guest client, you are connected to a game room.");
-//			guestClient.getOutputPort().flush();
-//			
-//			String messageToForward = "";
-//			Scanner message = new Scanner(System.in);
-//			while( !(messageToForward = message.nextLine()).equals("quit"))
-//			{
-////				messageToForward = message.nextLine();
-////				messageToForward = hostClient.getInputPort().readLine();
-//				guestClient.getOutputPort().println(messageToForward);
-//				guestClient.getOutputPort().flush();
-//				System.out.println("HostClient: " + messageToForward);
-////				messageToForward = guestClient.getInputPort().readLine();
-//				hostClient.getOutputPort().println(messageToForward);
-//				hostClient.getOutputPort().flush();
-//				System.out.println("GuestClient: " + messageToForward);
-//				// TODO: when to break out of loop
-//			}
-//			message.close();
+			System.out.println("Game started on separate thread! Thread ID: " + this.getId());
+			while(true)
+			{
+				break;
+			}
+			this.gameInProgress = false;
+			
 		}
 		catch(Exception e)
 		{
@@ -73,6 +58,12 @@ public class GameRoom extends Thread implements Playable
 	{
 		this.guestClient = guest;
 		guestClient.setAsInGame();
+		this.gameInProgress = true;
 		System.out.println("Client has been matched with opponent. Update views now.");
+	}
+	
+	public boolean gameInProgress()
+	{
+		return this.gameInProgress;
 	}
 }

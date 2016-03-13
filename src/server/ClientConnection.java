@@ -1,15 +1,13 @@
 package server;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.Scanner;
+
+// TODO: uncomment when needed for sending objects back and forth
+//import java.io.ObjectInputStream;
+//import java.io.ObjectOutputStream;
 
 /*
  * NOTES:
@@ -33,12 +31,6 @@ public class ClientConnection
 	private String clientName; 					    // Client name that is going to be logged into the database
 	private ServerEngine engine;
 	private GameNames nameOfGame;
-	
-	// TODO: create input and output buffers so that communication can happen
-	// private inputstream private outputstream
-	// Choose proper streams based on how we decide to implement communication protocal between
-	// client to server and server to client.
-	
 	
 	public ClientConnection(Socket newSocket, ServerEngine engine)
 	{
@@ -101,6 +93,11 @@ public class ClientConnection
 		return commport.input;
 	}
 	
+	public void setNameGame(GameNames game)
+	{
+		this.nameOfGame = game;
+	}
+	
 	/**
 	 * Simple nested class that allows for the multithreading aspect of the server. 
 	 * @author jefmark
@@ -149,16 +146,13 @@ public class ClientConnection
 
 				// Add to [specific game] queue or to a new game
 				engine.addUser(client, nameOfGame);
-				
-				// TODO: check if this is relevant. Do I need to join?
-				System.out.println("Thread: " + this.getId() + " " + this.isAlive());
-//				this.join();
+
+				this.join(); // Joined so that it does not waste threadsN
 			}
 			catch(Exception e)
 			{
-				System.out.println("Cient could not establish I/O with server.");
+				System.out.println("Cient could not establish rules with server.");
 				System.err.println(e.getClass() + ": " + e.getMessage());
-//				return;
 			}
 		}
 	}
