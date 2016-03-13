@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class CheckersLogic extends GameLogic {
 
     private int maxClicksPerTurn = 2; /// Will have to take into account jumping over pieces
+    private boolean jumped = false;
 
     public CheckersLogic() {
     }
@@ -47,8 +48,9 @@ public class CheckersLogic extends GameLogic {
     public void makeMove(GameState state, GamePlayPanel gamePlayPanel) {
         ArrayList<JLabel> clickedPanels = state.getClickedPanels();
         int currentPlayer = state.getCurrentPlayer();
+
         clickedPanels.get(0).setIcon(null);
-        clickedPanels.get(1).setIcon(state.getGamePiece(state.getCurrentPlayer()));
+        clickedPanels.get(1).setIcon(state.getGamePiece(currentPlayer));
         hasWinner(state, gamePlayPanel);
         state.changePlayerTurn();
         gamePlayPanel.updateTurnLabel();
@@ -69,7 +71,7 @@ public class CheckersLogic extends GameLogic {
         else if (state.getClickedPanels().size() > 0) {
             int oldP = Integer.parseInt(state.getClickedPanels().get(0).getToolTipText());
             int newP = Integer.parseInt(clickedPanel.getToolTipText());
-            if(isValidMove(oldP, newP, currentPlayer, false)) {  // false until we implement kings
+            if(isValidMove(oldP, newP, currentPlayer, false, state)) {  // false until we implement kings
                 System.out.println("Move is legal.");
                 isValid = true;
             }
@@ -85,16 +87,16 @@ public class CheckersLogic extends GameLogic {
     }
 
     // Take legal clickedPanels[0] and compare to clickedPanels[1], determine legality
-    public boolean isValidMove(int oldPos, int newPos, int player, boolean king) {
+    private boolean isValidMove(int oldPos, int newPos, int player, boolean king, GameState state) {
         // Assume failure before anything else- lots of illegal moves
         boolean isValid = false;
+
         int orow = oldPos / 8;
         int ocol = oldPos % 8;
         int nrow = newPos / 8;
         int ncol = newPos % 8;
         System.out.println("oldPos = (" + ocol + ", " + orow + ")");
         System.out.println("newPos = (" + ncol + ", " + nrow + ")");
-
 
         if (ocol == ncol+1 || ocol == ncol-1) {
             if(player == 1) {
@@ -109,9 +111,14 @@ public class CheckersLogic extends GameLogic {
             }
         }
 
+        // Check for pre-existing panel in newPos
+        if(isValid) {
+
+
+        }
+
         return isValid;
     }
-
 
 
 
