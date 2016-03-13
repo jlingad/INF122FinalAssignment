@@ -75,7 +75,7 @@ public class MainMenuPanel extends JPanel implements ActionListener {
         battleshipPanel.setBackground(Color.WHITE);
         battleshipPanel.setLayout(new GridBagLayout());
         battleshipButton = new JButton(
-                new ImageIcon(pathString+"/src/GUI/images/battleship.png"));
+                new ImageIcon(pathString+"/src/GUI/images/memory-match.png"));
         battleshipButton.setBackground(Color.WHITE);
         battleshipButton.addActionListener(this);
         battleshipPanel.add(battleshipButton);
