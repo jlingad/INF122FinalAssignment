@@ -34,7 +34,7 @@ public class ServerEngine extends Thread
 		
 		System.out.println("ServerEngine::ServerEngine");
 //		this.server = server;
-//		connectedClients = new ArrayList<ClientConnection>();
+		connectedClients = new ArrayList<ClientConnection>();
 		tictactoeInProgress = new ArrayList<GameRoom>();
 		checkersInProgress = new ArrayList<GameRoom>();
 		matchInProgress = new ArrayList<GameRoom>();
@@ -107,5 +107,10 @@ public class ServerEngine extends Thread
 					matchInProgress.get(matchInProgress.size()-1).addOpponent(client);
 				break;
 		}
+	}
+	
+	public void handleClient(Socket socket)
+	{
+		connectedClients.add(new ClientConnection(socket, this));
 	}
 }
