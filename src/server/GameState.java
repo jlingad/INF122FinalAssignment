@@ -20,13 +20,11 @@ public abstract class GameState {
     private ArrayList<JLabel> clickedPanels;
 
     public String getGameName() { return gameName; }
-    public Integer getCurrentPlayer() { return currentPlayer; }
+    public Integer getCurrentPlayer() { return currentPlayer;}
     public HashMap<Integer,Integer> getScores() { return scoresMap; }
-    
     public JLabel[] getGrid() {
         return grid;
     }
-    
     public Pair<Integer, Integer> getGridDimensions() {
         return gridDimensions;
     }
@@ -34,7 +32,6 @@ public abstract class GameState {
     public ImageIcon getGamePiece(int playerNum) {
         return gamePieces.get(playerNum-1);
     }
-    
     public ArrayList<JLabel> getClickedPanels() { return clickedPanels; }
 
     public void setGrid(JLabel[] startingBoard) {
@@ -47,6 +44,12 @@ public abstract class GameState {
         else if (currentPlayer == 2)
             currentPlayer = 1;
         clearClickedPanels();
+    }
+
+    public void addPoint(int playerNum) {
+        int newScore = scoresMap.get(playerNum)+1;
+        scoresMap.remove(playerNum);
+        scoresMap.put(playerNum, newScore);
     }
 
     public void addClickedPanel(JLabel clickedPanel) {

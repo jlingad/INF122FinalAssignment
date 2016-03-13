@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MatchLogic extends GameLogic {
 
@@ -27,8 +28,10 @@ public class MatchLogic extends GameLogic {
                 win = false;
             }
         if (win == true) {
+            HashMap<Integer, Integer> scoresMap = state.getScores();
+            int winner = (scoresMap.get(1) > scoresMap.get(2)) ? 1 : 2;
             String pathString = Paths.get("").toAbsolutePath().toString();
-            JOptionPane.showMessageDialog(gamePlayPanel, "WINNER is player " + state.getCurrentPlayer(),
+            JOptionPane.showMessageDialog(gamePlayPanel, "WINNER is player " + winner,
                     "END OF GAME", JOptionPane.PLAIN_MESSAGE,
                     new ImageIcon(pathString + "/src/GUI/images/partyparrot.gif"));
             gamePlayPanel.getGUI().setExecutionState(ExecutionState.MAIN_MENU);
@@ -42,10 +45,14 @@ public class MatchLogic extends GameLogic {
             JOptionPane.showMessageDialog(gamePlayPanel,"Not a match");
             clickedPanels.get(0).setIcon(null);
             clickedPanels.get(1).setIcon(null);
+        } else {
+            state.addPoint(state.getCurrentPlayer());
         }
+
         state.changePlayerTurn();
         hasWinner(state, gamePlayPanel);
         gamePlayPanel.updateTurnLabel();
+        gamePlayPanel.updateScorePanel();
     }
 
     public boolean isValidClick(GameState state, JLabel clickedPanel) {
