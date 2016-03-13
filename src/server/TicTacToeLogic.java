@@ -25,47 +25,37 @@ public class TicTacToeLogic extends GameLogic {
         //checks for horizontal win
         if (grid[0].getIcon() != null && grid[1].getIcon() != null && grid[2].getIcon() != null && grid[0].getIcon() == grid[1].getIcon() && grid[2].getIcon() == grid[1].getIcon()) {
             win = true;
-            //System.out.println("HORIZONTAL WIN");
         }
         if(grid[3].getIcon() != null && grid[4].getIcon() != null && grid[5].getIcon() != null && grid[3].getIcon() == grid[4].getIcon() && grid[5].getIcon() == grid[4].getIcon()){
             win = true;
-            //System.out.println("HORIZONTAL WIN");
         }
         if(grid[6].getIcon() != null && grid[7].getIcon() != null && grid[8].getIcon() != null && grid[6].getIcon() == grid[7].getIcon() && grid[8].getIcon() == grid[7].getIcon()){
             win = true;
-            //System.out.println("HORIZONTAL WIN");
         }
 
         //checks for vertical win
         else if (grid[0].getIcon() != null && grid[3].getIcon() != null && grid[6].getIcon() != null && grid[0].getIcon() == grid[3].getIcon() && grid[6].getIcon() == grid[3].getIcon()){
             win = true;
-            //System.out.println("VERTICAL WIN");
         }
         else if (grid[1].getIcon() != null && grid[4].getIcon() != null && grid[7].getIcon() != null && grid[1].getIcon() == grid[4].getIcon() && grid[7].getIcon() == grid[4].getIcon()){
             win = true;
-            //System.out.println("VERTICAL WIN");
         }
         else if (grid[2].getIcon() != null && grid[5].getIcon() != null && grid[8].getIcon() != null && grid[2].getIcon() == grid[5].getIcon() && grid[8].getIcon() == grid[5].getIcon()){
             win = true;
-            //System.out.println("VERTICAL WIN");
         }
 
         //checks for diagonal win
         else if (grid[0].getIcon() != null && grid[4].getIcon() != null && grid[8].getIcon() != null && grid[0].getIcon() == grid[4].getIcon() && grid[8].getIcon() == grid[4].getIcon()){
             win = true;
-            //System.out.println("DIAGONAL WIN");
         }
         else if (grid[2].getIcon() != null && grid[4].getIcon() != null && grid[6].getIcon() != null && grid[2].getIcon() == grid[4].getIcon() && grid[6].getIcon() == grid[4].getIcon()){
             win = true;
-            //System.out.println("DIAGONAL WIN");
         }
 
         if (win){
-            //printBoard();
             System.out.print("WINNER is player " + state.getCurrentPlayer());
         }
 
-        //return win;
     }
 
 
@@ -73,6 +63,7 @@ public class TicTacToeLogic extends GameLogic {
         ArrayList<JLabel> clickedPanels = state.getClickedPanels();
         // add to the grid the appropriate game piece (the one associated with the
         // current player - pieces are stored in the GameState object
+        boolean win = false;
         clickedPanels.get(0).setIcon(state.getGamePiece(state.getCurrentPlayer()));
         hasWinner(state);
         state.changePlayerTurn();
