@@ -111,15 +111,22 @@ public class CheckersLogic extends GameLogic {
             }
         }
 
-        // Check for pre-existing panel in newPos
-        if(isValid) {
-
-
+        // Check to make sure no collision with your own pieces
+        if(isValid && state.getClickedPanels().get(1).getIcon() == state.getGamePiece(state.getCurrentPlayer())) {
+            isValid = false;
+            System.out.println("You can't jump your own pieces!");
+        }
+        // Check to see if you're jumping on an enemy's piece
+        else if (isValid && state.getClickedPanels().get(1).getIcon() != null) {
+            System.out.println("JUMPING NOT IMPLEMENTED YET: MOVE FAILED");
+            // TODO: implement jumping
         }
 
         return isValid;
     }
 
+    private void handleJump(GameState state) {
 
+    }
 
 }
