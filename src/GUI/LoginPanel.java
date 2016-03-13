@@ -33,7 +33,6 @@ public class LoginPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 username = usernameTextField.getText();
-                sendUserInfo(); // create a new user in the server
                 gui.setExecutionState(ExecutionState.MAIN_MENU); // now logged in, so move on to MainMenuPanel
                 gui.update(); // show the MainMenuPanel
             }
@@ -81,10 +80,6 @@ public class LoginPanel extends JPanel {
 
     public String getUsername() {
         return username;
-    }
-
-    public void sendUserInfo() {
-        // send user info to server
     }
 
 }

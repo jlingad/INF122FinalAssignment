@@ -69,8 +69,6 @@ public class GridPanel extends JPanel implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         // read which button label was clicked on
         JLabel clickedPanel = (JLabel) e.getSource();
-        // print to the console which was label was selected
-        System.out.println(clickedPanel.getToolTipText());
         // change - GridPanel should somehow have access to Logic
         if (logic.isValidClick(state, clickedPanel))
             state.addClickedPanel(clickedPanel);
