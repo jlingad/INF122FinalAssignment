@@ -54,6 +54,8 @@ public class TicTacToeLogic extends GameLogic {
             win = true;
         }
 
+
+
         if (win){
             System.out.print("WINNER is player " + state.getCurrentPlayer());
             String pathString = Paths.get("").toAbsolutePath().toString();
@@ -63,6 +65,15 @@ public class TicTacToeLogic extends GameLogic {
             gamePlayPanel.getGUI().setExecutionState(ExecutionState.MAIN_MENU);
             gamePlayPanel.getGUI().update();
         }
+
+//        else
+//        {
+//            System.out.print("It appears there is NO winner! :(");
+//            JOptionPane.showMessageDialog(gamePlayPanel, "WINNER is player " + state.getCurrentPlayer(),
+//                    "END OF GAME", JOptionPane.PLAIN_MESSAGE);
+//            gamePlayPanel.getGUI().setExecutionState(ExecutionState.MAIN_MENU);
+//            gamePlayPanel.getGUI().update();
+//        }
 
     }
 
