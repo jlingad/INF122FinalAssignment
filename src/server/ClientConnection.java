@@ -30,7 +30,9 @@ public class ClientConnection
 	private boolean connected;						// State of the user if user is currently connected to the server
 	private CommunicationPort commport;				// Nested class that deals with the 
 	private boolean inGameRoom;
-	// private String clientName; 					// Might be needed later so we know who is who
+	private String clientName; 					    // Client name that is going to be logged into the database
+	private ServerEngine engine;
+	private GameNames nameOfGame;
 	
 	// TODO: create input and output buffers so that communication can happen
 	// private inputstream private outputstream
@@ -38,13 +40,14 @@ public class ClientConnection
 	// client to server and server to client.
 	
 	
-	public ClientConnection(Socket newSocket)
+	public ClientConnection(Socket newSocket, ServerEngine engine)
 	{
 		System.out.println("ClientConnection object established.");
 		socket = newSocket;
 		connected = true;
 		inGameRoom = false;
-		commport = new CommunicationPort();
+		this.engine = engine;
+		commport = new CommunicationPort(this);
 		commport.start(); // This calls run() in the nested class below. -- Starts the thread
 		System.out.println("After run in ClientConnection::ClientConnection");
 	}
@@ -109,15 +112,19 @@ public class ClientConnection
 		public BufferedReader input;
 		public PrintWriter   output;
 //		private OutputObjectReader out;
+//		private InputObjectReader in;
+		private ClientConnection client;
+		
+		public CommunicationPort(ClientConnection host)
+		{
+			this.client = host;
+		}
+		
 		
 		public void run()
 		{
-			// TODO ------------ HAVE TO IMPLEMENT A HANDSHAKE HERE TO NORMALIZE COMMUNICATION
 			try
 			{
-				// TODO: check to see if there's a benefit to initializing all member varibles in the run() method
-				// 	instead of the constructor? Will putting it in the constructor hold the server up since it has 
-				//  to create this first and then uses a new thread?
 				input  = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 				output = new PrintWriter(socket.getOutputStream(), true);
 				
@@ -129,44 +136,29 @@ public class ClientConnection
 				output.flush();
 				
 				// Get client name
-				
+				clientName = input.readLine();
+
 				// Query database for the name 
+				engine.logUserIn(clientName);
+
+				output.println(true); // user has logged in, queue the client for next piece of info
+				output.flush();
 				
 				// Get name of game they want to play
+				nameOfGame = GameNames.valueOf(input.readLine());
+
+				// Add to [specific game] queue or to a new game
+				engine.addUser(client, nameOfGame);
 				
-				// ---------- SERVERENGINE SIDE ---------- //
-				// Add to [specific game] queue
-				
-				// If no open waiting rooms, then create a new GameRoom
-				
-//				Scanner returnMessage = new Scanner(System.in);
-//				String clientMessage = "";
-//				
-//				// TODO: In the next iteration, should not be a while loop, should be a sequence
-//				// of commands that should be executed to 'set up' the game. 
-//				while( (clientMessage = input.readLine()) != null )
-//				{
-//					System.out.println(socket + ": " + clientMessage);
-//					
-//					// TODO: need to not create messages by hand, have to create a repository of 
-//					// server responses based on the information being sent up from the client.
-//					System.out.print("Response to client message: ");
-//					clientMessage = returnMessage.nextLine();
-//					
-//					output.println(clientMessage);
-//					output.flush();
-//					
-//					System.out.println("Message sent.");
-//				}
-//				returnMessage.close();
+				// TODO: check if this is relevant. Do I need to join?
 				System.out.println("Thread: " + this.getId() + " " + this.isAlive());
-				this.join();
-				System.out.println("Thread: " + this.getId() + " " + this.isAlive());
+//				this.join();
 			}
 			catch(Exception e)
 			{
 				System.out.println("Cient could not establish I/O with server.");
-				return;
+				System.err.println(e.getClass() + ": " + e.getMessage());
+//				return;
 			}
 		}
 	}

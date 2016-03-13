@@ -1,48 +1,25 @@
 package server;
 
-/*
- * The server itself is multithreaded. Don't worry about the ClientConnection object being multithreaded.
- * Once a new connection comes into the server, call run() that implements the Runnable interface's run
- * method. This run method should:
- * 		1. Allow the server to continue listening by moving the connected client to another thread
- * 		2. Create a ClientConnection object and place it in the list of connected clients
- * 	
- * TODO: add methods for the client-side to use so that it can request information from the server
- * 			- how many people are online and what are their names? 
- */
-
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Main server class. Initializes the server to accept connections from clients.
- * Once a client has established a connection, the server creates an object that
- * holds the information of the client and its connection to the server. This 
- * helps to establish connections between users. 
- * 
- * Once a new ClientConnection object is created and added into the list, the
- * object is then assigned into a parallel thread through the start command found
- * in the constructor of the ClientConnection object.
- * 
- * TODO: need to add a close connection method
- * TODO: maybe add the functionality so that if the server has to close all of a
- * 			sudden, go through the list of users that are still connected and
- * 			send them a server disconnect message.
- * TODO: to close connection, the server should be given a message from the client? 
- * 			Not really sure what is going to trigger shutting down the server.
+ * Trimmed down server. Does the job of listening for new clients,
+ * accepting their connections, and then handing it off to the
+ * engine to handle the rest of the eecution process. Once the
+ * client has been handed off to the server, the server continues 
+ * to listen for new clients waiting to connect. 
  * @author jefmark
+ *
  */
 public class ArmaGRIDdonServer extends Thread
 {
 	private static final int SERVER_PORT = 60101; // Fixed value server port: [6] = Team 6; [0101] Binary
 	private ServerSocket serverSocket;			  // Object to hold the socket that clients are going to connect to
 	private Socket socket;						  // Accepted client connections are going to be saved into this socket object
-	private List<ClientConnection> clientList; 	  // List of all clients that are currently connected to the server
 	private InetAddress hostAddress;			  // Should be localhost for our purpose
 	private ServerEngine engine;				  // Responsible for running and continuing execution flow
 	
@@ -53,10 +30,8 @@ public class ArmaGRIDdonServer extends Thread
 	 * TODO: remove print statements. They're there to show that the server is being established properly
 	 */
 	public ArmaGRIDdonServer()
-	{
-		clientList = new ArrayList<ClientConnection>();
-		
-		engine = new ServerEngine(this);
+	{		
+		engine = new ServerEngine();
 		engine.start(); // Puts the engine on a new thread
 		try
 		{
@@ -75,81 +50,30 @@ public class ArmaGRIDdonServer extends Thread
 			System.out.println("Could not open server socket.");
 			return;
 		}
-	}
-	
-	public List<ClientConnection> getConnectedClients()
-	{
-		return clientList;
-//		flushDisconnectedUsers();
-//		List<ClientConnection> toReturn = new ArrayList<ClientConnection>();
-//		for(ClientConnection c : clientList)
-//		{
-//			if(!c.isInGame())
-//				toReturn.add(c);
-//		}
-//		return toReturn;
+		catch(Exception e)
+		{
+			System.err.println(e.getClass() + ": " + e.getMessage());
+		}
 	}
 	
 	/**
-	 * The main loop of execution. A while(true) loop so that the server can continue to listen and accept
-	 * connections from multiple clients. Once a client has connected to the serverSocket, we save the
-	 * client's connection into a new socket. We pass this socket into a new client connection object and
-	 * add it into the list of client connections. 
-	 * 
-	 * In the constructor of the ClientConnection object, the process is then continue onto a separate thread
-	 * so that the server can continue listening. Maybe this is why we say Thread.sleep()? So that the server
-	 * can sleep the Thread that was being held so that it can continue listening. 
-	 * 
-	 * TODO: need to remove the print statements. They're there to help make sure execution is happening as expected
+	 * Once the server starts, it just listens for clients. It then passes the client to the engine to 
+	 * handle their connection and execution through 
 	 */
 	public void run()
-	{
-		System.out.println("Waiting lobby has been created.");
-		
+	{		
 		while(true)
-		{
-//			flushDisconnectedUsers(); // TODO: fix this in the ClientConnection object, the disconnect isn't happening.
-			
+		{			
 			try
 			{
 				socket = serverSocket.accept();
 				System.out.println("Client " + socket + " has connected.");
 				
-				clientList.add(new ClientConnection(socket));
-				System.out.println("# of clients connected: " + clientList.size());
-				
-				if(clientList.size() % 2 == 0)
-				{
-					System.out.println("Enough clients connected.");
-					synchronized(engine) { engine.notify(); }
-					System.out.println("Engine has been notified of enough users");
-				}
+				engine.handleClient(socket);
 			}
 			catch(IOException e)
 			{
 				System.out.println("Could not get client");
-			}
-		}
-	}
-	
-	/**
-	 * Goes through the list of connected users and removes any that have already disconnected.
-	 * When a client disconnects from the server, the server currently doesn't know that. This
-	 * might be something that could be fixed later so that if the client disconnects, we know
-	 * to remove them from the list, but we leave this in the list since we might not catch the
-	 * prematurely disconnected clients. 
-	 * 
-	 * This could be left as an accessory method. 
-	 * 
-	 */
-	private void flushDisconnectedUsers()
-	{
-		for(int i = 0; i < clientList.size(); ++ i)
-		{
-			if( !clientList.get(i).isConnected() )
-			{
-				System.out.println(clientList.get(i) + " removed due to lack of connection.");
-				clientList.remove(i);
 			}
 		}
 	}

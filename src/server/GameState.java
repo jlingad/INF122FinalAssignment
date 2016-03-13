@@ -15,7 +15,6 @@ public abstract class GameState {
     private Integer currentPlayer = 1;
     private HashMap<Integer, Integer> scoresMap;
     private JLabel grid[];
-    // Game object information... (gridDimensions, rulebook, etc.)
     private Pair<Integer, Integer> gridDimensions;
     private ArrayList<ImageIcon> gamePieces;
     private ArrayList<JLabel> clickedPanels;
