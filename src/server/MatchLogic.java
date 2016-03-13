@@ -1,9 +1,11 @@
 package server;
 
 import GUI.GamePlayPanel;
+import shared.ExecutionState;
 
 import javax.swing.*;
 import java.awt.*;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class MatchLogic extends GameLogic {
@@ -17,16 +19,21 @@ public class MatchLogic extends GameLogic {
         return maxClicksPerTurn;
     }
 
-    public void hasWinner(GameState state) {
-        boolean win = false;
-//        JLabel[] grid = state.getGrid();
-//        for (int i=0; i<grid.length; i++)
-//            if (grid[i].) {
-//                win = true;
-//                System.out.println("winner");
-//            }
-        //return win;
-
+    public void hasWinner(GameState state, GamePlayPanel gamePlayPanel) {
+        boolean win = true;
+        JLabel[] grid = state.getGrid();
+        for (int i=0; i<grid.length; i++)
+            if (grid[i].getIcon() == null) {
+                win = false;
+            }
+        if (win == true) {
+            String pathString = Paths.get("").toAbsolutePath().toString();
+            JOptionPane.showMessageDialog(gamePlayPanel, "WINNER is player " + state.getCurrentPlayer(),
+                    "END OF GAME", JOptionPane.PLAIN_MESSAGE,
+                    new ImageIcon(pathString + "/src/GUI/images/partyparrot.gif"));
+            gamePlayPanel.getGUI().setExecutionState(ExecutionState.MAIN_MENU);
+            gamePlayPanel.getGUI().update();
+        }
     }
 
     public void makeMove(GameState state, GamePlayPanel gamePlayPanel) {
@@ -37,7 +44,7 @@ public class MatchLogic extends GameLogic {
             clickedPanels.get(1).setIcon(null);
         }
         state.changePlayerTurn();
-        hasWinner(state);
+        hasWinner(state, gamePlayPanel);
         gamePlayPanel.updateTurnLabel();
     }
 

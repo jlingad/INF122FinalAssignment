@@ -1,8 +1,10 @@
 package server;
 
 import GUI.GamePlayPanel;
+import shared.ExecutionState;
 
 import javax.swing.*;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class TicTacToeLogic extends GameLogic {
@@ -18,7 +20,7 @@ public class TicTacToeLogic extends GameLogic {
 
     // only checks if there is a row filled with game pieces
     // does not check for particular players' game pieces
-    public void hasWinner(GameState state) {
+    public void hasWinner(GameState state, GamePlayPanel gamePlayPanel) {
         boolean win = false;
         JLabel[] grid = state.getGrid();
 
@@ -61,8 +63,12 @@ public class TicTacToeLogic extends GameLogic {
         }
 
         if (win){
-            //printBoard();
-            System.out.print("WINNER is player " + state.getCurrentPlayer());
+            String pathString = Paths.get("").toAbsolutePath().toString();
+            JOptionPane.showMessageDialog(gamePlayPanel, "WINNER is player " + state.getCurrentPlayer(),
+                    "END OF GAME", JOptionPane.PLAIN_MESSAGE,
+                    new ImageIcon(pathString+"/src/GUI/images/partyparrot.gif"));
+            gamePlayPanel.getGUI().setExecutionState(ExecutionState.MAIN_MENU);
+            gamePlayPanel.getGUI().update();
         }
 
         //return win;
@@ -74,7 +80,7 @@ public class TicTacToeLogic extends GameLogic {
         // add to the grid the appropriate game piece (the one associated with the
         // current player - pieces are stored in the GameState object
         clickedPanels.get(0).setIcon(state.getGamePiece(state.getCurrentPlayer()));
-        hasWinner(state);
+        hasWinner(state, gamePlayPanel);
         state.changePlayerTurn();
         gamePlayPanel.updateTurnLabel();
     }

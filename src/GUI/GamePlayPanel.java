@@ -12,6 +12,7 @@ import java.awt.*;
  */
 public class GamePlayPanel extends JPanel {
 
+    private ArmagriddonGUI gui;
     private GameState state;
     private GameLogic logic;
     private TurnPanel turnPanel;
@@ -20,7 +21,8 @@ public class GamePlayPanel extends JPanel {
 
     private JPanel gamePanel;
 
-    public GamePlayPanel(ArmagriddonGUI gui, GameState s, GameLogic l) {
+    public GamePlayPanel(ArmagriddonGUI g, GameState s, GameLogic l) {
+        gui = g;
         state = s;
         logic = l;
 
@@ -52,6 +54,10 @@ public class GamePlayPanel extends JPanel {
     public void updateTurnLabel() {
         JLabel turnLabel = turnPanel.getTurnLabel();
         turnPanel.setTurnLabel(turnLabel);
+    }
+
+    public ArmagriddonGUI getGUI() {
+        return gui;
     }
 
 }
