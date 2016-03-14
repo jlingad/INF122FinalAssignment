@@ -29,6 +29,7 @@ public class ArmagriddonGUI extends JFrame{
     public ArmagriddonGUI(ServerState s) {
         serverState = s;
         reset();
+        // end the process when the jframe is closed
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
