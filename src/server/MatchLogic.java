@@ -51,9 +51,9 @@ public class MatchLogic extends GameLogic {
         }
 
         state.changePlayerTurn();
+        gamePlayPanel.updateScorePanel();
         hasWinner(state, gamePlayPanel);
         gamePlayPanel.updateTurnLabel();
-        gamePlayPanel.updateScorePanel();
     }
 
     public boolean isValidClick(GameState state, JLabel clickedPanel) {
