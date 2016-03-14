@@ -1,30 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f9ded735-77c7-46b3-8e29-60fe136b0d84" name="Default" comment="created a special play version">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/client/ServerConnector.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/ArmagriddonGUI.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/ArmagriddonGUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/GamePlayPanel.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/GamePlayPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/LoginPanel.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/LoginPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/MainMenuPanel.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/GUI/MainMenuPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/client/Client.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/client/Client.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/CheckersLogic.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/CheckersLogic.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/CheckersState.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/CheckersState.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/ClientConnection$CommunicationPort.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/ClientConnection$CommunicationPort.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/ClientConnection.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/ClientConnection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/GameLogic.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/GameLogic.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/GameRoom.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/GameRoom.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/GameState.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/GameState.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/MatchLogic.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/MatchLogic.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/ServerEngine$1.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/ServerEngine$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/ServerEngine.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/ServerEngine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/TestClient.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/TestClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/TicTacToeLogic.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/TicTacToeLogic.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/TicTacToeState.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/TicTacToeState.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/shared/Protocol.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/shared/Protocol.class" />
+    <list default="true" id="f9ded735-77c7-46b3-8e29-60fe136b0d84" name="Default" comment="CheckersLogic: Checks for kinged pieces. Haven't implemented actual king-ing, though.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/CheckersLogic.java" afterPath="$PROJECT_DIR$/src/server/CheckersLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/CheckersState.java" afterPath="$PROJECT_DIR$/src/server/CheckersState.java" />
     </list>
     <ignored path="INF122FinalAssignment.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -68,8 +48,8 @@
       <file leaf-file-name="CheckersLogic.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/server/CheckersLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24786325">
-              <caret line="91" column="12" selection-start-line="91" selection-start-column="12" selection-end-line="91" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.11965812">
+              <caret line="61" column="68" selection-start-line="61" selection-start-column="68" selection-end-line="61" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -125,6 +105,13 @@
         <option value="$PROJECT_DIR$/src/server/CheckersState.java" />
         <option value="$PROJECT_DIR$/src/server/CheckersLogic.java" />
       </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Bundled (Maven 3)" />
+      </MavenGeneralSettings>
     </option>
   </component>
   <component name="ProjectFrameBounds">
@@ -732,7 +719,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457938161996</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="CheckersLogic: Checks for kinged pieces. Haven't implemented actual king-ing, though.">
+      <created>1457994952694</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1457994952694</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -777,7 +770,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="set visibility for 3 main panels to false - useful to indicate which &quot;screen&quot; to show" />
     <MESSAGE value="added note to GridPanel" />
     <MESSAGE value="edited GridPanel so the grid cdan be retrieved" />
     <MESSAGE value="edited GUI package to work with ExecutionState" />
@@ -802,7 +794,8 @@
     <MESSAGE value="created a special play version" />
     <MESSAGE value="worked on the aesthetics" />
     <MESSAGE value="forgot the new pictures" />
-    <option name="LAST_COMMIT_MESSAGE" value="forgot the new pictures" />
+    <MESSAGE value="CheckersLogic: Checks for kinged pieces. Haven't implemented actual king-ing, though." />
+    <option name="LAST_COMMIT_MESSAGE" value="CheckersLogic: Checks for kinged pieces. Haven't implemented actual king-ing, though." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1147,8 +1140,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/CheckersLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24786325">
-          <caret line="91" column="12" selection-start-line="91" selection-start-column="12" selection-end-line="91" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.11965812">
+          <caret line="61" column="68" selection-start-line="61" selection-start-column="68" selection-end-line="61" selection-end-column="68" />
           <folding />
         </state>
       </provider>

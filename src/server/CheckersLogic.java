@@ -40,12 +40,12 @@ public class CheckersLogic extends GameLogic {
                 break;
             }
 
-//        // if there is a piece of a different type, there is no winner
+        // if there is a piece of a different type, there is no winner
         for (int i=0; i<grid.length; i++)
             // must check for king pieces too
             if (grid[i].getIcon() != piece)
                 win = false;
-        if (win == true) {
+        if (win) {
             String pathString = Paths.get("").toAbsolutePath().toString();
             JOptionPane.showMessageDialog(gamePlayPanel, "WINNER is player " + state.getCurrentPlayer(),
                     "END OF GAME", JOptionPane.PLAIN_MESSAGE,
@@ -59,8 +59,8 @@ public class CheckersLogic extends GameLogic {
         ArrayList<JLabel> clickedPanels = state.getClickedPanels();
         int currentPlayer = state.getCurrentPlayer();
 
-        // TODO: Handle king pieces
-        clickedPanels.get(1).setIcon(state.getGamePiece(currentPlayer));
+        // Moves piece over; icon check is left to isValidClick/Move
+        clickedPanels.get(1).setIcon(clickedPanels.get(0).getIcon());
         clickedPanels.get(0).setIcon(null);
         hasWinner(state, gamePlayPanel);
         state.changePlayerTurn();
@@ -92,7 +92,7 @@ public class CheckersLogic extends GameLogic {
 
             kinged = clickedPanel.getIcon() == state.getGamePieces().get(currentPlayer+1);
 
-            if(isValidMove(oldP, newP, currentPlayer, kinged, state)) {  // TODO: false until we implement kings
+            if(isValidMove(oldP, newP, currentPlayer, kinged, state)) {
                 System.out.println("Move is legal.");
                 isValid = true;
             }
