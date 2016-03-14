@@ -73,23 +73,26 @@ public class CheckersLogic extends GameLogic {
 
         int currentPlayer = state.getCurrentPlayer();
         // check if clicked piece is the same as the current player's
-
-        if (state.getClickedPanels().size() == 0 && clickedPanel.getIcon() == state.getGamePiece(currentPlayer)) {
+        if (state.getClickedPanels().size() == 0 &&
+                (clickedPanel.getIcon() == state.getGamePiece(currentPlayer) ||
+                clickedPanel.getIcon() == state.getGamePiece(currentPlayer+2)) ) {
             isValid = true;
-        } else if (state.getClickedPanels().size() == 0 && clickedPanel.getIcon() != state.getGamePiece(currentPlayer)) {
+        } else if (state.getClickedPanels().size() == 0 &&
+                (clickedPanel.getIcon() != state.getGamePiece(currentPlayer) ||
+                clickedPanel.getIcon() != state.getGamePiece(currentPlayer+2)) ) {
             System.out.println("Incorrect piece selected. You tried moving your opponent's game piece");
             isValid = false;
         }
 
-        // no else?
+
         // check to see if valid move
         else if (state.getClickedPanels().size() > 0) {
             int oldP = Integer.parseInt(state.getClickedPanels().get(0).getToolTipText());
             int newP = Integer.parseInt(clickedPanel.getToolTipText());
 
-            //kinged = (state.getGamePieceIndex(state.getClickedPanels(0)))/2 == 1;
+            kinged = clickedPanel.getIcon() == state.getGamePieces().get(currentPlayer+1);
 
-            if(isValidMove(oldP, newP, currentPlayer, false, state)) {  // TODO: false until we implement kings
+            if(isValidMove(oldP, newP, currentPlayer, kinged, state)) {  // TODO: false until we implement kings
                 System.out.println("Move is legal.");
                 isValid = true;
             }

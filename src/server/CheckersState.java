@@ -65,15 +65,17 @@ public class CheckersState extends GameState{
     public ArrayList<ImageIcon> getGamePieces() {
         return gamePieces;
     }
-//    public int getGamePieceIndex(Icon piece) {
-//    	for (int i = 0; i < gamePieces.size(); i++) {
-//    		if (gamePieces.get(i) == piece) {
-//    			return i;
-//    		}
-//    	}
-//    	// if it's not found, return -1
-//    	return -1;
-//    }
+
+    // Consider removing
+    //public int getGamePieceIndex(Icon piece) {
+    //	for (int i = 0; i < gamePieces.size(); i++) {
+    //		if (gamePieces.get(i) == piece) {
+    //			return i;
+    //		}
+    //	}
+    //	// if it's not found, return -1
+    //	return -1;
+    //}
 
     public void setGrid(JLabel[] startingBoard) {
         grid = startingBoard;
