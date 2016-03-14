@@ -8,7 +8,6 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
-
 /**
  * Used to test the connection to the server. Will be used to pass a message forward to the server 
  * and a message back to the client, printing results to the console. 
