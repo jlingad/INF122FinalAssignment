@@ -36,7 +36,7 @@ public class Client {
 	//currently a skeleton, needs fleshing out
 
 	private String name;
-	private ServerConnector serverConnector;
+	private Integer player1OrPlayer2;
 	private shared.ExecutionState executionState;
 	private GUI.ArmagriddonGUI armagriddonGUI;
 	private state.ServerState serverState;
@@ -48,18 +48,8 @@ public class Client {
 
 	public static void main(String[] args) throws UnknownHostException, IOException 
 	{
-//		Thread t1 = new Thread();
-//		t1.start();
-//		t1.join();
 		try
 		{
-			InetAddress hostName = InetAddress.getLocalHost();	
-			Socket socket = new Socket(hostName, 60101);
-
-			input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			output = new PrintWriter(socket.getOutputStream());
-			
-			System.out.println("Established connection with the server: " + socket.toString());
 			
 			String serverMessage = "";
 			Scanner userMessage = new Scanner(System.in);
@@ -114,6 +104,11 @@ public class Client {
 		}
 	}
 
+	public static void handshake()
+	{
+		
+	}
+	
 	public void getUsername()
 	{
 		name = armagriddonGUI.getLoginPanel().getUsername();

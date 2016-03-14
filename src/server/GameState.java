@@ -12,7 +12,7 @@ import java.util.HashMap;
 public abstract class GameState {
 
     private String gameName;
-    private Integer currentPlayer = 1;
+    private Integer currentPlayer = 1; //store this in client somewhere
     private HashMap<Integer, Integer> scoresMap;
     private JLabel grid[];
     private Pair<Integer, Integer> gridDimensions;
@@ -20,7 +20,7 @@ public abstract class GameState {
     private ArrayList<JLabel> clickedPanels;
 
     public String getGameName() { return gameName; }
-    public Integer getCurrentPlayer() { return currentPlayer;}
+    public Integer getCurrentPlayer() { return currentPlayer;} //use this in client!
     public HashMap<Integer,Integer> getScores() { return scoresMap; }
     public JLabel[] getGrid() {
         return grid;
