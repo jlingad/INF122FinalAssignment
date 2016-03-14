@@ -54,27 +54,46 @@ public class TicTacToeLogic extends GameLogic {
             win = true;
         }
 
-
-
-        if (win){
-            System.out.print("WINNER is player " + state.getCurrentPlayer());
-            String pathString = Paths.get("").toAbsolutePath().toString();
-            JOptionPane.showMessageDialog(gamePlayPanel, "WINNER is player " + state.getCurrentPlayer(),
-                    "END OF GAME", JOptionPane.PLAIN_MESSAGE,
-                    new ImageIcon(pathString+"/src/GUI/images/partyparrot.gif"));
+        //checks for tie/cat's game
+        else if(grid[0].getIcon() != null && grid[1].getIcon() != null && grid[2].getIcon() != null && grid[3].getIcon() != null && grid[4].getIcon() != null && grid[5].getIcon() != null
+                && grid[6].getIcon() != null && grid[7].getIcon() != null && grid[8].getIcon() != null){
+            JOptionPane.showMessageDialog(gamePlayPanel, "It appears to be a CATS Game. No Winner!",
+                    "END OF GAME", JOptionPane.PLAIN_MESSAGE);
             gamePlayPanel.getGUI().setExecutionState(ExecutionState.MAIN_MENU);
             gamePlayPanel.getGUI().update();
         }
 
-//        else
-//        {
-//            System.out.print("It appears there is NO winner! :(");
-//            JOptionPane.showMessageDialog(gamePlayPanel, "WINNER is player " + state.getCurrentPlayer(),
-//                    "END OF GAME", JOptionPane.PLAIN_MESSAGE);
-//            gamePlayPanel.getGUI().setExecutionState(ExecutionState.MAIN_MENU);
-//            gamePlayPanel.getGUI().update();
-//        }
 
+        //signal who won
+        if (win){
+
+            System.out.print("WINNER is player " + state.getCurrentPlayer());
+            String pathString = Paths.get("").toAbsolutePath().toString();
+            JOptionPane.showMessageDialog(gamePlayPanel, "WINNER is player " + state.getCurrentPlayer(),
+                    "END OF GAME", JOptionPane.PLAIN_MESSAGE,
+                    new ImageIcon(pathString + "/src/GUI/images/partyparrot.gif"));
+            gamePlayPanel.getGUI().setExecutionState(ExecutionState.MAIN_MENU);
+            gamePlayPanel.getGUI().update();
+
+        }
+
+    }
+
+    public void checkFull(GameState state, GamePlayPanel gamePlayPanel){
+        boolean win = false;
+        JLabel[] grid = state.getGrid();
+
+        if (!win){
+            Integer full = 0;
+            for(int i=0; i<grid.length; i++){
+                full += 1;
+            }
+
+            if (full==9){
+                win = true;
+                System.out.println("CATS GAME");
+            }
+        }
     }
 
 
