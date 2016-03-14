@@ -78,23 +78,7 @@ public class TicTacToeLogic extends GameLogic {
         }
 
     }
-
-    public void checkFull(GameState state, GamePlayPanel gamePlayPanel){
-        boolean win = false;
-        JLabel[] grid = state.getGrid();
-
-        if (!win){
-            Integer full = 0;
-            for(int i=0; i<grid.length; i++){
-                full += 1;
-            }
-
-            if (full==9){
-                win = true;
-                System.out.println("CATS GAME");
-            }
-        }
-    }
+    
 
 
     public void makeMove(GameState state, GamePlayPanel gamePlayPanel) {
