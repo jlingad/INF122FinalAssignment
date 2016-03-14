@@ -42,7 +42,9 @@ public class Client {
 	private state.ServerState serverState;
 	private server.GameState gameState;	//to keep track of if we'd need to draw something
 
-
+	//change to input object stream and output object stream
+	
+	
 	private static BufferedReader input;
 	private static PrintWriter output;
 
