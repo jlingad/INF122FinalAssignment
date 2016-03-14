@@ -17,8 +17,8 @@ import java.util.Scanner;
  * two different instances of the TestClient class. 
  * 
  * Even though this is just to test the connection to the server and to make sure that the
- * server is capable of handling multiple clients, it can ultimately become skeleton code
- * for what needs to be implement client-side to allow for a connection to a server. 
+ * server is capable of handling multiple clients, it can ultimately become skelton code
+ * for what needs to be implemented client-side to allow for a connection to a server. 
  * @author jefmark
  *
  */
@@ -26,9 +26,6 @@ public class TestClient
 {
 	public static void main(String[] args) throws UnknownHostException, IOException 
 	{
-//		Thread t1 = new Thread();
-//		t1.start();
-//		t1.join();
 		try
 		{
 			InetAddress hostName = InetAddress.getLocalHost();	
@@ -71,20 +68,7 @@ public class TestClient
 			}
 			
 			userMessage.close();
-			
-//			while((serverMessage = input.readLine()) != null)
-//			while( !serverMessage.equals("exit") )
-//			while( (serverMessage = input.readLine()) != null)
-//			{
-//				System.out.print("Message to server: ");
-//				serverMessage = userMessage.nextLine();
-//				
-//				output.println(serverMessage);
-//				output.flush();
-//				
-//				System.out.println("Message sent.");				
-//			}
-//			userMessage.close();
+			socket.close();
 		}
 		catch(Exception e)
 		{

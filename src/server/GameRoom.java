@@ -1,12 +1,17 @@
 package server;
 
-public class GameRoom extends Thread implements Playable
+public class GameRoom extends Thread 
 {
 	private ClientConnection hostClient;
 	private ClientConnection guestClient;
 	private boolean gameInProgress;
-//	private GameState gameState;
-	// Needs to notify engine of an ended game -- if gameInProgress is false, then the game has ended
+
+	/**
+	 * Might be able to delete this now. We never have an instance where we add two clients already. 
+	 * Was just used for testing. 
+	 * @param hostClient
+	 * @param guestClient
+	 */
 	public GameRoom(ClientConnection hostClient, ClientConnection guestClient)
 	{
 		System.out.println("Creating game room...");
@@ -40,28 +45,13 @@ public class GameRoom extends Thread implements Playable
 	{
 		try
 		{
-			System.out.println("Thread started! ID: " + this.getId());
-//			hostClient.getOutputPort().println("You are the host client, you are connected to a game room.");
-//			hostClient.getOutputPort().flush();
-//			guestClient.getOutputPort().println("You are the guest client, you are connected to a game room.");
-//			guestClient.getOutputPort().flush();
-//			
-//			String messageToForward = "";
-//			Scanner message = new Scanner(System.in);
-//			while( !(messageToForward = message.nextLine()).equals("quit"))
-//			{
-////				messageToForward = message.nextLine();
-////				messageToForward = hostClient.getInputPort().readLine();
-//				guestClient.getOutputPort().println(messageToForward);
-//				guestClient.getOutputPort().flush();
-//				System.out.println("HostClient: " + messageToForward);
-////				messageToForward = guestClient.getInputPort().readLine();
-//				hostClient.getOutputPort().println(messageToForward);
-//				hostClient.getOutputPort().flush();
-//				System.out.println("GuestClient: " + messageToForward);
-//				// TODO: when to break out of loop
-//			}
-//			message.close();
+			System.out.println("Game started on separate thread! Thread ID: " + this.getId());
+			while(true)
+			{
+				break;
+			}
+			this.gameInProgress = false;
+			
 		}
 		catch(Exception e)
 		{
@@ -69,10 +59,27 @@ public class GameRoom extends Thread implements Playable
 		}
 	}
 	
+	/**
+	 * Adds an opponent to the GameRoom. A host client is going to already establish the
+	 * game room when they first connect, the client doesn't get to pick who they want to 
+	 * play against. They just automatically get matched up against them.
+	 * @param guest
+	 */
 	public void addOpponent(ClientConnection guest)
 	{
 		this.guestClient = guest;
 		guestClient.setAsInGame();
+		this.gameInProgress = true;
 		System.out.println("Client has been matched with opponent. Update views now.");
+	}
+	
+	/**
+	 * Returns whether the game is in progress or not, used for disconnecting users, but makes sure 
+	 * they aren't in a game currently under way.
+	 * @return
+	 */
+	public boolean gameInProgress()
+	{
+		return this.gameInProgress;
 	}
 }

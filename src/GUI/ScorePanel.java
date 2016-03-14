@@ -53,12 +53,9 @@ public class ScorePanel extends JPanel{
     }
 
     public void update() {
-        int oldScore = scoresMap.get(player);
-        scoresMap.replace(player, oldScore, oldScore++);
-        if (player == 1)
-            player1Label.setText("Player 1: " + scoresMap.get(1));
-        else if (player == 2)
-            player2Label.setText("Player 2: " + scoresMap.get(2));
+        scoresMap = state.getScores();
+        player1Label.setText("Player 1: " + scoresMap.get(1));
+        player2Label.setText("Player 2: " + scoresMap.get(2));
+        repaint();
     }
-
 }

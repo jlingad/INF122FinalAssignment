@@ -83,6 +83,12 @@ public class MatchState extends GameState{
         clearClickedPanels();
     }
 
+    public void addPoint(int playerNum) {
+        int newScore = scoresMap.get(playerNum)+1;
+        scoresMap.remove(playerNum);
+        scoresMap.put(playerNum, newScore);
+    }
+
     public void addClickedPanel(JLabel clickedPanel) {
         clickedPanels.add(clickedPanel);
     }

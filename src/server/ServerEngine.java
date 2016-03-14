@@ -25,7 +25,6 @@ public class ServerEngine extends Thread
 	private List<GameRoom> matchInProgress;
 	private List<ClientConnection> connectedClients;
 	private SQLiteJDBC db;
-	// TODO: needs to add a game factory object instance here
 	
 	public ServerEngine()
 	{
@@ -50,17 +49,7 @@ public class ServerEngine extends Thread
 		{
 			try
 			{
-//				connectedClients = server.getConnectedClients();
-//				synchronized(this) { this.wait(); }
-//				if(connectedClients.size() > 1) // If we have at least 2 people connected ...
-//				{
-//					System.out.println("ServerEngine::run(), connectedClients.size() = " + connectedClients.size());
-//					GameRoom gameInstance = new GameRoom(connectedClients.get(0), connectedClients.get(1));
-//					System.out.println("ServerEngine Message:::Added clients to the server.");
-//					gameInstance.start();
-//					System.out.println("ServerEngine Message:::gameInstance now on new thread: " + gameInstance.getId());
-//					break; // TODO: take out once testing with more than two clients. Should continue to add clients to a room
-//				}
+				this.join();
 			}
 			catch(Exception e)
 			{
@@ -97,14 +86,20 @@ public class ServerEngine extends Thread
 				if(checkersInProgress.size() % 2 == 0)
 					checkersInProgress.add(new GameRoom(client));
 				else
+				{
 					checkersInProgress.get(checkersInProgress.size()-1).addOpponent(client);
+					checkersInProgress.get(checkersInProgress.size()-1).start();
+				}
 				break;
 			case MATCH:
 				// Add to match waiting room or game
 				if(matchInProgress.size() % 2 == 0)
 					matchInProgress.add(new GameRoom(client));
 				else
+				{
 					matchInProgress.get(matchInProgress.size()-1).addOpponent(client);
+					matchInProgress.get(matchInProgress.size()-1).start();
+				}
 				break;
 		}
 	}
@@ -112,5 +107,12 @@ public class ServerEngine extends Thread
 	public void handleClient(Socket socket)
 	{
 		connectedClients.add(new ClientConnection(socket, this));
+	}
+	
+	public void shutdown()
+	{
+		for(ClientConnection client : connectedClients)
+			client.disconnect();
+		
 	}
 }
