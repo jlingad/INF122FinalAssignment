@@ -5,8 +5,13 @@ public class GameRoom extends Thread
 	private ClientConnection hostClient;
 	private ClientConnection guestClient;
 	private boolean gameInProgress;
-//	private GameState gameState;
-	// Needs to notify engine of an ended game -- if gameInProgress is false, then the game has ended
+
+	/**
+	 * Might be able to delete this now. We never have an instance where we add two clients already. 
+	 * Was just used for testing. 
+	 * @param hostClient
+	 * @param guestClient
+	 */
 	public GameRoom(ClientConnection hostClient, ClientConnection guestClient)
 	{
 		System.out.println("Creating game room...");
@@ -54,6 +59,12 @@ public class GameRoom extends Thread
 		}
 	}
 	
+	/**
+	 * Adds an opponent to the GameRoom. A host client is going to already establish the
+	 * game room when they first connect, the client doesn't get to pick who they want to 
+	 * play against. They just automatically get matched up against them.
+	 * @param guest
+	 */
 	public void addOpponent(ClientConnection guest)
 	{
 		this.guestClient = guest;
@@ -62,6 +73,11 @@ public class GameRoom extends Thread
 		System.out.println("Client has been matched with opponent. Update views now.");
 	}
 	
+	/**
+	 * Returns whether the game is in progress or not, used for disconnecting users, but makes sure 
+	 * they aren't in a game currently under way.
+	 * @return
+	 */
 	public boolean gameInProgress()
 	{
 		return this.gameInProgress;

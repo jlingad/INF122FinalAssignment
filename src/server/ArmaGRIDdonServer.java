@@ -6,6 +6,9 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+// TODO: might need to add another value in the database to determine whether or not a user is logged in
+// This avoids logging users in with the same names. 
+
 /**
  * Trimmed down server. Does the job of listening for new clients,
  * accepting their connections, and then handing it off to the
@@ -27,7 +30,6 @@ public class ArmaGRIDdonServer extends Thread
 	 * 1. Establishes that we are going to use localhost as the host address
 	 * 2. Establishes the ServerSocket so that the server can begin listening to clients
 	 * 		- Users are going to be connecting to port 60101 through the localhost address
-	 * TODO: remove print statements. They're there to show that the server is being established properly
 	 */
 	public ArmaGRIDdonServer()
 	{		
@@ -88,7 +90,15 @@ public class ArmaGRIDdonServer extends Thread
 	 */
 	public void shutdownServer()
 	{
-		// TODO: still need to implement this
+		try
+		{
+			engine.shutdown();
+			serverSocket.close();
+		}
+		catch(Exception e)
+		{
+			System.err.print(e.getClass() + ": " + e.getMessage());
+		}
 	}
 	
 	public static void main(String[] args)

@@ -97,6 +97,7 @@ public class ClientConnection
 	{
 		this.nameOfGame = game;
 	}
+
 	
 	/**
 	 * Simple nested class that allows for the multithreading aspect of the server. 
