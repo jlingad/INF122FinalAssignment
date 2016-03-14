@@ -1,14 +1,9 @@
 package server;
 
 import java.io.IOException;
-//import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-//import java.io.PrintWriter;
 import java.net.Socket;
-
-// TODO: uncomment when needed for sending objects back and forth
 
 /*
  * NOTES:
@@ -24,8 +19,7 @@ import java.net.Socket;
 
 public class ClientConnection
 {
-//	private Socket socket; 							// Used to save the socket that the user is connected to
-	public Socket socket; // TODO: change back to private, used for testing
+	public Socket socket; 
 	private boolean connected;						// State of the user if user is currently connected to the server
 	private CommunicationPort commport;				// Nested class that deals with the 
 	private boolean inGameRoom;
@@ -79,32 +73,16 @@ public class ClientConnection
 		return connected;
 	}
 	
-//	public void sendMessage()
-//	{
-//		commport.output.println("Client: " + socket.getLocalPort() + " thread: " + commport.getId());
-//		commport.output.flush();
-//	}
-	
 	public void sendMessage() throws IOException
 	{
 		commport.output.writeObject("Client: " + socket.getLocalPort() + " thread: " + commport.getId());
 		commport.output.flush();
 	}
 	
-//	public PrintWriter getOutputPort()
-//	{
-//		return commport.output;
-//	}
-	
 	public ObjectOutputStream getOutputPort()
 	{
 		return commport.output;
 	}
-	
-//	public BufferedReader getInputPort()
-//	{
-//		return commport.input;
-//	}
 
 	public ObjectInputStream getInputPort()
 	{
@@ -129,9 +107,6 @@ public class ClientConnection
 	 */
 	private class CommunicationPort extends Thread
 	{
-		// TODO: need to add methods to allow for communication
-//		public BufferedReader input;
-//		public PrintWriter   output;
 		private ObjectInputStream input;
 		private ObjectOutputStream output;
 		private ClientConnection client;
@@ -176,11 +151,11 @@ public class ClientConnection
 				
 				// Get name of game they want to play
 				nameOfGame = (GameNames) input.readObject(); // GameNames.valueOf(input.readLine());
-//
-//				// Add to [specific game] queue or to a new game
+
+				// Add to [specific game] queue or to a new game
 				engine.addUser(client, nameOfGame);
 
-				this.join(); // Joined so that it does not waste threadsN
+				this.join(); // Joined so that it does not waste threads
 			}
 			catch(Exception e)
 			{

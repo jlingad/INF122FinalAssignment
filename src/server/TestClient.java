@@ -1,11 +1,8 @@
 package server;
 
-//import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-//import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -36,43 +33,29 @@ public class TestClient
 			Socket socket = new Socket(hostName, 60101);
 			System.out.println("Established connection with the server: " + socket.toString());
 
-//			BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-//			PrintWriter output = new PrintWriter(socket.getOutputStream());
 			ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
 			output.flush();
 
 			ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
 			
-//			serverMessage = (String) input.readObject();
 			System.out.println("Log-in Attempt: " + input.readBoolean());
 			
-//			serverMessage = input.readLine();
-//			System.out.println("Message from server: " + serverMessage + ". Successfully connected to server.");
-//			
 			System.out.print("User name to use: ");
-//			output.println(userMessage.nextLine());
 			output.writeObject(userMessage.nextLine());
 			output.flush();
-//			
-//			serverMessage = input.readLine();
-//			System.out.println("Attempt to log user in: " + serverMessage);
-//			
+
 			System.out.print("Game to play: [0]-TicTacToe, [1]-Checkers, [2]-Match ");
-//			serverMessage = userMessage.next();
 			switch(userMessage.nextLine())
 			{
 				case "0":
-//					output.println(GameNames.TIC_TAC_TOE);
 					output.writeObject(GameNames.TIC_TAC_TOE);
 					output.flush();
 					break;
 				case "1":
-//					output.println(GameNames.CHECKERS);
 					output.writeObject(GameNames.CHECKERS);
 					output.flush();
 					break;
 				case "2":
-//					output.println(GameNames.MATCH);
 					output.writeObject(GameNames.MATCH);
 					output.flush();
 					break;
