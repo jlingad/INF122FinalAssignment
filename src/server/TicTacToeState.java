@@ -29,8 +29,8 @@ public class TicTacToeState extends GameState{
         // import image files for game pieces
         String pathString = Paths.get("").toAbsolutePath().toString();
         gamePieces = new ArrayList<ImageIcon>();
-        gamePieces.add(new ImageIcon(pathString+"/src/GUI/images/x.png"));
-        gamePieces.add(new ImageIcon(pathString+"/src/GUI/images/o.png"));
+        gamePieces.add(new ImageIcon(pathString+"/src/GUI/images/navarro.png"));
+        gamePieces.add(new ImageIcon(pathString+"/src/GUI/images/fernando.png"));
     }
 
     public String getGameName() { return gameName; }
