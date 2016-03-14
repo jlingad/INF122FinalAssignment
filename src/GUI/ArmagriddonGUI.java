@@ -29,6 +29,8 @@ public class ArmagriddonGUI extends JFrame{
     public ArmagriddonGUI(ServerState s) {
         serverState = s;
         reset();
+        // end the process when the jframe is closed
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     public void reset() {
@@ -72,7 +74,9 @@ public class ArmagriddonGUI extends JFrame{
             loginPanel.setVisible(false);
             mainMenuPanel.setVisible(false);
             gamePlayPanel.setVisible(true);
-        } else {
+        }
+        else
+        {
             System.out.println("***ERROR*** Invalid ExecutionState");
         }
         repaint();
@@ -91,10 +95,10 @@ public class ArmagriddonGUI extends JFrame{
         serverState.gameLogic = gameLogic;
         this.gameLogic = serverState.gameLogic;
     }
-    
+
     public GUI.LoginPanel getLoginPanel()
     {
-    	return loginPanel;
+        return loginPanel;
     }
 
     public static void main(String[] args) {

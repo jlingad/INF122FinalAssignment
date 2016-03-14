@@ -34,6 +34,8 @@ public class CheckersState extends GameState{
         gamePieces = new ArrayList<ImageIcon>();
         gamePieces.add(new ImageIcon(pathString+"/src/GUI/images/black-checker.png"));
         gamePieces.add(new ImageIcon(pathString+"/src/GUI/images/red-checker.png"));
+        gamePieces.add(new ImageIcon(pathString+"/src/GUI/images/black-king.png"));
+        gamePieces.add(new ImageIcon(pathString+"/src/GUI/images/red-king.png"));
     }
 
     public String getGameName() { return gameName; }
@@ -46,10 +48,22 @@ public class CheckersState extends GameState{
         return gridDimensions;
     }
     public ArrayList<JLabel> getClickedPanels() { return clickedPanels; }
-
+    
     public ImageIcon getGamePiece(int playerNum) {
         return gamePieces.get(playerNum-1);
     }
+    public ArrayList<ImageIcon> getGamePieces() {
+    	return gamePieces;
+    }
+//    public int getGamePieceIndex(Icon piece) {
+//    	for (int i = 0; i < gamePieces.size(); i++) {
+//    		if (gamePieces.get(i) == piece) {
+//    			return i;
+//    		}
+//    	}
+//    	// if it's not found, return -1
+//    	return -1;
+//    }
 
     public void setGrid(JLabel[] startingBoard) {
         grid = startingBoard;
