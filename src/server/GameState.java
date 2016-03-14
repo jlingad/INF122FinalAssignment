@@ -32,6 +32,9 @@ public abstract class GameState {
     public ImageIcon getGamePiece(int playerNum) {
         return gamePieces.get(playerNum-1);
     }
+    public ArrayList<ImageIcon> getGamePieces() {
+    	return gamePieces;
+    }
     public ArrayList<JLabel> getClickedPanels() { return clickedPanels; }
 
     public void setGrid(JLabel[] startingBoard) {
