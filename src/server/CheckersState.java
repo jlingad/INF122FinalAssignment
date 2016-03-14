@@ -34,6 +34,8 @@ public class CheckersState extends GameState{
         gamePieces = new ArrayList<ImageIcon>();
         gamePieces.add(new ImageIcon(pathString+"/src/GUI/images/black-checker.png"));
         gamePieces.add(new ImageIcon(pathString+"/src/GUI/images/red-checker.png"));
+        gamePieces.add(new ImageIcon(pathString+"/src/GUI/images/black-king.png"));
+        gamePieces.add(new ImageIcon(pathString+"/src/GUI/images/red-king.png"));
     }
 
     public String getGameName() { return gameName; }
