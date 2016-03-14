@@ -38,12 +38,12 @@ public class LoginPanel extends JPanel {
             }
         });
 
-        setBackground(Color.WHITE);
+        setBackground(new Color(51,51,51));
 
         welcomePanel = new JPanel(new GridBagLayout());
         welcomePanel.setPreferredSize(new Dimension(710, 710));
         welcomePanel.setLayout(new GridBagLayout());
-        welcomePanel.setBackground(Color.WHITE);
+        welcomePanel.setBackground(new Color(51,51,51));
 
         loginPanel = new JPanel(new GridBagLayout());
         loginPanel.setPreferredSize(new Dimension(200,200));
@@ -63,6 +63,8 @@ public class LoginPanel extends JPanel {
         gbc.weightx = 1;
         loginPanel.add(usernameTextField, gbc);
 
+        gbc.gridy++;
+        loginPanel.add(new JLabel("    "), gbc);
         gbc.gridx = 1;
         gbc.gridy++;
         gbc.gridwidth = 1;
@@ -71,9 +73,12 @@ public class LoginPanel extends JPanel {
         loginPanel.add(loginButton, gbc);
 
         GridBagConstraints gbcWelcome = new GridBagConstraints();
+        String pathString = Paths.get("").toAbsolutePath().toString();
         gbcWelcome.gridx = 0;
         gbcWelcome.gridy = 0;
-        welcomePanel.add(loginPanel);
+        welcomePanel.add(new JLabel(new ImageIcon(pathString+"/src/GUI/images/armagriddon.png")), gbcWelcome);
+        gbcWelcome.gridy++;
+        welcomePanel.add(loginPanel, gbcWelcome);
 
         add(welcomePanel);
     }

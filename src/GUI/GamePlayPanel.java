@@ -4,6 +4,8 @@ import server.*;
 import shared.ExecutionState;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -30,14 +32,19 @@ public class GamePlayPanel extends JPanel {
         state = s;
         logic = l;
 
+        setBackground(new Color(51,51,51));
         turnPanel = new TurnPanel(state);
+        turnPanel.setBackground(new Color(51,51,51));
         gridPanel = new GridPanel(state, logic, this);
         scorePanel = new ScorePanel(state);
+        scorePanel.setBackground(new Color(51,51,51));
 
         gamePanel = new JPanel(new GridBagLayout());
-        gamePanel.setPreferredSize(new Dimension(710, 710));
-        gamePanel.setBorder(new TitledBorder(state.getGameName())); // edit to show name of game
-        gamePanel.setBackground(Color.WHITE);
+        gamePanel.setPreferredSize(new Dimension(710, 700));
+        gamePanel.setBorder(new TitledBorder(state.getGameName()));
+        gamePanel.setBorder(new TitledBorder(new LineBorder(Color.WHITE), state.getGameName(), TitledBorder.LEFT,
+                TitledBorder.DEFAULT_POSITION, new Font ( "Arial", Font.BOLD, 14 ), Color.WHITE));
+        gamePanel.setBackground(new Color(51,51,51));
         gamePanel.setLayout(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -54,6 +61,7 @@ public class GamePlayPanel extends JPanel {
             String pathString = Paths.get("").toAbsolutePath().toString();
             gbc.gridy++;
             JButton special = new JButton(new ImageIcon(pathString+"/src/GUI/images/jarjarbinks.gif"));
+            special.setBorder(new EmptyBorder(10,10,10,10));
             special.setBackground(Color.WHITE);
             gamePanel.add(special, gbc);
             special.addActionListener(new ActionListener() {

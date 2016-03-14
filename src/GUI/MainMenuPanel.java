@@ -34,20 +34,19 @@ public class MainMenuPanel extends JPanel implements ActionListener {
     private JButton battleshipButton;
 
     JLabel selectGame;
-    JLabel selectedGame;
 
     public MainMenuPanel(ArmagriddonGUI gui, String username) {
         this.gui = gui;
 
-        setBackground(Color.WHITE);
+        setBackground(new Color(51,51,51));
         selectGame = new JLabel("Hi, " + username + "! Please select a game.");
-        selectedGame = new JLabel();
+        selectGame.setForeground(Color.WHITE);
 
         String pathString = Paths.get("").toAbsolutePath().toString();
 
         gameOptionsPanel = new JPanel(new GridBagLayout());
         gameOptionsPanel.setPreferredSize(new Dimension(710, 710));
-        gameOptionsPanel.setBackground(Color.WHITE);
+        gameOptionsPanel.setBackground(new Color(51,51,51));
         gameOptionsPanel.setLayout(new GridBagLayout());
 
         tictactoePanel = new JPanel(new GridBagLayout());
@@ -85,13 +84,13 @@ public class MainMenuPanel extends JPanel implements ActionListener {
         gbc.gridy = 0;
         gameOptionsPanel.add(selectGame, gbc);
         gbc.gridy++;
+        gameOptionsPanel.add(new JLabel("   "), gbc);
+        gbc.gridy++;
         gameOptionsPanel.add(tictactoePanel, gbc);
         gbc.gridy++;
         gameOptionsPanel.add(checkersPanel, gbc);
         gbc.gridy++;
         gameOptionsPanel.add(battleshipPanel, gbc);
-        gbc.gridy++;
-        gameOptionsPanel.add(selectedGame, gbc);
 
         add(gameOptionsPanel);
         setVisible(false);

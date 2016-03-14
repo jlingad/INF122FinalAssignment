@@ -24,6 +24,7 @@ public class TicTacToeLogic extends GameLogic {
     public void hasWinner(GameState state, GamePlayPanel gamePlayPanel) {
         boolean win = false;
         JLabel[] grid = state.getGrid();
+        String pathString = Paths.get("").toAbsolutePath().toString();
 
         //checks for horizontal win
         if (grid[0].getIcon() != null && grid[1].getIcon() != null && grid[2].getIcon() != null && grid[0].getIcon() == grid[1].getIcon() && grid[2].getIcon() == grid[1].getIcon()) {
@@ -59,7 +60,8 @@ public class TicTacToeLogic extends GameLogic {
         else if(grid[0].getIcon() != null && grid[1].getIcon() != null && grid[2].getIcon() != null && grid[3].getIcon() != null && grid[4].getIcon() != null && grid[5].getIcon() != null
                 && grid[6].getIcon() != null && grid[7].getIcon() != null && grid[8].getIcon() != null){
             JOptionPane.showMessageDialog(gamePlayPanel, "It appears to be a CATS Game. No Winner!",
-                    "END OF GAME", JOptionPane.PLAIN_MESSAGE);
+                    "END OF GAME", JOptionPane.PLAIN_MESSAGE,
+                    new ImageIcon(pathString + "/src/GUI/images/nyancat.gif"));
             gamePlayPanel.getGUI().setExecutionState(ExecutionState.MAIN_MENU);
             gamePlayPanel.getGUI().update();
         }
@@ -67,7 +69,6 @@ public class TicTacToeLogic extends GameLogic {
 
         //signal who won
         if (win){
-            String pathString = Paths.get("").toAbsolutePath().toString();
             JOptionPane.showMessageDialog(gamePlayPanel, "WINNER is player " + state.getCurrentPlayer(),
                     "END OF GAME", JOptionPane.PLAIN_MESSAGE,
                     new ImageIcon(pathString + "/src/GUI/images/partyparrot.gif"));
