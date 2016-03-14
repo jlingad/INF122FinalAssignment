@@ -29,6 +29,7 @@ public class ArmagriddonGUI extends JFrame{
     public ArmagriddonGUI(ServerState s) {
         serverState = s;
         reset();
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     public void reset() {
@@ -91,10 +92,10 @@ public class ArmagriddonGUI extends JFrame{
         serverState.gameLogic = gameLogic;
         this.gameLogic = serverState.gameLogic;
     }
-    
+
     public GUI.LoginPanel getLoginPanel()
     {
-    	return loginPanel;
+        return loginPanel;
     }
 
     public static void main(String[] args) {
