@@ -64,8 +64,9 @@ public class CheckersLogic extends GameLogic {
         ArrayList<JLabel> clickedPanels = state.getClickedPanels();
         int currentPlayer = state.getCurrentPlayer();
 
-        clickedPanels.get(0).setIcon(null);
+        // TODO: Handle king pieces
         clickedPanels.get(1).setIcon(state.getGamePiece(currentPlayer));
+        clickedPanels.get(0).setIcon(null);
         hasWinner(state, gamePlayPanel);
         state.changePlayerTurn();
         gamePlayPanel.updateTurnLabel();
@@ -75,6 +76,7 @@ public class CheckersLogic extends GameLogic {
         boolean isValid = true;
         int currentPlayer = state.getCurrentPlayer();
         // check if clicked piece is the same as the current player's
+
         if (state.getClickedPanels().size() == 0 && clickedPanel.getIcon() == state.getGamePiece(currentPlayer)) {
             isValid = true;
         } else if (state.getClickedPanels().size() == 0 && clickedPanel.getIcon() != state.getGamePiece(currentPlayer)) {
@@ -82,6 +84,7 @@ public class CheckersLogic extends GameLogic {
             isValid = false;
         }
 
+        // no else?
         // check to see if valid move
         else if (state.getClickedPanels().size() > 0) {
             int oldP = Integer.parseInt(state.getClickedPanels().get(0).getToolTipText());
@@ -125,9 +128,9 @@ public class CheckersLogic extends GameLogic {
                 }
             }
         }
-
+        /*
         // Check to make sure no collision with your own pieces
-        if(isValid && state.getClickedPanels().get(1).getIcon() == state.getGamePiece(state.getCurrentPlayer())) {
+        if(isValid && state.getClickedPanels().get(1).getIcon() == state.getGamePiece(player)) {
             isValid = false;
             System.out.println("You can't jump your own pieces!");
         }
@@ -136,7 +139,7 @@ public class CheckersLogic extends GameLogic {
             System.out.println("JUMPING NOT IMPLEMENTED YET: MOVE FAILED");
             // TODO: implement jumping
         }
-
+        */
         return isValid;
     }
 
