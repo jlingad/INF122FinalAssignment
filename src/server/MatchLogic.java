@@ -12,6 +12,7 @@ import java.util.HashMap;
 public class MatchLogic extends GameLogic {
 
     private int maxClicksPerTurn = 2;
+    public boolean hasSpecialVersion = false;
 
     public MatchLogic() {
     }

@@ -1,14 +1,18 @@
 package GUI;
 
 import server.*;
+import shared.ExecutionState;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 
 /**
  * Created by Emily on 3/5/2016.
- * Future edits: title border should say name of game being played
  */
 public class GamePlayPanel extends JPanel {
 
@@ -44,6 +48,21 @@ public class GamePlayPanel extends JPanel {
         gamePanel.add(gridPanel, gbc);
         gbc.gridy++;
         gamePanel.add(scorePanel, gbc);
+
+        // set the special game pieces
+        if (logic.hasSpecialVersion()) {
+            String pathString = Paths.get("").toAbsolutePath().toString();
+            gbc.gridy++;
+            JButton special = new JButton(new ImageIcon(pathString+"/src/GUI/images/jarjarbinks.gif"));
+            special.setBackground(Color.WHITE);
+            gamePanel.add(special, gbc);
+            special.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    state.setSpecialGrid();
+                }
+            });
+        }
 
         add(gamePanel);
         setVisible(false);

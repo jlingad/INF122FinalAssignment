@@ -16,6 +16,8 @@ public class TicTacToeState extends GameState{
     // Game object information... (gridDimensions, rulebook, etc.)
     private Pair<Integer, Integer> gridDimensions;
     private ArrayList<ImageIcon> gamePieces;
+    private ArrayList<ImageIcon> normalGamePieces;
+    private ArrayList<ImageIcon> specialGamePieces;
     private ArrayList<JLabel> clickedPanels;
 
     public TicTacToeState() {
@@ -28,9 +30,15 @@ public class TicTacToeState extends GameState{
 
         // import image files for game pieces
         String pathString = Paths.get("").toAbsolutePath().toString();
-        gamePieces = new ArrayList<ImageIcon>();
-        gamePieces.add(new ImageIcon(pathString+"/src/GUI/images/navarro.png"));
-        gamePieces.add(new ImageIcon(pathString+"/src/GUI/images/fernando.png"));
+        normalGamePieces = new ArrayList<ImageIcon>();
+        normalGamePieces.add(new ImageIcon(pathString+"/src/GUI/images/x.png"));
+        normalGamePieces.add(new ImageIcon(pathString+"/src/GUI/images/o.png"));
+
+        specialGamePieces = new ArrayList<ImageIcon>();
+        specialGamePieces.add(new ImageIcon(pathString+"/src/GUI/images/navarro.png"));
+        specialGamePieces.add(new ImageIcon(pathString+"/src/GUI/images/fernando.png"));
+
+        gamePieces = normalGamePieces;
     }
 
     public String getGameName() { return gameName; }
@@ -50,6 +58,28 @@ public class TicTacToeState extends GameState{
 
     public void setGrid(JLabel[] startingBoard) {
         grid = startingBoard;
+    }
+
+    @Override
+    public void setSpecialGrid(){
+        String pathString = Paths.get("").toAbsolutePath().toString();
+        if (gamePieces.get(0).equals(normalGamePieces.get(0))) {
+            gamePieces = specialGamePieces;
+            for (int i=0; i<grid.length; i++) {
+                if (grid[i].getIcon() != null && grid[i].getIcon() == normalGamePieces.get(0))
+                    grid[i].setIcon(specialGamePieces.get(0));
+                else if (grid[i].getIcon() != null && grid[i].getIcon() == normalGamePieces.get(1))
+                    grid[i].setIcon(specialGamePieces.get(1));
+            }
+        } else {
+            gamePieces = normalGamePieces;
+            for (int i=0; i<grid.length; i++) {
+                if (grid[i].getIcon() != null && grid[i].getIcon() == specialGamePieces.get(0))
+                    grid[i].setIcon(normalGamePieces.get(0));
+                else if (grid[i].getIcon() != null && grid[i].getIcon() == specialGamePieces.get(1))
+                    grid[i].setIcon(normalGamePieces.get(1));
+            }
+        }
     }
 
     public void changePlayerTurn() {

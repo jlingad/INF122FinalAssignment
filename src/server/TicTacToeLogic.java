@@ -10,13 +10,14 @@ import java.util.ArrayList;
 public class TicTacToeLogic extends GameLogic {
 
     public int maxClicksPerTurn = 1;
+    public boolean hasSpecialVersion = true;
 
     public TicTacToeLogic() {
     }
-
     public int getMaxClicks() {
         return maxClicksPerTurn;
     }
+    public boolean hasSpecialVersion() { return hasSpecialVersion; }
 
     // only checks if there is a row filled with game pieces
     // does not check for particular players' game pieces
@@ -66,26 +67,20 @@ public class TicTacToeLogic extends GameLogic {
 
         //signal who won
         if (win){
-
-            System.out.print("WINNER is player " + state.getCurrentPlayer());
             String pathString = Paths.get("").toAbsolutePath().toString();
             JOptionPane.showMessageDialog(gamePlayPanel, "WINNER is player " + state.getCurrentPlayer(),
                     "END OF GAME", JOptionPane.PLAIN_MESSAGE,
                     new ImageIcon(pathString + "/src/GUI/images/partyparrot.gif"));
             gamePlayPanel.getGUI().setExecutionState(ExecutionState.MAIN_MENU);
             gamePlayPanel.getGUI().update();
-
         }
 
     }
-    
-
 
     public void makeMove(GameState state, GamePlayPanel gamePlayPanel) {
         ArrayList<JLabel> clickedPanels = state.getClickedPanels();
         // add to the grid the appropriate game piece (the one associated with the
         // current player - pieces are stored in the GameState object
-        boolean win = false;
         clickedPanels.get(0).setIcon(state.getGamePiece(state.getCurrentPlayer()));
         hasWinner(state, gamePlayPanel);
         state.changePlayerTurn();

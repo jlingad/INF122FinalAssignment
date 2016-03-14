@@ -8,8 +8,11 @@ import java.util.ArrayList;
 public abstract class GameLogic {
 
     private int maxClicksPerTurn;
+    private boolean hasSpecialVersion;
+
 
     public int getMaxClicks() { return maxClicksPerTurn; }
+    public boolean hasSpecialVersion() { return hasSpecialVersion; }
 
     public abstract void hasWinner(GameState state, GamePlayPanel gamePlayPanel);
 

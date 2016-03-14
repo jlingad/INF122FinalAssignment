@@ -17,6 +17,8 @@ public abstract class GameState {
     private JLabel grid[];
     private Pair<Integer, Integer> gridDimensions;
     private ArrayList<ImageIcon> gamePieces;
+    private ArrayList<ImageIcon> normalPieces;
+    private ArrayList<ImageIcon> specialGamePieces;
     private ArrayList<JLabel> clickedPanels;
 
     public String getGameName() { return gameName; }
@@ -33,13 +35,14 @@ public abstract class GameState {
         return gamePieces.get(playerNum-1);
     }
     public ArrayList<ImageIcon> getGamePieces() {
-    	return gamePieces;
+        return gamePieces;
     }
     public ArrayList<JLabel> getClickedPanels() { return clickedPanels; }
 
     public void setGrid(JLabel[] startingBoard) {
         grid = startingBoard;
     }
+    public void setSpecialGrid(){}
 
     public void changePlayerTurn() {
         if (currentPlayer == 1)

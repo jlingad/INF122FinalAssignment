@@ -19,6 +19,8 @@ public class CheckersState extends GameState{
     // Game object information... (gridDimensions, rulebook, etc.)
     private Pair<Integer, Integer> gridDimensions;
     private ArrayList<ImageIcon> gamePieces;
+    private ArrayList<ImageIcon> normalGamePieces;
+    private ArrayList<ImageIcon> specialGamePieces;
     private ArrayList<JLabel> clickedPanels;
 
     public CheckersState() {
@@ -31,11 +33,19 @@ public class CheckersState extends GameState{
 
         // import image files for game pieces
         String pathString = Paths.get("").toAbsolutePath().toString();
-        gamePieces = new ArrayList<ImageIcon>();
-        gamePieces.add(new ImageIcon(pathString+"/src/GUI/images/black-checker.png"));
-        gamePieces.add(new ImageIcon(pathString+"/src/GUI/images/red-checker.png"));
-        gamePieces.add(new ImageIcon(pathString+"/src/GUI/images/black-king.png"));
-        gamePieces.add(new ImageIcon(pathString+"/src/GUI/images/red-king.png"));
+        normalGamePieces = new ArrayList<ImageIcon>();
+        normalGamePieces.add(new ImageIcon(pathString+"/src/GUI/images/red-checker.png"));
+        normalGamePieces.add(new ImageIcon(pathString+"/src/GUI/images/black-checker.png"));
+        normalGamePieces.add(new ImageIcon(pathString+"/src/GUI/images/red-king.png"));
+        normalGamePieces.add(new ImageIcon(pathString+"/src/GUI/images/black-king.png"));
+
+        specialGamePieces = new ArrayList<ImageIcon>();
+        specialGamePieces.add(new ImageIcon(pathString+"/src/GUI/images/navarro-small.png"));
+        specialGamePieces.add(new ImageIcon(pathString+"/src/GUI/images/fernando-small.png"));
+        specialGamePieces.add(new ImageIcon(pathString+"/src/GUI/images/navarro-small-king.png"));
+        specialGamePieces.add(new ImageIcon(pathString+"/src/GUI/images/fernando-small-king.png"));
+
+        gamePieces = normalGamePieces;
     }
 
     public String getGameName() { return gameName; }
@@ -48,12 +58,12 @@ public class CheckersState extends GameState{
         return gridDimensions;
     }
     public ArrayList<JLabel> getClickedPanels() { return clickedPanels; }
-    
+
     public ImageIcon getGamePiece(int playerNum) {
         return gamePieces.get(playerNum-1);
     }
     public ArrayList<ImageIcon> getGamePieces() {
-    	return gamePieces;
+        return gamePieces;
     }
 //    public int getGamePieceIndex(Icon piece) {
 //    	for (int i = 0; i < gamePieces.size(); i++) {
@@ -86,6 +96,30 @@ public class CheckersState extends GameState{
         for (int i=40; i<grid.length; i++)
             if (grid[i].getBackground() == Color.DARK_GRAY)
                 grid[i].setIcon(gamePieces.get(1));
+    }
+
+    @Override
+    public void setSpecialGrid(){
+        String pathString = Paths.get("").toAbsolutePath().toString();
+        if (gamePieces.get(0).equals(normalGamePieces.get(0))) {
+            System.out.println("x");
+            gamePieces = specialGamePieces;
+            for (int i=0; i<grid.length; i++) {
+                if (grid[i].getIcon() != null && grid[i].getIcon() == normalGamePieces.get(0))
+                    grid[i].setIcon(specialGamePieces.get(0));
+                else if (grid[i].getIcon() != null && grid[i].getIcon() == normalGamePieces.get(1))
+                    grid[i].setIcon(specialGamePieces.get(1));
+            }
+        } else {
+            System.out.println("nope");
+            gamePieces = normalGamePieces;
+            for (int i=0; i<grid.length; i++) {
+                if (grid[i].getIcon() != null && grid[i].getIcon() == specialGamePieces.get(0))
+                    grid[i].setIcon(normalGamePieces.get(0));
+                else if (grid[i].getIcon() != null && grid[i].getIcon() == specialGamePieces.get(1))
+                    grid[i].setIcon(normalGamePieces.get(1));
+            }
+        }
     }
 
     public void changePlayerTurn() {

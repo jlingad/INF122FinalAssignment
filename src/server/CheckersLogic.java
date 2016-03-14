@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class CheckersLogic extends GameLogic {
 
     private int maxClicksPerTurn = 2; /// Will have to take into account jumping over pieces
+    public boolean hasSpecialVersion = true;
     private boolean jumped = false;
 
     public CheckersLogic() {
@@ -18,6 +19,7 @@ public class CheckersLogic extends GameLogic {
     public int getMaxClicks() {
         return maxClicksPerTurn;
     }
+    public boolean hasSpecialVersion() { return hasSpecialVersion; }
 
     // only checks if there is a row filled with game pieces
     // does not check for particular players' game pieces
@@ -30,17 +32,17 @@ public class CheckersLogic extends GameLogic {
         // get any piece that can be found on the board
         // if there is a winner, the grid will only contain
         // this piece type
-        
+
         for (int i=0; i<grid.length; i++)
             if (grid[i].getIcon() != null){
-            	System.out.println("hasWinner()");
-            	piece = grid[i].getIcon();
-            	break;
+                System.out.println("hasWinner()");
+                piece = grid[i].getIcon();
+                break;
             }
-                
+
 //        // if there is a piece of a different type, there is no winner
         for (int i=0; i<grid.length; i++)
-        	// must check for king pieces too
+            // must check for king pieces too
             if (grid[i].getIcon() != piece)
                 win = false;
         if (win == true) {
