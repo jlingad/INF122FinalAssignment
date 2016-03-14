@@ -49,7 +49,6 @@ public class ServerEngine extends Thread
 		{
 			try
 			{
-				this.join();
 			}
 			catch(Exception e)
 			{

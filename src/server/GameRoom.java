@@ -82,4 +82,9 @@ public class GameRoom extends Thread
 	{
 		return this.gameInProgress;
 	}
+	
+	public void updatePlayerProfiles()
+	{
+		// TODO: Need to add who won and who list
+	}
 }
