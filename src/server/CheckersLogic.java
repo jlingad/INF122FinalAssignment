@@ -59,6 +59,8 @@ public class CheckersLogic extends GameLogic {
 
     public boolean isValidClick(GameState state, JLabel clickedPanel) {
         boolean isValid = true;
+        boolean kinged;
+
         int currentPlayer = state.getCurrentPlayer();
         // check if clicked piece is the same as the current player's
 
@@ -74,7 +76,10 @@ public class CheckersLogic extends GameLogic {
         else if (state.getClickedPanels().size() > 0) {
             int oldP = Integer.parseInt(state.getClickedPanels().get(0).getToolTipText());
             int newP = Integer.parseInt(clickedPanel.getToolTipText());
-            if(isValidMove(oldP, newP, currentPlayer, false, state)) {  // false until we implement kings
+
+            //kinged = (state.getGamePieceIndex(state.getClickedPanels(0)))/2 == 1;
+
+            if(isValidMove(oldP, newP, currentPlayer, false, state)) {  // TODO: false until we implement kings
                 System.out.println("Move is legal.");
                 isValid = true;
             }

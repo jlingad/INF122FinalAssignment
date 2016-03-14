@@ -73,7 +73,9 @@ public class ArmagriddonGUI extends JFrame{
             loginPanel.setVisible(false);
             mainMenuPanel.setVisible(false);
             gamePlayPanel.setVisible(true);
-        } else {
+        }
+        else
+        {
             System.out.println("***ERROR*** Invalid ExecutionState");
         }
         repaint();
