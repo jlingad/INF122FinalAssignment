@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9ded735-77c7-46b3-8e29-60fe136b0d84" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/CheckersLogic.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/CheckersLogic.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/CheckersLogic.java" afterPath="$PROJECT_DIR$/src/server/CheckersLogic.java" />
     </list>
@@ -47,8 +48,8 @@
       <file leaf-file-name="CheckersLogic.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/server/CheckersLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.94358975">
-              <caret line="173" column="54" selection-start-line="173" selection-start-column="54" selection-end-line="173" selection-end-column="54" />
+            <state vertical-scroll-proportion="-0.75213677">
+              <caret line="173" column="17" selection-start-line="173" selection-start-column="17" selection-end-line="173" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -741,7 +742,13 @@
       <option name="project" value="LOCAL" />
       <updated>1458000377495</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="CheckersLogic: can tell which direction a jump is going to happen in">
+      <created>1458065647516</created>
+      <option name="number" value="00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1458065647516</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -786,7 +793,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="edited GUI package to work with ExecutionState" />
     <MESSAGE value="added ToolTipText to grid to help with finding the location of clicked labels" />
     <MESSAGE value="created a GamePieceGenerator and adds the resulting game piece to the grid" />
     <MESSAGE value="created abstract GameState class - used it to update GUI game pieces and turns based on the selected game" />
@@ -811,7 +817,8 @@
     <MESSAGE value="CheckersLogic: Checks for kinged pieces. Haven't implemented actual king-ing, though." />
     <MESSAGE value="CheckersLogic: piece moved is first clickedPanel, not just panel of current player. Making room for kinged pieces." />
     <MESSAGE value="CheckersLogic: can detect when an opponent piece has been taken." />
-    <option name="LAST_COMMIT_MESSAGE" value="CheckersLogic: can detect when an opponent piece has been taken." />
+    <MESSAGE value="CheckersLogic: can tell which direction a jump is going to happen in" />
+    <option name="LAST_COMMIT_MESSAGE" value="CheckersLogic: can tell which direction a jump is going to happen in" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1203,8 +1210,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/CheckersLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.94358975">
-          <caret line="173" column="54" selection-start-line="173" selection-start-column="54" selection-end-line="173" selection-end-column="54" />
+        <state vertical-scroll-proportion="-0.75213677">
+          <caret line="173" column="17" selection-start-line="173" selection-start-column="17" selection-end-line="173" selection-end-column="17" />
           <folding />
         </state>
       </provider>

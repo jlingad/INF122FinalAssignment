@@ -165,21 +165,61 @@ public class CheckersLogic extends GameLogic {
         if(ocol == ncol+1) { // If moving left
             if(orow == nrow+1) { // If moving Up/Left
                 System.out.println("Make Up/Left jump.");
+                if(nrow == 0 || ncol == 0) {
+                    System.out.println("Going to hit a wall if jump happens.");
+                    return false;
+                }
+                else {
+                    // Calculate index of next spot; use isBlocked to check for an icon
+                }
+
             }
             else { // If moving Down/Left
                 System.out.println("Make Down/Left jump.");
+                if(nrow == 7 || ncol == 0) {
+                    System.out.println("Going to hit a wall if jump happens.");
+                    return false;
+                }
+                else {
+                    // Calculate index of next spot; use isBlocked to check for an icon
+                }
+
             }
         }
         else { // If moving right
             if(orow == nrow+1) { // If moving Up/Right
                 System.out.println("Make Up/Right jump.");
+                if(nrow == 0 || ncol == 7) {
+                    System.out.println("Going to hit a wall if jump happens.");
+                    return false;
+                }
+                else {
+                    // Calculate index of next spot; use isBlocked to check for an icon
+                }
+
             }
             else { // If moving Down/Right
                 System.out.println("Make Down/Right jump.");
+                if(nrow == 7 || ncol == 7) {
+                    System.out.println("Going to hit a wall if jump happens.");
+                    return false;
+                }
+                else {
+                    // Calculate index of next spot; use isBlocked to check for an icon
+                }
+
             }
         }
 
         return false;
     }
 
+    private boolean isBlocked(int positionToCheck) {
+
+
+
+        return false;
+    }
+
 }
+
