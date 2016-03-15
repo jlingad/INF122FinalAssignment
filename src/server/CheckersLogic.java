@@ -80,7 +80,7 @@ public class CheckersLogic extends GameLogic {
         } else if (state.getClickedPanels().size() == 0 &&
                 (clickedPanel.getIcon() != state.getGamePiece(currentPlayer) ||
                 clickedPanel.getIcon() != state.getGamePiece(currentPlayer+2)) ) {
-            System.out.println("Incorrect piece selected. You tried moving your opponent's game piece");
+            System.out.println("Incorrect piece selected.");
             isValid = false;
         }
 
@@ -95,6 +95,17 @@ public class CheckersLogic extends GameLogic {
             if(isValidMove(oldP, newP, currentPlayer, kinged, state)) {
                 System.out.println("Move is legal.");
                 isValid = true;
+
+                // Check to see if an enemy piece is being taken
+                Icon newSpot = clickedPanel.getIcon();
+                if((newSpot != null) && (newSpot != state.getGamePiece(currentPlayer)) &&
+                        (newSpot != state.getGamePiece(currentPlayer+2))) {
+                    System.out.println("A piece is being taken. JUMP ATTEMPT");
+                }
+                else {
+                    System.out.println("Normal move.");
+                }
+
             }
             else {
                 System.out.println("Move is not legal.");
@@ -102,6 +113,7 @@ public class CheckersLogic extends GameLogic {
                 isValid = false;
             }
         }
+
 
 
         return isValid;
@@ -131,18 +143,9 @@ public class CheckersLogic extends GameLogic {
                 }
             }
         }
-        /*
-        // Check to make sure no collision with your own pieces
-        if(isValid && state.getClickedPanels().get(1).getIcon() == state.getGamePiece(player)) {
-            isValid = false;
-            System.out.println("You can't jump your own pieces!");
-        }
-        // Check to see if you're jumping on an enemy's piece
-        else if (isValid && state.getClickedPanels().get(1).getIcon() != null) {
-            System.out.println("JUMPING NOT IMPLEMENTED YET: MOVE FAILED");
-            // TODO: implement jumping
-        }
-        */
+
+
+
         return isValid;
     }
 
