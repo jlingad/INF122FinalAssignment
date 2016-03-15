@@ -11,7 +11,7 @@ public class CheckersLogic extends GameLogic {
 
     private int maxClicksPerTurn = 2; /// Will have to take into account jumping over pieces
     public boolean hasSpecialVersion = true;
-    private boolean jumped = false;
+
 
     public CheckersLogic() {
     }
@@ -92,6 +92,7 @@ public class CheckersLogic extends GameLogic {
 
             kinged = clickedPanel.getIcon() == state.getGamePieces().get(currentPlayer+1);
 
+            // First important check
             if(isValidMove(oldP, newP, currentPlayer, kinged, state)) {
                 System.out.println("Move is legal.");
                 isValid = true;
@@ -101,6 +102,14 @@ public class CheckersLogic extends GameLogic {
                 if((newSpot != null) && (newSpot != state.getGamePiece(currentPlayer)) &&
                         (newSpot != state.getGamePiece(currentPlayer+2))) {
                     System.out.println("A piece is being taken. JUMP ATTEMPT");
+
+                    // Second important check
+                    // TODO: Check for jump validity, and either perform the jump, or make isValid false
+                    if(isValidJump(oldP, newP, currentPlayer, kinged, state)) {
+
+                    }
+
+
                 }
                 else {
                     System.out.println("Normal move.");
@@ -143,14 +152,34 @@ public class CheckersLogic extends GameLogic {
                 }
             }
         }
-
-
-
         return isValid;
     }
 
-    private void handleJump(GameState state) {
+    // Can only be called if it's a valid move. Consider removing attacker/king variables if not used
+    private boolean isValidJump(int oldPos, int newPos, int attacker, boolean king, GameState state) {
+        int orow = oldPos / 8;
+        int ocol = oldPos % 8;
+        int nrow = newPos / 8;
+        int ncol = newPos % 8;
 
+        if(ocol == ncol+1) { // If moving left
+            if(orow == nrow+1) { // If moving Up/Left
+                System.out.println("Make Up/Left jump.");
+            }
+            else { // If moving Down/Left
+                System.out.println("Make Down/Left jump.");
+            }
+        }
+        else { // If moving right
+            if(orow == nrow+1) { // If moving Up/Right
+                System.out.println("Make Up/Right jump.");
+            }
+            else { // If moving Down/Right
+                System.out.println("Make Down/Right jump.");
+            }
+        }
+
+        return false;
     }
 
 }
