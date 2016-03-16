@@ -88,6 +88,9 @@ public class CheckersLogic extends GameLogic {
         if(!takeAnotherTurn) {
             state.changePlayerTurn();
         }
+        else {
+            clickedPanels.clear();
+        }
 
         gamePlayPanel.updateTurnLabel();
         takeAnotherTurn = false;
