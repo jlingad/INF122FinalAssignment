@@ -66,7 +66,20 @@ public class CheckersLogic extends GameLogic {
             clickedPanels.add(state.getGrid()[toJumpTo]);
         }
 
-        clickedPanels.get(1).setIcon(clickedPanels.get(0).getIcon());
+        // TODO: King handling
+        if(state.getCurrentPlayer() == 1 && isBottomRow(clickedPanels.get(1), state)) {
+            clickedPanels.get(1).setIcon(state.getGamePiece(3));
+            System.out.println("KINGING RED");
+        }
+        else if(state.getCurrentPlayer() == 2 && isTopRow(clickedPanels.get(1), state)) {
+            clickedPanels.get(1).setIcon(state.getGamePiece(2));
+            System.out.println("KINGING BLACK");
+        }
+        else { // Normal case- no kinging
+            clickedPanels.get(1).setIcon(clickedPanels.get(0).getIcon());
+        }
+
+
         clickedPanels.get(0).setIcon(null);
 
         hasWinner(state, gamePlayPanel);
@@ -85,11 +98,12 @@ public class CheckersLogic extends GameLogic {
         if (state.getClickedPanels().size() == 0 &&
                 (clickedPanel.getIcon() == state.getGamePiece(currentPlayer) ||
                 clickedPanel.getIcon() == state.getGamePiece(currentPlayer+2)) ) {
+            System.out.println("That's a piece of yours.");
             isValid = true;
         } else if (state.getClickedPanels().size() == 0 &&
                 (clickedPanel.getIcon() != state.getGamePiece(currentPlayer) ||
                 clickedPanel.getIcon() != state.getGamePiece(currentPlayer+2)) ) {
-            System.out.println("Incorrect piece selected.");
+            System.out.println("Not your piece/blank space");
             isValid = false;
         }
 
@@ -99,7 +113,9 @@ public class CheckersLogic extends GameLogic {
             int oldP = Integer.parseInt(state.getClickedPanels().get(0).getToolTipText());
             int newP = Integer.parseInt(clickedPanel.getToolTipText());
 
-            kinged = clickedPanel.getIcon() == state.getGamePieces().get(currentPlayer+1);
+            // TODO: Detect Kings properly
+            kinged = state.getClickedPanels().get(0).getIcon() == state.getGamePieces().get(currentPlayer+1);
+            if(kinged) {System.out.println("KING MOVE DETECTED");}
 
             // First important check
             if(isValidMove(oldP, newP, currentPlayer, kinged, state)) {
@@ -282,6 +298,24 @@ public class CheckersLogic extends GameLogic {
 
     private boolean isBlocked(int positionToCheck, GameState state) {
         return state.getGrid()[positionToCheck].getIcon() != null;
+    }
+
+    private boolean isBottomRow(JLabel toFind, GameState state) {
+        for(int i=56; i<64; ++i) {
+            if(toFind == state.getGrid()[i]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isTopRow(JLabel toFind, GameState state) {
+        for(int i=0; i<8; ++i) {
+            if(toFind == state.getGrid()[i]) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
