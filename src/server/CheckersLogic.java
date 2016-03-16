@@ -13,7 +13,7 @@ public class CheckersLogic extends GameLogic {
     public boolean hasSpecialVersion = true;
 
     private int toJumpTo = -1;
-
+    private boolean takeAnotherTurn = false;
 
     public CheckersLogic() {
     }
@@ -27,26 +27,27 @@ public class CheckersLogic extends GameLogic {
     // does not check for particular players' game pieces
     public void hasWinner(GameState state, GamePlayPanel gamePlayPanel) {
         JLabel[] grid = state.getGrid();
-        Icon piece = state.getGamePiece(1);
         ArrayList<ImageIcon> pieces = state.getGamePieces();
-//        String pathString = Paths.get("").toAbsolutePath().toString();
-        boolean win = true;
-        // get any piece that can be found on the board
-        // if there is a winner, the grid will only contain
-        // this piece type
+        boolean redAlive = false;
+        boolean blackAlive = false;
+        boolean win = false;
 
-        for (int i=0; i<grid.length; i++)
-            if (grid[i].getIcon() != null){
-                System.out.println("hasWinner()");
-                piece = grid[i].getIcon();
-                break;
+        // Confirm that black and red are still alive
+        for(int i=0; i<grid.length; ++i) {
+            if(grid[i].getIcon() == pieces.get(0) ||
+                    grid[i].getIcon() == pieces.get(2)) {
+                redAlive = true;
             }
+            else if(grid[i].getIcon() == pieces.get(1) ||
+                    grid[i].getIcon() == pieces.get(3)) {
+                blackAlive = true;
+            }
+        }
 
-        // if there is a piece of a different type, there is no winner
-        for (int i=0; i<grid.length; i++)
-            // must check for king pieces too
-            if (grid[i].getIcon() != piece)
-                win = false;
+        if(!redAlive || !blackAlive) {
+            win = true;
+        }
+
         if (win) {
             String pathString = Paths.get("").toAbsolutePath().toString();
             JOptionPane.showMessageDialog(gamePlayPanel, "WINNER is player " + state.getCurrentPlayer(),
@@ -64,6 +65,7 @@ public class CheckersLogic extends GameLogic {
         if(toJumpTo != -1) {
             clickedPanels.remove(1);
             clickedPanels.add(state.getGrid()[toJumpTo]);
+            takeAnotherTurn = true;
         }
 
         // TODO: King handling
@@ -72,7 +74,7 @@ public class CheckersLogic extends GameLogic {
             System.out.println("KINGING RED");
         }
         else if(state.getCurrentPlayer() == 2 && isTopRow(clickedPanels.get(1), state)) {
-            clickedPanels.get(1).setIcon(state.getGamePiece(2));
+            clickedPanels.get(1).setIcon(state.getGamePiece(4));
             System.out.println("KINGING BLACK");
         }
         else { // Normal case- no kinging
@@ -81,11 +83,14 @@ public class CheckersLogic extends GameLogic {
 
 
         clickedPanels.get(0).setIcon(null);
-
         hasWinner(state, gamePlayPanel);
-        state.changePlayerTurn();
-        gamePlayPanel.updateTurnLabel();
 
+        if(!takeAnotherTurn) {
+            state.changePlayerTurn();
+        }
+
+        gamePlayPanel.updateTurnLabel();
+        takeAnotherTurn = false;
         toJumpTo = -1;
     }
 
@@ -98,12 +103,12 @@ public class CheckersLogic extends GameLogic {
         if (state.getClickedPanels().size() == 0 &&
                 (clickedPanel.getIcon() == state.getGamePiece(currentPlayer) ||
                 clickedPanel.getIcon() == state.getGamePiece(currentPlayer+2)) ) {
-            System.out.println("That's a piece of yours.");
+            //System.out.println("That's a piece of yours.");
             isValid = true;
         } else if (state.getClickedPanels().size() == 0 &&
                 (clickedPanel.getIcon() != state.getGamePiece(currentPlayer) ||
                 clickedPanel.getIcon() != state.getGamePiece(currentPlayer+2)) ) {
-            System.out.println("Not your piece/blank space");
+            System.out.println("ILLEGAL: Not your piece/blank space");
             isValid = false;
         }
 
@@ -113,9 +118,9 @@ public class CheckersLogic extends GameLogic {
             int oldP = Integer.parseInt(state.getClickedPanels().get(0).getToolTipText());
             int newP = Integer.parseInt(clickedPanel.getToolTipText());
 
-            // TODO: Detect Kings properly
+
             kinged = state.getClickedPanels().get(0).getIcon() == state.getGamePieces().get(currentPlayer+1);
-            if(kinged) {System.out.println("KING MOVE DETECTED");}
+            //if(kinged) {System.out.println("KING MOVE DETECTED");}
 
             // First important check
             if(isValidMove(oldP, newP, currentPlayer, kinged, state)) {
@@ -126,12 +131,11 @@ public class CheckersLogic extends GameLogic {
                 Icon newSpot = clickedPanel.getIcon();
                 if((newSpot != null) && (newSpot != state.getGamePiece(currentPlayer)) &&
                         (newSpot != state.getGamePiece(currentPlayer+2))) {
-                    System.out.println("A piece is being taken. JUMP ATTEMPT");
-
                     // Second important check
                     if(isValidJump(oldP, newP, currentPlayer, kinged, state)) {
                         System.out.println("Handling jump.");
                         clickedPanel.setIcon(null);
+                        //notjustJumped = false;
                     }
                     else {
                         System.out.println("Move not legal: jump is being blocked.");
@@ -164,8 +168,8 @@ public class CheckersLogic extends GameLogic {
         int ocol = oldPos % 8;
         int nrow = newPos / 8;
         int ncol = newPos % 8;
-        System.out.println("oldPos = (" + ocol + ", " + orow + ")");
-        System.out.println("newPos = (" + ncol + ", " + nrow + ")");
+        //System.out.println("oldPos = (" + ocol + ", " + orow + ")");
+        //System.out.println("newPos = (" + ncol + ", " + nrow + ")");
 
         if (ocol == ncol+1 || ocol == ncol-1) {
             if(player == 1) {
@@ -195,7 +199,7 @@ public class CheckersLogic extends GameLogic {
 
         if(ocol == ncol+1) { // If moving left
             if(orow == nrow+1) { // If moving Up/Left
-                System.out.println("Make Up/Left jump.");
+                //System.out.println("Make Up/Left jump.");
                 if(nrow == 0 || ncol == 0) {
                     System.out.println("Going to hit a wall if jump happens.");
                     return false;
@@ -219,7 +223,7 @@ public class CheckersLogic extends GameLogic {
 
             }
             else { // If moving Down/Left
-                System.out.println("Make Down/Left jump.");
+                //System.out.println("Make Down/Left jump.");
                 if(nrow == 7 || ncol == 0) {
                     System.out.println("Going to hit a wall if jump happens.");
                     return false;
@@ -245,7 +249,7 @@ public class CheckersLogic extends GameLogic {
         }
         else { // If moving right
             if(orow == nrow+1) { // If moving Up/Right
-                System.out.println("Make Up/Right jump.");
+                //System.out.println("Make Up/Right jump.");
                 if(nrow == 0 || ncol == 7) {
                     System.out.println("Going to hit a wall if jump happens.");
                     return false;
@@ -269,7 +273,7 @@ public class CheckersLogic extends GameLogic {
 
             }
             else { // If moving Down/Right
-                System.out.println("Make Down/Right jump.");
+                //System.out.println("Make Down/Right jump.");
                 if(nrow == 7 || ncol == 7) {
                     System.out.println("Going to hit a wall if jump happens.");
                     return false;
