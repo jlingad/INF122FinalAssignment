@@ -12,6 +12,8 @@ public class CheckersLogic extends GameLogic {
     private int maxClicksPerTurn = 2; /// Will have to take into account jumping over pieces
     public boolean hasSpecialVersion = true;
 
+    private int toJumpTo = -1;
+
 
     public CheckersLogic() {
     }
@@ -57,14 +59,21 @@ public class CheckersLogic extends GameLogic {
 
     public void makeMove(GameState state, GamePlayPanel gamePlayPanel) {
         ArrayList<JLabel> clickedPanels = state.getClickedPanels();
-        int currentPlayer = state.getCurrentPlayer();
 
         // Moves piece over; icon check is left to isValidClick/Move
+        if(toJumpTo != -1) {
+            clickedPanels.remove(1);
+            clickedPanels.add(state.getGrid()[toJumpTo]);
+        }
+
         clickedPanels.get(1).setIcon(clickedPanels.get(0).getIcon());
         clickedPanels.get(0).setIcon(null);
+
         hasWinner(state, gamePlayPanel);
         state.changePlayerTurn();
         gamePlayPanel.updateTurnLabel();
+
+        toJumpTo = -1;
     }
 
     public boolean isValidClick(GameState state, JLabel clickedPanel) {
@@ -104,12 +113,14 @@ public class CheckersLogic extends GameLogic {
                     System.out.println("A piece is being taken. JUMP ATTEMPT");
 
                     // Second important check
-                    // TODO: Check for jump validity, and either perform the jump, or make isValid false
                     if(isValidJump(oldP, newP, currentPlayer, kinged, state)) {
-
+                        System.out.println("Handling jump.");
+                        clickedPanel.setIcon(null);
                     }
-
-
+                    else {
+                        System.out.println("Move not legal: jump is being blocked.");
+                        return false; // Immediately fail
+                    }
                 }
                 else {
                     System.out.println("Normal move.");
@@ -162,6 +173,10 @@ public class CheckersLogic extends GameLogic {
         int nrow = newPos / 8;
         int ncol = newPos % 8;
 
+        int jrow;
+        int jcol;
+        int jpos;
+
         if(ocol == ncol+1) { // If moving left
             if(orow == nrow+1) { // If moving Up/Left
                 System.out.println("Make Up/Left jump.");
@@ -171,6 +186,19 @@ public class CheckersLogic extends GameLogic {
                 }
                 else {
                     // Calculate index of next spot; use isBlocked to check for an icon
+                    jrow = nrow-1;
+                    jcol = ncol-1;
+                    jpos = (jrow*8) + jcol;
+
+                    if(!isBlocked(jpos, state)) {
+                        System.out.println("Jump is safe.");
+                        toJumpTo = jpos;
+                        return true;
+                    }
+                    else {
+                        System.out.println("PIECE IN WAY OF JUMP. No jump.");
+                        return false;
+                    }
                 }
 
             }
@@ -182,6 +210,19 @@ public class CheckersLogic extends GameLogic {
                 }
                 else {
                     // Calculate index of next spot; use isBlocked to check for an icon
+                    jrow = nrow+1;
+                    jcol = ncol-1;
+                    jpos = (jrow*8) + jcol;
+
+                    if(!isBlocked(jpos, state)) {
+                        System.out.println("Jump is safe.");
+                        toJumpTo = jpos;
+                        return true;
+                    }
+                    else {
+                        System.out.println("PIECE IN WAY OF JUMP. No jump.");
+                        return false;
+                    }
                 }
 
             }
@@ -195,6 +236,19 @@ public class CheckersLogic extends GameLogic {
                 }
                 else {
                     // Calculate index of next spot; use isBlocked to check for an icon
+                    jrow = nrow-1;
+                    jcol = ncol+1;
+                    jpos = (jrow*8) + jcol;
+
+                    if(!isBlocked(jpos, state)) {
+                        System.out.println("Jump is safe.");
+                        toJumpTo = jpos;
+                        return true;
+                    }
+                    else {
+                        System.out.println("PIECE IN WAY OF JUMP. No jump.");
+                        return false;
+                    }
                 }
 
             }
@@ -206,19 +260,28 @@ public class CheckersLogic extends GameLogic {
                 }
                 else {
                     // Calculate index of next spot; use isBlocked to check for an icon
+                    jrow = nrow+1;
+                    jcol = ncol+1;
+                    jpos = (jrow*8) + jcol;
+
+                    if(!isBlocked(jpos, state)) {
+                        System.out.println("Jump is safe.");
+                        toJumpTo = jpos;
+                        return true;
+                    }
+                    else {
+                        System.out.println("PIECE IN WAY OF JUMP. No jump.");
+                        return false;
+                    }
                 }
 
             }
         }
 
-        return false;
     }
 
-    private boolean isBlocked(int positionToCheck) {
-
-
-
-        return false;
+    private boolean isBlocked(int positionToCheck, GameState state) {
+        return state.getGrid()[positionToCheck].getIcon() != null;
     }
 
 }

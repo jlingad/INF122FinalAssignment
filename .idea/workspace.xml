@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f9ded735-77c7-46b3-8e29-60fe136b0d84" name="Default" comment="">
+    <list default="true" id="f9ded735-77c7-46b3-8e29-60fe136b0d84" name="Default" comment="CheckersLogic: JUMPING WORKS, HALLELUJAH">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/CheckersLogic.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/CheckersLogic.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/CheckersState.class" afterPath="$PROJECT_DIR$/out/production/INF122FinalAssignment/server/CheckersState.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/CheckersLogic.java" afterPath="$PROJECT_DIR$/src/server/CheckersLogic.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/CheckersState.java" afterPath="$PROJECT_DIR$/src/server/CheckersState.java" />
     </list>
     <ignored path="INF122FinalAssignment.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,8 +50,18 @@
       <file leaf-file-name="CheckersLogic.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/server/CheckersLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.75213677">
-              <caret line="173" column="17" selection-start-line="173" selection-start-column="17" selection-end-line="173" selection-end-column="17" />
+            <state vertical-scroll-proportion="-6.162393">
+              <caret line="122" column="21" selection-start-line="122" selection-start-column="21" selection-end-line="122" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GridPanel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUI/GridPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="72" column="52" selection-start-line="72" selection-start-column="52" selection-end-line="72" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -59,18 +71,8 @@
         <entry file="file://$PROJECT_DIR$/src/server/CheckersState.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="77" column="6" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="6" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#2226#2227#0" expanded="false" />
-                <element signature="e#2253#2254#0" expanded="false" />
-                <element signature="e#2309#2310#0" expanded="false" />
-                <element signature="e#2346#2347#0" expanded="false" />
-                <element signature="e#2472#2473#0" expanded="false" />
-                <element signature="e#2522#2523#0" expanded="false" />
-                <element signature="e#2572#2573#0" expanded="false" />
-                <element signature="e#2605#2606#0" expanded="false" />
-              </folding>
+              <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -108,6 +110,7 @@
         <option value="$PROJECT_DIR$/src/GUI/MainMenuPanel.java" />
         <option value="$PROJECT_DIR$/src/server/MatchLogic.java" />
         <option value="$PROJECT_DIR$/src/server/CheckersState.java" />
+        <option value="$PROJECT_DIR$/src/GUI/GridPanel.java" />
         <option value="$PROJECT_DIR$/src/server/CheckersLogic.java" />
       </list>
     </option>
@@ -150,6 +153,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -222,7 +226,6 @@
       </pane>
       <pane id="PackagesPane" />
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -748,7 +751,13 @@
       <option name="project" value="LOCAL" />
       <updated>1458065647516</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="CheckersLogic: prepping to handle jump attempts that are being blocked by another piece">
+      <created>1458066325982</created>
+      <option name="number" value="00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1458066325982</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -793,8 +802,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added ToolTipText to grid to help with finding the location of clicked labels" />
-    <MESSAGE value="created a GamePieceGenerator and adds the resulting game piece to the grid" />
     <MESSAGE value="created abstract GameState class - used it to update GUI game pieces and turns based on the selected game" />
     <MESSAGE value="fixed GameState issue" />
     <MESSAGE value="edited grid clicking" />
@@ -818,7 +825,9 @@
     <MESSAGE value="CheckersLogic: piece moved is first clickedPanel, not just panel of current player. Making room for kinged pieces." />
     <MESSAGE value="CheckersLogic: can detect when an opponent piece has been taken." />
     <MESSAGE value="CheckersLogic: can tell which direction a jump is going to happen in" />
-    <option name="LAST_COMMIT_MESSAGE" value="CheckersLogic: can tell which direction a jump is going to happen in" />
+    <MESSAGE value="CheckersLogic: prepping to handle jump attempts that are being blocked by another piece" />
+    <MESSAGE value="CheckersLogic: JUMPING WORKS, HALLELUJAH" />
+    <option name="LAST_COMMIT_MESSAGE" value="CheckersLogic: JUMPING WORKS, HALLELUJAH" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -857,17 +866,39 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="77" column="6" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2226#2227#0" expanded="false" />
-            <element signature="e#2253#2254#0" expanded="false" />
-            <element signature="e#2309#2310#0" expanded="false" />
-            <element signature="e#2346#2347#0" expanded="false" />
-            <element signature="e#2472#2473#0" expanded="false" />
-            <element signature="e#2522#2523#0" expanded="false" />
-            <element signature="e#2572#2573#0" expanded="false" />
-            <element signature="e#2605#2606#0" expanded="false" />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/GameState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="67" column="1" selection-start-line="67" selection-start-column="1" selection-end-line="67" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/CheckersEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/CheckersLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/CheckersState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="77" column="6" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1100,14 +1131,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/GridPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="42" selection-start-line="52" selection-start-column="42" selection-end-line="52" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/ArmagriddonGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5682657">
@@ -1193,25 +1216,23 @@
     <entry file="file://$PROJECT_DIR$/src/server/CheckersState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="77" column="6" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2226#2227#0" expanded="false" />
-            <element signature="e#2253#2254#0" expanded="false" />
-            <element signature="e#2309#2310#0" expanded="false" />
-            <element signature="e#2346#2347#0" expanded="false" />
-            <element signature="e#2472#2473#0" expanded="false" />
-            <element signature="e#2522#2523#0" expanded="false" />
-            <element signature="e#2572#2573#0" expanded="false" />
-            <element signature="e#2605#2606#0" expanded="false" />
-          </folding>
+          <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/GridPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="72" column="52" selection-start-line="72" selection-start-column="52" selection-end-line="72" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/CheckersLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.75213677">
-          <caret line="173" column="17" selection-start-line="173" selection-start-column="17" selection-end-line="173" selection-end-column="17" />
+        <state vertical-scroll-proportion="-6.162393">
+          <caret line="122" column="21" selection-start-line="122" selection-start-column="21" selection-end-line="122" selection-end-column="21" />
           <folding />
         </state>
       </provider>
