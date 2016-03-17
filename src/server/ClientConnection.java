@@ -58,6 +58,10 @@ public class ClientConnection
 		}
 	}
 	
+	public GameNames getGameName() {
+		return nameOfGame;
+	}
+	
 	public void setAsInGame()
 	{
 		this.inGameRoom = true;

@@ -46,8 +46,23 @@ public class GameRoom extends Thread
 		try
 		{
 			System.out.println("Game started on separate thread! Thread ID: " + this.getId());
-			while(true)
+			
+			boolean gameInProgress = true;
+			GameNames nameOfGame = hostClient.getGameName();
+			PlayableFactory playableFactory = new PlayableFactory();
+			Playable theGame;
+			
+			if(nameOfGame == GameNames.CHECKERS)
+				theGame = playableFactory.createPlayable("Checkers");
+			else if(nameOfGame == GameNames.TIC_TAC_TOE)
+				theGame = playableFactory.createPlayable("TicTacToe");
+			else if(nameOfGame == GameNames.MATCH)
+				theGame = playableFactory.createPlayable("Match");
+			
+				
+			while(gameInProgress)
 			{
+				
 				break;
 			}
 			this.gameInProgress = false;
