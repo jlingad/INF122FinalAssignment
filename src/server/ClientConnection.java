@@ -29,11 +29,12 @@ public class ClientConnection
 	private String clientName; 					    // Client name that is going to be logged into the database
 	private ServerEngine engine;
 	private GameNames nameOfGame;
-	public ArrayList<Protocol> incommingMessages;
+	public ArrayList<Protocol> incomingMessages;
 	public ArrayList<Protocol> outgoingMessages;
+	
 	public ClientConnection(Socket newSocket, ServerEngine engine)
 	{
-		incommingMessages = new ArrayList<Protocol>();
+		incomingMessages = new ArrayList<Protocol>();
 		outgoingMessages = new ArrayList<Protocol>();
 		System.out.println("ClientConnection object established.");
 		socket = newSocket;
@@ -169,26 +170,26 @@ public class ClientConnection
 				nameOfGame = (GameNames) input.readObject(); // GameNames.valueOf(input.readLine());
 
 				// Add to [specific game] queue or to a new game
-				engine.addUser(client, nameOfGame);
+//				engine.addUser(client, nameOfGame);
 				
-				while(true) {
-					if (outgoingMessages.isEmpty()) {
-						System.out.println("outgoing messages is empty");
-					}
-					if (!outgoingMessages.isEmpty())
-					{
-						System.out.println("outgoing messages is not empty");
-						for (Protocol p : outgoingMessages) {
-							output.writeObject(p);
-							output.flush();
-						}
-						outgoingMessages.clear();
-					}
-					System.out.println("in client connection loop");
-					//incommingMessages.add((Protocol) input.readObject());
-					//System.out.println("in client connection loop after read");
-					Thread.sleep(500);
-				}
+//				while(true) {
+//					if (outgoingMessages.isEmpty()) {
+//						System.out.println("outgoing messages is empty");
+//					}
+//					if (!outgoingMessages.isEmpty())
+//					{
+//						System.out.println("outgoing messages is not empty");
+//						for (Protocol p : outgoingMessages) {
+//							output.writeObject(p);
+//							output.flush();
+//						}
+//						outgoingMessages.clear();
+//					}
+//					System.out.println("in client connection loop");
+//					//incommingMessages.add((Protocol) input.readObject());
+//					//System.out.println("in client connection loop after read");
+//					Thread.sleep(500);
+//				}
 
 				//this.join(); // Joined so that it does not waste threads, commented out for message implementation reasons
 			}
@@ -196,6 +197,7 @@ public class ClientConnection
 			{
 				System.out.println("Cient could not establish rules with server.");
 				System.err.println(e.getClass() + ": " + e.getMessage());
+				System.err.println(e.getStackTrace().toString());
 			}
 		}
 	}

@@ -1,6 +1,7 @@
 package server;
 
 import database.SQLiteJDBC;
+import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +66,7 @@ public class ServerEngine extends Thread
 			System.out.println("User already exists, logging in as user now.");
 	}
 	
-	public void addUser(ClientConnection client, GameNames game)
+	public void addUser(ClientConnection client, GameNames game) throws IOException
 	{
 		System.out.println("Adding user to " + game + " queue.");
 		switch(game)

@@ -3,6 +3,7 @@ package client;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OptionalDataException;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -64,20 +65,23 @@ public class Client {
 			output.writeObject(gui.getMainMenuPanel().getChosenGame());
 			output.flush();
 			
-			Protocol nextMessage;
-			try {
-			nextMessage = (Protocol) input.readObject();
-			}
-			catch (Exception e) {
-				System.out.println(e);
-				e.printStackTrace();
-			}
+			Protocol nextMessage = new Protocol(null, null, null, null);
+//			try {
+//			nextMessage = (Protocol) input.readObject();
+//			}
+//			catch (Exception e) {
+//				System.out.println(e);
+//				e.printStackTrace();
+//			}
 			
 			boolean connectedToGame = false;
 			while (!connectedToGame) {
 				System.out.println("In Connectedtogame loop");
 				nextMessage = (Protocol) input.readObject();
-				if (nextMessage.getMessageType() == MessageType.READYTOPLAY) {
+//				Object nextMessage = input.readObject();
+//				Thread.sleep(4000);
+//				System.out.println("Next message: " + input.readObject());
+				if ( (nextMessage != null) && (nextMessage.getMessageType() == MessageType.READYTOPLAY) ) {
 					connectedToGame = true;
 				}
 				Thread.sleep(500);
@@ -86,7 +90,7 @@ public class Client {
 			//Main client loop BBBBBROKEN
 			
 			while(isConnected) {
-				System.out.println("in main client loop");
+//				System.out.println("in main client loop");
 
 				if (!incommingMessages.isEmpty()) {
 					for (Protocol p : incommingMessages)
@@ -114,9 +118,14 @@ public class Client {
 			
 			socket.close();
 		}
+		catch(OptionalDataException e)
+		{
+			System.err.println(e.getClass() + ": " + e.getMessage());
+			System.err.println(e.getStackTrace());
+		}
 		catch(Exception e)
 		{
-			System.err.println(e.getMessage());
+			System.err.println(e.getClass() + ": " + e.getMessage());
 		}
 	}
 	
