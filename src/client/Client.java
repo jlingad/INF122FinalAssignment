@@ -76,24 +76,9 @@ public class Client {
 			output.writeObject(userName);
 			output.flush();
 			
+			output.writeObject(gui.getMainMenuPanel().getChosenGame());
+			output.flush();
 
-			System.out.print("Game to play: [0]-TicTacToe, [1]-Checkers, [2]-Match ");
-			switch(userMessage.nextLine())
-			{
-				case "0":
-					output.writeObject(GameNames.TIC_TAC_TOE);
-					output.flush();
-					break;
-				case "1":
-					output.writeObject(GameNames.CHECKERS);
-					output.flush();
-					break;
-				case "2":
-					output.writeObject(GameNames.MATCH);
-					output.flush();
-					break;
-			}
-			
 			userMessage.close();
 			socket.close();
 		}

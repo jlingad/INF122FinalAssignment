@@ -23,7 +23,10 @@ import java.nio.file.Paths;
 public class MainMenuPanel extends JPanel implements ActionListener {
 
     ArmagriddonGUI gui;
-
+    
+    private GameNames gameChosenType;
+    private boolean gameChosen;
+    
     private JPanel gameOptionsPanel;
     private JPanel checkersPanel;
     private JPanel tictactoePanel;
@@ -36,6 +39,8 @@ public class MainMenuPanel extends JPanel implements ActionListener {
     JLabel selectGame;
 
     public MainMenuPanel(ArmagriddonGUI gui, String username) {
+    	gameChosen = false;
+    	
         this.gui = gui;
 
         setBackground(new Color(51,51,51));
@@ -100,18 +105,24 @@ public class MainMenuPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source == tictactoeButton) {
+        	gameChosenType = GameNames.TIC_TAC_TOE;
+        	gameChosen = true;
             GameState state = new TicTacToeState();
             GameLogic logic = new TicTacToeLogic();
             gui.setGameState(state);
             gui.setGameLogic(logic);
         }
         else if (source == checkersButton) {
+        	gameChosenType = GameNames.CHECKERS;
+        	gameChosen = true;
             GameState state = new CheckersState();
             GameLogic logic = new CheckersLogic();
             gui.setGameState(state);
             gui.setGameLogic(logic);
         }
         else if (source == battleshipButton) {
+        	gameChosenType = GameNames.MATCH;
+        	gameChosen = true;
             GameState state = new MatchState();
             GameLogic logic = new MatchLogic();
             gui.setGameState(state);
@@ -119,6 +130,19 @@ public class MainMenuPanel extends JPanel implements ActionListener {
         }
         gui.setExecutionState(ExecutionState.GAMEPLAY); // game selected, so move onto GamePlayPanel
         gui.update(); // show the GamePlayPanel
+    }
+    
+    public GameNames getChosenGame() {
+    	while(!gameChosen) {
+    		try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    		//block
+    	}
+        return gameChosenType;
     }
 
 }

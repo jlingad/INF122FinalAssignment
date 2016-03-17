@@ -106,6 +106,11 @@ public class ArmagriddonGUI extends JFrame{
         return loginPanel;
     }
     
+    public GUI.MainMenuPanel getMainMenuPanel()
+    {
+    	return mainMenuPanel;
+    }
+    
     public ExecutionState getExecutionState() {
     	return executionState;
     }
