@@ -37,7 +37,6 @@ public class Client {
 	 * 
 	 */
 
-	//currently a skeleton, needs fleshing out
 
 	private String name;
 	private Integer player1OrPlayer2;
@@ -102,11 +101,6 @@ public class Client {
 		{
 			System.err.println(e.getMessage());
 		}
-	}
-
-	public static void handshake()
-	{
-		
 	}
 	
 	public void getUsername()
