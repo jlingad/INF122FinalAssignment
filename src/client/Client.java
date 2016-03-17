@@ -71,7 +71,7 @@ public class Client {
 			
 			String userName = gui.getLoginPanel().getUsername();
 			
-			System.out.println("Trying to log in as " + userName + "...");
+			System.out.println("Trying to log in as :" + userName + "...");
 			
 			output.writeObject(userName);
 			output.flush();
