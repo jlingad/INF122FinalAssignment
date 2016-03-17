@@ -100,6 +100,10 @@ public class CheckersState extends GameState{
                     grid[i].setIcon(specialGamePieces.get(0));
                 else if (grid[i].getIcon() != null && grid[i].getIcon() == normalGamePieces.get(1))
                     grid[i].setIcon(specialGamePieces.get(1));
+                else if (grid[i].getIcon() != null && grid[i].getIcon() == normalGamePieces.get(2))
+                    grid[i].setIcon(specialGamePieces.get(2));
+                else if (grid[i].getIcon() != null && grid[i].getIcon() == normalGamePieces.get(3))
+                    grid[i].setIcon(specialGamePieces.get(3));
             }
         } else {
             System.out.println("nope");
@@ -109,6 +113,10 @@ public class CheckersState extends GameState{
                     grid[i].setIcon(normalGamePieces.get(0));
                 else if (grid[i].getIcon() != null && grid[i].getIcon() == specialGamePieces.get(1))
                     grid[i].setIcon(normalGamePieces.get(1));
+                else if (grid[i].getIcon() != null && grid[i].getIcon() == specialGamePieces.get(2))
+                    grid[i].setIcon(normalGamePieces.get(2));
+                else if (grid[i].getIcon() != null && grid[i].getIcon() == specialGamePieces.get(3))
+                    grid[i].setIcon(normalGamePieces.get(3));
             }
         }
     }
