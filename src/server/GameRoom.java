@@ -71,7 +71,7 @@ public class GameRoom extends Thread
 //			boolean gameInProgress = true;
 			
 			//Main server side game loop
-			while(gameInProgress && hostClient.isConnected() && guestClient.isConnected())
+			while(gameInProgress)
 			{
 				System.out.println("in main server side loop");
 				if (!hostClient.incommingMessages.isEmpty()) {
@@ -81,6 +81,7 @@ public class GameRoom extends Thread
 							guestClient.outgoingMessages.add(p);
 						}
 					}
+					hostClient.incommingMessages.clear();
 				}
 				if (!guestClient.incommingMessages.isEmpty()) {
 					System.out.println("guestClient.incommingMessages is not empty");
@@ -89,6 +90,7 @@ public class GameRoom extends Thread
 							hostClient.outgoingMessages.add(p);
 						}
 					}
+					guestClient.incommingMessages.clear();
 				}
 				
 				Thread.sleep(500);
