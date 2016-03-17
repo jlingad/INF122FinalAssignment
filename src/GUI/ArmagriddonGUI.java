@@ -17,17 +17,24 @@ import java.awt.Color;
 
 public class ArmagriddonGUI extends JFrame{
 
-    private ServerState serverState;
+    //private ServerState serverState;
     private GameState gameState;
     private GameLogic gameLogic;
-
+    private ExecutionState executionState;
+    
     private JPanel mainPane;
     private LoginPanel loginPanel;
     private MainMenuPanel mainMenuPanel;
     private GamePlayPanel gamePlayPanel;
 
-    public ArmagriddonGUI(ServerState s) {
-        serverState = s;
+//    public ArmagriddonGUI(ServerState s) {
+//        serverState = s;
+//        reset();
+//        // end the process when the jframe is closed
+//        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//    }
+    public ArmagriddonGUI(ExecutionState startState) {
+        executionState = startState;
         reset();
         // end the process when the jframe is closed
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -43,7 +50,7 @@ public class ArmagriddonGUI extends JFrame{
 
         // the program is just started, the ExecutionState
         // should be at LOGIN, so create the LoginPanel
-        if (serverState.execState == ExecutionState.LOGIN) {
+        if (executionState == ExecutionState.LOGIN) {
             loginPanel = new LoginPanel(this);
             mainPane.add(loginPanel, BorderLayout.CENTER);
             loginPanel.setVisible(true);
@@ -61,14 +68,14 @@ public class ArmagriddonGUI extends JFrame{
     }
 
     public void update() {
-        if (serverState.execState == ExecutionState.MAIN_MENU) {
+        if (executionState == ExecutionState.MAIN_MENU) {
             mainMenuPanel = new MainMenuPanel(this, loginPanel.getUsername());
             mainPane.add(mainMenuPanel, BorderLayout.CENTER);
             loginPanel.setVisible(false);
             mainMenuPanel.setVisible(true);
             if (gamePlayPanel != null)
                 gamePlayPanel.setVisible(false);
-        } else if (serverState.execState == ExecutionState.GAMEPLAY) {
+        } else if (executionState == ExecutionState.GAMEPLAY) {
             gamePlayPanel = new GamePlayPanel(this, gameState, gameLogic);
             mainPane.add(gamePlayPanel, BorderLayout.CENTER);
             loginPanel.setVisible(false);
@@ -83,17 +90,15 @@ public class ArmagriddonGUI extends JFrame{
     }
 
     public void setExecutionState(ExecutionState execState) {
-        serverState.execState = execState;
+    	executionState = execState;
     }
 
     public void setGameState(GameState gameState) {
-        serverState.gameState = gameState;
-        this.gameState = serverState.gameState;
+        this.gameState = gameState;
     }
 
     public void setGameLogic(GameLogic gameLogic) {
-        serverState.gameLogic = gameLogic;
-        this.gameLogic = serverState.gameLogic;
+        this.gameLogic = gameLogic;
     }
 
     public GUI.LoginPanel getLoginPanel()
@@ -102,7 +107,7 @@ public class ArmagriddonGUI extends JFrame{
     }
 
     public static void main(String[] args) {
-        ServerState serverState = new ServerState();
-        ArmagriddonGUI gui = new ArmagriddonGUI(serverState);
+        //ArmagriddonGUI gui = new ArmagriddonGUI(new ServerState());
+    	ArmagriddonGUI gui = new ArmagriddonGUI(ExecutionState.LOGIN);
     }
 }
