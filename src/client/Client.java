@@ -11,7 +11,9 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
+import GUI.ArmagriddonGUI;
 import server.GameNames;
+import shared.ExecutionState;
 
 
 public class Client {
@@ -50,41 +52,42 @@ public class Client {
 
 	public static void main(String[] args) throws UnknownHostException, IOException 
 	{
+		ArmagriddonGUI gui = new ArmagriddonGUI(ExecutionState.LOGIN);
 		try
 		{
 			
-			String serverMessage = "";
-			Scanner userMessage = new Scanner(System.in);
-			
-			serverMessage = input.readLine();
-			System.out.println("Message from server: " + serverMessage + ". Successfully connected to server.");
-			
-			System.out.print("User name to use: ");
-			output.println(userMessage.nextLine());
-			output.flush();
-			
-			serverMessage = input.readLine();
-			System.out.println("Attempt to log user in: " + serverMessage);
-			
-			System.out.print("Game to play: [0]-TicTacToe, [1]-Checkers, [2]-Match ");
-			serverMessage = userMessage.next();
-			switch(serverMessage)
-			{
-				case "0":
-					output.println(GameNames.TIC_TAC_TOE);
-					output.flush();
-					break;
-				case "1":
-					output.println(GameNames.CHECKERS);
-					output.flush();
-					break;
-				case "2":
-					output.println(GameNames.MATCH);
-					output.flush();
-					break;
-			}
-			
-			userMessage.close();
+//			String serverMessage = "";
+//			Scanner userMessage = new Scanner(System.in);
+//			
+//			serverMessage = input.readLine();
+//			System.out.println("Message from server: " + serverMessage + ". Successfully connected to server.");
+//			
+//			System.out.print("User name to use: ");
+//			output.println(userMessage.nextLine());
+//			output.flush();
+//			
+//			serverMessage = input.readLine();
+//			System.out.println("Attempt to log user in: " + serverMessage);
+//			
+//			System.out.print("Game to play: [0]-TicTacToe, [1]-Checkers, [2]-Match ");
+//			serverMessage = userMessage.next();
+//			switch(serverMessage)
+//			{
+//				case "0":
+//					output.println(GameNames.TIC_TAC_TOE);
+//					output.flush();
+//					break;
+//				case "1":
+//					output.println(GameNames.CHECKERS);
+//					output.flush();
+//					break;
+//				case "2":
+//					output.println(GameNames.MATCH);
+//					output.flush();
+//					break;
+//			}
+//			
+//			userMessage.close();
 			
 //			while((serverMessage = input.readLine()) != null)
 //			while( !serverMessage.equals("exit") )

@@ -106,8 +106,8 @@ public class ArmagriddonGUI extends JFrame{
         return loginPanel;
     }
 
-    public static void main(String[] args) {
-        //ArmagriddonGUI gui = new ArmagriddonGUI(new ServerState());
-    	ArmagriddonGUI gui = new ArmagriddonGUI(ExecutionState.LOGIN);
-    }
+//    public static void main(String[] args) {
+//        //ArmagriddonGUI gui = new ArmagriddonGUI(new ServerState());
+//    	ArmagriddonGUI gui = new ArmagriddonGUI(ExecutionState.LOGIN);
+//    }
 }
