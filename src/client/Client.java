@@ -68,11 +68,15 @@ public class Client {
 
 			ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
 			
-			System.out.println("Log-in Attempt: " + input.readBoolean());
+			System.out.println("Connected to server: " + input.readBoolean());
 			
-			System.out.print("User name to use: ");
-			output.writeObject(userMessage.nextLine());
+			String userName = gui.getLoginPanel().getUsername();
+			
+			System.out.println("Trying to log in as " + userName + "...");
+			
+			output.writeObject(userName);
 			output.flush();
+			
 
 			System.out.print("Game to play: [0]-TicTacToe, [1]-Checkers, [2]-Match ");
 			switch(userMessage.nextLine())

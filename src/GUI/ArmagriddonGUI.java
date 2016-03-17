@@ -105,6 +105,10 @@ public class ArmagriddonGUI extends JFrame{
     {
         return loginPanel;
     }
+    
+    public ExecutionState getExecutionState() {
+    	return executionState;
+    }
 
 //    public static void main(String[] args) {
 //        //ArmagriddonGUI gui = new ArmagriddonGUI(new ServerState());

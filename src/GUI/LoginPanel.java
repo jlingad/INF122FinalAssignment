@@ -25,14 +25,17 @@ public class LoginPanel extends JPanel {
     private JTextField usernameTextField;
     private String username;
     private JButton loginButton;
+    private boolean nameReady;
 
     public LoginPanel(ArmagriddonGUI gui) {
+    	nameReady = false;
         usernameTextField = new JTextField(25);
         loginButton = new JButton("Login");
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 username = usernameTextField.getText();
+                nameReady = true;
                 gui.setExecutionState(ExecutionState.MAIN_MENU); // now logged in, so move on to MainMenuPanel
                 gui.update(); // show the MainMenuPanel
             }
@@ -84,6 +87,15 @@ public class LoginPanel extends JPanel {
     }
 
     public String getUsername() {
+    	while(!nameReady) {
+    		try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    		//block
+    	}
         return username;
     }
 
