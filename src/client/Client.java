@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -56,52 +58,41 @@ public class Client {
 		try
 		{
 			
-//			String serverMessage = "";
-//			Scanner userMessage = new Scanner(System.in);
-//			
-//			serverMessage = input.readLine();
-//			System.out.println("Message from server: " + serverMessage + ". Successfully connected to server.");
-//			
-//			System.out.print("User name to use: ");
-//			output.println(userMessage.nextLine());
-//			output.flush();
-//			
-//			serverMessage = input.readLine();
-//			System.out.println("Attempt to log user in: " + serverMessage);
-//			
-//			System.out.print("Game to play: [0]-TicTacToe, [1]-Checkers, [2]-Match ");
-//			serverMessage = userMessage.next();
-//			switch(serverMessage)
-//			{
-//				case "0":
-//					output.println(GameNames.TIC_TAC_TOE);
-//					output.flush();
-//					break;
-//				case "1":
-//					output.println(GameNames.CHECKERS);
-//					output.flush();
-//					break;
-//				case "2":
-//					output.println(GameNames.MATCH);
-//					output.flush();
-//					break;
-//			}
-//			
-//			userMessage.close();
+			Scanner userMessage = new Scanner(System.in);
+			InetAddress hostName = InetAddress.getLocalHost();	
+			Socket socket = new Socket(hostName, 60101);
+			System.out.println("Established connection with the server: " + socket.toString());
+
+			ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
+			output.flush();
+
+			ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
 			
-//			while((serverMessage = input.readLine()) != null)
-//			while( !serverMessage.equals("exit") )
-//			while( (serverMessage = input.readLine()) != null)
-//			{
-//				System.out.print("Message to server: ");
-//				serverMessage = userMessage.nextLine();
-//				
-//				output.println(serverMessage);
-//				output.flush();
-//				
-//				System.out.println("Message sent.");				
-//			}
-//			userMessage.close();
+			System.out.println("Log-in Attempt: " + input.readBoolean());
+			
+			System.out.print("User name to use: ");
+			output.writeObject(userMessage.nextLine());
+			output.flush();
+
+			System.out.print("Game to play: [0]-TicTacToe, [1]-Checkers, [2]-Match ");
+			switch(userMessage.nextLine())
+			{
+				case "0":
+					output.writeObject(GameNames.TIC_TAC_TOE);
+					output.flush();
+					break;
+				case "1":
+					output.writeObject(GameNames.CHECKERS);
+					output.flush();
+					break;
+				case "2":
+					output.writeObject(GameNames.MATCH);
+					output.flush();
+					break;
+			}
+			
+			userMessage.close();
+			socket.close();
 		}
 		catch(Exception e)
 		{
