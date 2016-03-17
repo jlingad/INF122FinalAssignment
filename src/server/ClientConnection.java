@@ -170,7 +170,7 @@ public class ClientConnection
 				nameOfGame = (GameNames) input.readObject(); // GameNames.valueOf(input.readLine());
 
 				// Add to [specific game] queue or to a new game
-//				engine.addUser(client, nameOfGame);
+				engine.addUser(client, nameOfGame);
 				
 //				while(true) {
 //					if (outgoingMessages.isEmpty()) {

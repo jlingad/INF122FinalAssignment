@@ -51,10 +51,10 @@ public class Client {
 
 			ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
 			
-			System.out.println("Connected to server: " + input.readBoolean());
+			boolean isConnected = input.readBoolean();
 			
-			boolean isConnected = true;
-			
+			System.out.println("Connected to server: " + isConnected);
+						
 			String userName = gui.getLoginPanel().getUsername();
 			
 			System.out.println("Trying to log in as: " + userName + "...");
@@ -62,10 +62,12 @@ public class Client {
 			output.writeObject(userName);
 			output.flush();
 			
+			System.out.println("Login attempt: " + input.readObject());
+			
 			output.writeObject(gui.getMainMenuPanel().getChosenGame());
 			output.flush();
 			
-			Protocol nextMessage = new Protocol(null, null, null, null);
+			Protocol nextMessage = (Protocol) input.readObject();
 //			try {
 //			nextMessage = (Protocol) input.readObject();
 //			}
@@ -121,7 +123,8 @@ public class Client {
 		catch(OptionalDataException e)
 		{
 			System.err.println(e.getClass() + ": " + e.getMessage());
-			System.err.println(e.getStackTrace());
+			System.err.println("Stack trace: " + e.getStackTrace());
+			System.out.println("OptionalDataException length: " + e.length);
 		}
 		catch(Exception e)
 		{
