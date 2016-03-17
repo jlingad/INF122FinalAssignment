@@ -59,6 +59,7 @@ public class Protocol implements Serializable {
 	
 	public Protocol(String theMessage, ExecutionState executionState){
 		this.theMessage = theMessage;
+		this.executionState = executionState;
 	}
 	
 	public String getTheMessage() {
