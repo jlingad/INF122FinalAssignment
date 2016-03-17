@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 /**
  * Created by Emily on 3/5/2016.
@@ -69,14 +70,12 @@ public class GridPanel extends JPanel implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         // read which button label was clicked on
         JLabel clickedPanel = (JLabel) e.getSource();
-        // change - GridPanel should somehow have access to Logic
-        if (logic.isValidClick(state, clickedPanel))
-            state.addClickedPanel(clickedPanel);
-        if (state.getClickedPanels().size() == logic.getMaxClicks()) {
-            // makeMove checks to see if there is a winner, if the move
-            // is valid, then adds the piece to the board
-            logic.makeMove(state, gamePlayPanel);
-        }
+        
+        gamePlayPanel.moveLogic(clickedPanel);
+    }
+    
+    public void sendClickedPanelsMessage(client.Client theClient, ArrayList<JLabel> clickedPanels ) {
+    	
     }
 
     public void mouseExited(MouseEvent e) {

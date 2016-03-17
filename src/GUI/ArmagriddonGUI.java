@@ -7,16 +7,20 @@ package GUI;
 import server.*;
 import server.GameState;
 import shared.ExecutionState;
+import shared.MessageType;
+import shared.Protocol;
 import state.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Dimension;
+import java.util.ArrayList;
 import java.awt.Color;
 
 
 public class ArmagriddonGUI extends JFrame{
-
+	ArrayList<Protocol> outgoingMessages;
+	
     //private ServerState serverState;
     private GameState gameState;
     private GameLogic gameLogic;
@@ -33,8 +37,9 @@ public class ArmagriddonGUI extends JFrame{
 //        // end the process when the jframe is closed
 //        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 //    }
-    public ArmagriddonGUI(ExecutionState startState) {
+    public ArmagriddonGUI(ExecutionState startState, ArrayList<Protocol> outgoingMessages) {
         executionState = startState;
+        this.outgoingMessages = outgoingMessages;
         reset();
         // end the process when the jframe is closed
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -114,7 +119,17 @@ public class ArmagriddonGUI extends JFrame{
     public ExecutionState getExecutionState() {
     	return executionState;
     }
-
+    
+    public synchronized void processMessage (Protocol p) {
+    	if(p.getMessageType() == MessageType.MOVE) {
+    		gamePlayPanel.incomingMoveLogic(p.getClickedPanels());
+    	}
+    }
+    
+    public synchronized void queMessage (Protocol p) {
+    	outgoingMessages.add(p);
+    }
+    
 //    public static void main(String[] args) {
 //        //ArmagriddonGUI gui = new ArmagriddonGUI(new ServerState());
 //    	ArmagriddonGUI gui = new ArmagriddonGUI(ExecutionState.LOGIN);

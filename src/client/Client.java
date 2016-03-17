@@ -1,21 +1,16 @@
 package client;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.Scanner;
-
+import java.util.ArrayList;
 import GUI.ArmagriddonGUI;
-import server.GameNames;
 import shared.ExecutionState;
+import shared.MessageType;
+import shared.Protocol;
 
 
 public class Client {
@@ -37,27 +32,15 @@ public class Client {
 	 * 
 	 */
 
-
-	private String name;
-	private Integer player1OrPlayer2;
-	private shared.ExecutionState executionState;
-	private GUI.ArmagriddonGUI armagriddonGUI;
-	private state.ServerState serverState;
-	private server.GameState gameState;	//to keep track of if we'd need to draw something
-
 	//change to input object stream and output object stream
-	
-	
-	private static BufferedReader input;
-	private static PrintWriter output;
 
 	public static void main(String[] args) throws UnknownHostException, IOException 
 	{
-		ArmagriddonGUI gui = new ArmagriddonGUI(ExecutionState.LOGIN);
+		ArrayList<Protocol> incommingMessages = new ArrayList<Protocol>();
+		ArrayList<Protocol> outgoingMessages = new ArrayList<Protocol>();
+		ArmagriddonGUI gui = new ArmagriddonGUI(ExecutionState.LOGIN, outgoingMessages);
 		try
 		{
-			
-			Scanner userMessage = new Scanner(System.in);
 			InetAddress hostName = InetAddress.getLocalHost();	
 			Socket socket = new Socket(hostName, 60101);
 			System.out.println("Established connection with the server: " + socket.toString());
@@ -69,17 +52,56 @@ public class Client {
 			
 			System.out.println("Connected to server: " + input.readBoolean());
 			
+			boolean isConnected = true;
+			
 			String userName = gui.getLoginPanel().getUsername();
 			
-			System.out.println("Trying to log in as :" + userName + "...");
+			System.out.println("Trying to log in as: " + userName + "...");
 			
 			output.writeObject(userName);
 			output.flush();
 			
 			output.writeObject(gui.getMainMenuPanel().getChosenGame());
 			output.flush();
+			
+			boolean connectedToGame = false;
+			while (!connectedToGame) {
+				System.out.println("In Connectedtogame loop");
+				Protocol nextMessage = (Protocol) input.readObject();
+				if (nextMessage.getMessageType() == MessageType.READYTOPLAY) {
+					connectedToGame = true;
+				}
+			}
+			System.out.println("Connectedtogame loop passed!!!!");
+			//Main client loop BBBBBROKEN
+			
+			while(isConnected) {
+				System.out.println("in main client loop");
 
-			userMessage.close();
+				if (!incommingMessages.isEmpty()) {
+					for (Protocol p : incommingMessages)
+					{
+						System.out.println("In incoming messages for");
+						gui.processMessage(p);
+					}
+				}
+				incommingMessages.clear();
+				Thread.sleep(2000);
+				if (!outgoingMessages.isEmpty())
+				{
+					for (Protocol p : outgoingMessages) {
+						System.out.println("in outgoing messages for");
+						output.writeObject(p);
+						output.flush();
+					}
+					outgoingMessages.clear();
+				}
+				
+				incommingMessages.add((Protocol) input.readObject());
+				System.out.println("in main client loop after read");
+				Thread.sleep(500);
+			}
+			
 			socket.close();
 		}
 		catch(Exception e)
@@ -88,51 +110,14 @@ public class Client {
 		}
 	}
 	
-	public void getUsername()
-	{
-		name = armagriddonGUI.getLoginPanel().getUsername();
-		//relies on a public loginPanel in armagriddonGUI
-		//or, alternatively, a getter method for the loginPanel in
-		//armagriddonGUI
-	}
-	
-	public void connectToServer() throws IOException
-	{
-		//Was originally going to handle the server connection here,
-		//to free up the main method for other functions as well
-	}
-	
-	/**
-	 * Moves logic:
-	 * 
-	 * To get info about grid coordinates: GameState has a grid[] array of JPanels
-	 * in the GUI, hovering over a grid will tell which index in the array it is
-	 * going from 0 at the top left to 'n-1' at the bottom right
-	 * 
-	 * making a move would be different for the different games:
-	 * 	- Tic-Tac-Toe: 1 click only (clicking on the place you want to put your piece)
-	 * 		- Invalid if that square is already taken
-	 * 
-	 * 	- Checkers: 2 clicks: 1 for selecting the piece, 1 for moving the piece
-	 * 		- Invalid if:
-	 * 			- You have selected a spot not occupied by one of your pieces
-	 * 			- You intend to move to an occupied spot
-	 * 		- Server should note the invalidity of both options, even if the move
-	 * 		  has not yet been done (ex. intermediate step of selecting an invalid 
-	 * 		  piece)
-	 *		- Potentially more clicks if the player can jump multiple times, and 
-	 *		  ALL moves must be checked for validity
-	 *
-	 * 	 - Memory Match: 2 clicks: 1 for each tile flipped
-	 * 		- Invalid if one of the tiles selected has already been flipped or matched
-	 * 
-	 *	 - ALL GAMES: moves invalid if someone has already won
-	 * 
-	 */
-	
-	public void sendMoveToServer()
+	public synchronized void sendToServer(ObjectOutputStream output)
 	{
 		//TODO: the parameter for this method should be the click input (get from GameState)
+	}
+	
+	public synchronized void recieveFromServer(ObjectInputStream input)
+	{
+		
 	}
 
 }

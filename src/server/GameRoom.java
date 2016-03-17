@@ -1,5 +1,8 @@
 package server;
 
+import shared.MessageType;
+import shared.Protocol;
+
 public class GameRoom extends Thread 
 {
 	private ClientConnection hostClient;
@@ -47,25 +50,49 @@ public class GameRoom extends Thread
 		{
 			System.out.println("Game started on separate thread! Thread ID: " + this.getId());
 			
-			boolean gameInProgress = true;
-			GameNames nameOfGame = hostClient.getGameName();
-			PlayableFactory playableFactory = new PlayableFactory();
-			Playable theGame;
+			hostClient.outgoingMessages.add(new Protocol(MessageType.READYTOPLAY,
+					null, null, null));
+			System.out.println("QUEUED TO HOST: READY TO PLAY");
+			guestClient.outgoingMessages.add(new Protocol(MessageType.READYTOPLAY,
+					null, null, null));
+			System.out.println("QUEUED TO GUEST: READY TO PLAY");
+			//SERVER SIDE IMPLEMENTATION OF GAME NOT IMPLEMENTED FULLY
+//			GameNames nameOfGame = hostClient.getGameName();
+//			PlayableFactory playableFactory = new PlayableFactory();
+//			Playable theGame;
+//			
+//			if(nameOfGame == GameNames.CHECKERS)
+//				theGame = playableFactory.createPlayable("Checkers");
+//			else if(nameOfGame == GameNames.TIC_TAC_TOE)
+//				theGame = playableFactory.createPlayable("TicTacToe");
+//			else if(nameOfGame == GameNames.MATCH)
+//				theGame = playableFactory.createPlayable("Match");
+//			
+//			boolean gameInProgress = true;
 			
-			if(nameOfGame == GameNames.CHECKERS)
-				theGame = playableFactory.createPlayable("Checkers");
-			else if(nameOfGame == GameNames.TIC_TAC_TOE)
-				theGame = playableFactory.createPlayable("TicTacToe");
-			else if(nameOfGame == GameNames.MATCH)
-				theGame = playableFactory.createPlayable("Match");
-			
-				
-			while(gameInProgress)
+			//Main server side game loop
+			while(gameInProgress && hostClient.isConnected() && guestClient.isConnected())
 			{
+				System.out.println("in main server side loop");
+				if (!hostClient.incommingMessages.isEmpty()) {
+					System.out.println("hostClient.incommingMessages is not empty");
+					for (shared.Protocol p : hostClient.incommingMessages) {
+						if (p.getMessageType() == MessageType.MOVE) {
+							guestClient.outgoingMessages.add(p);
+						}
+					}
+				}
+				if (!guestClient.incommingMessages.isEmpty()) {
+					System.out.println("guestClient.incommingMessages is not empty");
+					for (shared.Protocol p : guestClient.incommingMessages) {
+						if (p.getMessageType() == MessageType.MOVE) {
+							hostClient.outgoingMessages.add(p);
+						}
+					}
+				}
 				
-				break;
+				Thread.sleep(500);
 			}
-			this.gameInProgress = false;
 			
 		}
 		catch(Exception e)

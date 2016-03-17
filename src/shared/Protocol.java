@@ -1,6 +1,9 @@
 package shared;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import javax.swing.JLabel;
 
 /* MESSAGE BUILDING STRUCTURE IS MIRRORED ON BOTH CONNECTORS
  * IN THE SENSE THAT A FACTORY IS USED.
@@ -56,10 +59,18 @@ public class Protocol implements Serializable {
 	
 	private ExecutionState executionState;
 	private String theMessage;
+	private MessageType messageType;
+	private ArrayList<JLabel> clickedPanels;
 	
-	public Protocol(String theMessage, ExecutionState executionState){
+	public Protocol(MessageType messageType, String theMessage, ExecutionState executionState, ArrayList<JLabel> clickedPanels){
+		this.messageType = messageType;
 		this.theMessage = theMessage;
 		this.executionState = executionState;
+		this.clickedPanels = clickedPanels;
+	}
+	
+	public MessageType getMessageType() {
+		return messageType;
 	}
 	
 	public String getTheMessage() {
@@ -68,5 +79,9 @@ public class Protocol implements Serializable {
 	
 	public ExecutionState getExecutionState() {
 		return executionState;
+	}
+	
+	public ArrayList<JLabel> getClickedPanels() {
+		return clickedPanels;
 	}
 }

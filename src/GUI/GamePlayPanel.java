@@ -2,6 +2,8 @@ package GUI;
 
 import server.*;
 import shared.ExecutionState;
+import shared.MessageType;
+import shared.Protocol;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -90,5 +92,28 @@ public class GamePlayPanel extends JPanel {
     public ArmagriddonGUI getGUI() {
         return gui;
     }
-
+    
+    public void incomingMoveLogic(ArrayList<JLabel> clickedPanels) {
+    	System.out.println("in incomingMoveLogic");
+    		for(JLabel j : clickedPanels) {
+        		state.addClickedPanel(j);
+    		}
+            logic.makeMove(state, this);
+    }
+    
+    public void moveLogic(JLabel clickedPanel) {
+    	System.out.println("in Move Logic");
+        if (logic.isValidClick(state, clickedPanel))
+            state.addClickedPanel(clickedPanel);
+        if (state.getClickedPanels().size() == logic.getMaxClicks()) {
+        	//send clicks to other client
+        	gui.queMessage(new Protocol(MessageType.MOVE,
+        			null,
+        			ExecutionState.GAMEPLAY,
+        			state.getClickedPanels()));
+            // makeMove checks to see if there is a winner, if the move
+            // is valid, then adds the piece to the board
+            logic.makeMove(state, this);
+        }
+    }
 }

@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
+
+import shared.Protocol;
 
 /*
  * NOTES:
@@ -26,9 +29,12 @@ public class ClientConnection
 	private String clientName; 					    // Client name that is going to be logged into the database
 	private ServerEngine engine;
 	private GameNames nameOfGame;
-	
+	public ArrayList<Protocol> incommingMessages;
+	public ArrayList<Protocol> outgoingMessages;
 	public ClientConnection(Socket newSocket, ServerEngine engine)
 	{
+		incommingMessages = new ArrayList<Protocol>();
+		outgoingMessages = new ArrayList<Protocol>();
 		System.out.println("ClientConnection object established.");
 		socket = newSocket;
 		connected = true;
@@ -102,7 +108,11 @@ public class ClientConnection
 	{
 		return this.clientName;
 	}
-
+	
+	
+	public void queMessage(Protocol p) {
+		outgoingMessages.add(p);
+	}
 	
 	/**
 	 * Simple nested class that allows for the multithreading aspect of the server. 
@@ -125,6 +135,7 @@ public class ClientConnection
 			input.close();
 			output.close();
 		}
+		
 		
 		public void run()
 		{
@@ -158,8 +169,24 @@ public class ClientConnection
 
 				// Add to [specific game] queue or to a new game
 				engine.addUser(client, nameOfGame);
+				
+				while(true) {
+					System.out.println("in client connection loop");
+					incommingMessages.add((Protocol) input.readObject());
+					System.out.println("in client connection loop after read");
+					if (!outgoingMessages.isEmpty())
+					{
+						System.out.println("outgoing messages is not empty");
+						for (Protocol p : outgoingMessages) {
+							output.writeObject(p);
+							output.flush();
+						}
+						outgoingMessages.clear();
+					}
+					Thread.sleep(500);
+				}
 
-				this.join(); // Joined so that it does not waste threads
+				//this.join(); // Joined so that it does not waste threads, commented out for message implementation reasons
 			}
 			catch(Exception e)
 			{
