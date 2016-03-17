@@ -56,6 +56,8 @@ public class GameRoom extends Thread
 			guestClient.outgoingMessages.add(new Protocol(MessageType.READYTOPLAY,
 					null, null, null));
 			System.out.println("QUEUED TO GUEST: READY TO PLAY");
+			System.out.println("IS OUTGOINGMESSAGES EMPTY?");
+			System.out.println(hostClient.outgoingMessages.isEmpty());
 			//SERVER SIDE IMPLEMENTATION OF GAME NOT IMPLEMENTED FULLY
 //			GameNames nameOfGame = hostClient.getGameName();
 //			PlayableFactory playableFactory = new PlayableFactory();

@@ -156,6 +156,7 @@ public class ClientConnection
 				System.out.println("Login attempt: " + true);
 				
 				// Get client name
+				System.out.println(input.available());
 				clientName = (String) input.readObject(); // input.readLine();
 				
 				// Query database for the name 
@@ -171,9 +172,9 @@ public class ClientConnection
 				engine.addUser(client, nameOfGame);
 				
 				while(true) {
-					System.out.println("in client connection loop");
-					incommingMessages.add((Protocol) input.readObject());
-					System.out.println("in client connection loop after read");
+					if (outgoingMessages.isEmpty()) {
+						System.out.println("outgoing messages is empty");
+					}
 					if (!outgoingMessages.isEmpty())
 					{
 						System.out.println("outgoing messages is not empty");
@@ -183,6 +184,9 @@ public class ClientConnection
 						}
 						outgoingMessages.clear();
 					}
+					System.out.println("in client connection loop");
+					//incommingMessages.add((Protocol) input.readObject());
+					//System.out.println("in client connection loop after read");
 					Thread.sleep(500);
 				}
 

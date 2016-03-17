@@ -64,13 +64,23 @@ public class Client {
 			output.writeObject(gui.getMainMenuPanel().getChosenGame());
 			output.flush();
 			
+			Protocol nextMessage;
+			try {
+			nextMessage = (Protocol) input.readObject();
+			}
+			catch (Exception e) {
+				System.out.println(e);
+				e.printStackTrace();
+			}
+			
 			boolean connectedToGame = false;
 			while (!connectedToGame) {
 				System.out.println("In Connectedtogame loop");
-				Protocol nextMessage = (Protocol) input.readObject();
+				nextMessage = (Protocol) input.readObject();
 				if (nextMessage.getMessageType() == MessageType.READYTOPLAY) {
 					connectedToGame = true;
 				}
+				Thread.sleep(500);
 			}
 			System.out.println("Connectedtogame loop passed!!!!");
 			//Main client loop BBBBBROKEN

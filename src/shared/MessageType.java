@@ -1,5 +1,7 @@
 package shared;
 
-public enum MessageType {
+import java.io.Serializable;
+
+public enum MessageType implements Serializable{
 	MOVE, READYTOPLAY
 }
